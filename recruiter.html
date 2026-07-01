@@ -1,0 +1,947 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Recruiter View — Muhammad Shahbaz Khan</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <style>
+    /* ─── TOKENS ─────────────────────────────────────────── */
+        :root {
+      --bg:       #0a0f1e;
+      --bg2:      #0f1629;
+      --bg3:      #151d35;
+      --glass:    rgba(255,255,255,0.03);
+      --glass2:   rgba(255,255,255,0.07);
+      --border:   rgba(255,255,255,0.07);
+      --border2:  rgba(255,255,255,0.12);
+      --accent:   #3b82f6;
+      --accent-h: #2563eb;
+      --accent2:  #8b5cf6;
+      --accent3:  #10b981;
+      --warn:     #f59e0b;
+      --text:     #f1f5f9;
+      --text2:    #cbd5e1;
+      --muted:    #64748b;
+      --dim:      #334155;
+      --danger:   #f87171;
+      --font:     'Space Grotesk', sans-serif;
+      --mono:     'JetBrains Mono', monospace;
+      --r:        10px;
+      --r2:       16px;
+      --r3:       24px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--font); background: var(--bg); color: var(--text); overflow-x: hidden; }
+    a { color: inherit; text-decoration: none; }
+
+    ::-webkit-scrollbar { width: 4px; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
+    ::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 2px; }
+
+    /* ─── TOP BAR ────────────────────────────────────────── */
+    .topbar {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 999;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 2rem; height: 60px;
+      background: rgba(8,12,20,0.92);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+    }
+    .topbar-left {
+      display: flex; align-items: center; gap: 1rem;
+    }
+    .recruiter-badge {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      padding: 0.3rem 0.85rem;
+      background: linear-gradient(135deg, rgba(124,58,237,0.2), rgba(0,212,255,0.15));
+      border: 1px solid rgba(0,212,255,0.25);
+      border-radius: 50px;
+      font-family: var(--mono); font-size: 0.7rem;
+      color: var(--accent); letter-spacing: 1px;
+    }
+    .recruiter-badge::before {
+      content: ''; display: inline-block;
+      width: 6px; height: 6px;
+      background: var(--accent3); border-radius: 50%;
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0%,100% { opacity:1; transform:scale(1); }
+      50%      { opacity:0.5; transform:scale(1.4); }
+    }
+    .topbar-logo {
+      font-family: var(--mono); font-size: 0.95rem; color: var(--accent);
+    }
+    .topbar-logo span { color: var(--text); }
+    .btn-back {
+      display: flex; align-items: center; gap: 0.5rem;
+      padding: 0.4rem 1rem;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      font-size: 0.82rem; font-weight: 500;
+      color: var(--muted);
+      background: var(--glass);
+      cursor: pointer;
+      transition: color 0.2s, border-color 0.2s, background 0.2s;
+    }
+    .btn-back:hover { color: var(--text); border-color: rgba(0,212,255,0.3); background: var(--glass2); }
+
+    /* ─── LAYOUT ─────────────────────────────────────────── */
+    main { padding-top: 60px; }
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 1.5rem; }
+    section { padding: 4.5rem 0; }
+
+    /* ─── HERO (compact) ─────────────────────────────────── */
+    #r-hero {
+      padding: 3.5rem 0 2.5rem;
+      background: var(--bg2);
+      border-bottom: 1px solid var(--border);
+      position: relative; overflow: hidden;
+    }
+    .r-hero-glow {
+      position: absolute; top: -60%; right: -10%;
+      width: 500px; height: 500px;
+      background: radial-gradient(circle, rgba(124,58,237,0.1) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .r-hero-inner {
+      position: relative; z-index: 1;
+      display: grid; grid-template-columns: auto 1fr auto;
+      gap: 2rem; align-items: center;
+    }
+    .r-avatar {
+      width: 90px; height: 90px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      padding: 2px; flex-shrink: 0;
+    }
+    .r-avatar-inner {
+      width: 100%; height: 100%;
+      border-radius: 50%;
+      background: var(--bg2);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 2rem; color: var(--accent);
+      overflow: hidden;
+    }
+    .r-avatar-inner img { width:100%; height:100%; object-fit:cover; }
+    .r-name { font-size: clamp(1.4rem, 3vw, 2rem); font-weight: 700; letter-spacing: -0.5px; }
+    .r-title {
+      font-family: var(--mono); font-size: 0.8rem;
+      color: var(--accent2); margin: 0.3rem 0 0.6rem;
+    }
+    .r-contacts {
+      display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 0.25rem;
+    }
+    .r-contact-item {
+      display: flex; align-items: center; gap: 0.4rem;
+      font-size: 0.78rem; color: var(--muted);
+      transition: color 0.2s;
+    }
+    .r-contact-item:hover { color: var(--accent); }
+    .r-contact-item i { color: var(--accent); font-size: 0.8rem; }
+    .r-actions {
+      display: flex; flex-direction: column; gap: 0.6rem; align-items: flex-end;
+    }
+    .btn-dl {
+      display: flex; align-items: center; gap: 0.5rem;
+      padding: 0.65rem 1.4rem;
+      background: var(--accent);
+      color: var(--bg);
+      font-family: var(--font);
+      font-size: 0.85rem; font-weight: 700;
+      border: none; border-radius: 8px;
+      cursor: pointer; white-space: nowrap;
+      transition: opacity 0.2s, transform 0.2s;
+    }
+    .btn-dl:hover { opacity: 0.88; transform: translateY(-1px); }
+    .btn-outline-sm {
+      display: flex; align-items: center; gap: 0.5rem;
+      padding: 0.55rem 1.2rem;
+      background: transparent;
+      color: var(--text);
+      font-family: var(--font);
+      font-size: 0.82rem; font-weight: 600;
+      border: 1px solid var(--border); border-radius: 8px;
+      cursor: pointer; white-space: nowrap;
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .btn-outline-sm:hover { border-color: var(--accent); background: rgba(0,212,255,0.06); }
+
+    /* ─── QUICK STATS ─────────────────────────────────────── */
+    #r-stats { padding: 2rem 0; background: var(--bg); border-bottom: 1px solid var(--border); }
+    .stats-row {
+      display: flex; flex-wrap: wrap; justify-content: center; gap: 0; 
+    }
+    .stat-pill {
+      padding: 0.6rem 2rem;
+      text-align: center;
+      border-right: 1px solid var(--border);
+    }
+    .stat-pill:last-child { border-right: none; }
+    .stat-num {
+      font-family: var(--mono); font-size: 1.5rem; font-weight: 700;
+      color: var(--accent); line-height: 1;
+    }
+    .stat-lbl { font-size: 0.7rem; color: var(--muted); margin-top: 0.25rem; text-transform: uppercase; letter-spacing: 0.5px; }
+
+    /* ─── SECTION HEADERS ────────────────────────────────── */
+    .sec-head { margin-bottom: 2rem; }
+    .sec-eye {
+      font-family: var(--mono); font-size: 0.68rem;
+      color: var(--accent); letter-spacing: 2px;
+      text-transform: uppercase; margin-bottom: 0.35rem;
+    }
+    .sec-title {
+      font-size: clamp(1.3rem, 2.5vw, 1.7rem);
+      font-weight: 700; letter-spacing: -0.4px;
+    }
+    .sec-title span { color: var(--accent); }
+    .sec-div {
+      width: 32px; height: 3px;
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      border-radius: 2px; margin-top: 0.6rem;
+    }
+
+    /* ─── CARD ───────────────────────────────────────────── */
+    .card {
+      background: var(--glass);
+      border: 1px solid var(--border);
+      border-radius: var(--r2);
+      padding: 1.5rem;
+      transition: border-color 0.25s, transform 0.2s, background 0.2s;
+    }
+    .card:hover {
+      border-color: rgba(0,212,255,0.22);
+      background: var(--glass2);
+      transform: translateY(-3px);
+    }
+    .tag {
+      display: inline-block;
+      padding: 0.18rem 0.55rem;
+      background: rgba(0,212,255,0.08);
+      border: 1px solid rgba(0,212,255,0.15);
+      border-radius: 4px;
+      font-size: 0.68rem; color: var(--accent);
+    }
+    .tag-purple {
+      background: rgba(124,58,237,0.1);
+      border-color: rgba(124,58,237,0.2);
+      color: #a78bfa;
+    }
+    .tag-green {
+      background: rgba(6,255,165,0.08);
+      border-color: rgba(6,255,165,0.15);
+      color: var(--accent3);
+    }
+
+    /* ─── PROJECTS ───────────────────────────────────────── */
+    #r-projects { background: var(--bg2); }
+    .projects-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.25rem;
+    }
+    .proj-label {
+      font-family: var(--mono); font-size: 0.65rem;
+      color: var(--accent); margin-bottom: 0.5rem; letter-spacing: 1px;
+    }
+    .proj-title { font-size: 1rem; font-weight: 600; margin-bottom: 0.4rem; }
+    .proj-desc { font-size: 0.82rem; color: var(--muted); line-height: 1.65; margin-bottom: 0.9rem; }
+    .proj-tools { display: flex; flex-wrap: wrap; gap: 0.3rem; margin-bottom: 0.9rem; }
+    .proj-links { display: flex; gap: 0.75rem; }
+    .proj-link {
+      font-size: 0.75rem; color: var(--accent);
+      display: flex; align-items: center; gap: 0.35rem;
+      transition: opacity 0.2s;
+    }
+    .proj-link:hover { opacity: 0.7; }
+
+    /* ─── CASE STUDIES ───────────────────────────────────── */
+    #r-casestudies { }
+    .cs-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.25rem;
+    }
+    .cs-img {
+      width: 100%; height: 140px;
+      background: linear-gradient(135deg, rgba(124,58,237,0.15), rgba(0,212,255,0.1));
+      border-radius: var(--r); margin-bottom: 1rem;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--accent); font-size: 2rem; opacity: 0.5;
+    }
+    .cs-problem { font-size: 0.78rem; color: var(--muted); margin-bottom: 0.3rem; }
+    .cs-problem strong { color: #f87171; font-family: var(--mono); font-size: 0.65rem; letter-spacing: 1px; text-transform: uppercase; }
+    .cs-solution { font-size: 0.78rem; color: var(--muted); margin-top: 0.3rem; }
+    .cs-solution strong { color: var(--accent3); font-family: var(--mono); font-size: 0.65rem; letter-spacing: 1px; text-transform: uppercase; }
+
+    /* ─── CERTIFICATIONS ─────────────────────────────────── */
+    #r-certs { background: var(--bg2); }
+    .certs-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1rem;
+    }
+    .cert-card {
+      display: flex; align-items: flex-start; gap: 0.85rem;
+      background: var(--glass);
+      border: 1px solid var(--border);
+      border-radius: var(--r);
+      padding: 1.1rem;
+      transition: border-color 0.2s, background 0.2s, transform 0.2s;
+    }
+    .cert-card:hover { border-color: rgba(0,212,255,0.22); background: var(--glass2); transform: translateY(-2px); }
+    .cert-icon {
+      width: 38px; height: 38px; flex-shrink: 0;
+      background: rgba(0,212,255,0.1);
+      border: 1px solid rgba(0,212,255,0.2);
+      border-radius: 9px;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--accent); font-size: 0.95rem;
+    }
+    .cert-name { font-size: 0.85rem; font-weight: 600; line-height: 1.4; margin-bottom: 0.25rem; }
+    .cert-meta { font-size: 0.72rem; color: var(--muted); }
+    .cert-verify {
+      font-size: 0.7rem; color: var(--accent);
+      display: inline-flex; align-items: center; gap: 0.3rem;
+      margin-top: 0.35rem;
+      transition: opacity 0.2s;
+    }
+    .cert-verify:hover { opacity: 0.7; }
+
+    /* ─── INTERNSHIPS ────────────────────────────────────── */
+    #r-internships { }
+    .intern-list { display: flex; flex-direction: column; gap: 1.1rem; }
+    .intern-card {
+      background: var(--glass);
+      border: 1px solid var(--border);
+      border-radius: var(--r2);
+      padding: 1.4rem;
+      display: grid; grid-template-columns: 1fr auto;
+      gap: 1rem; align-items: start;
+      transition: border-color 0.2s, background 0.2s, transform 0.2s;
+    }
+    .intern-card:hover { border-color: rgba(0,212,255,0.22); background: var(--glass2); transform: translateY(-2px); }
+    .intern-role { font-size: 1rem; font-weight: 600; margin-bottom: 0.2rem; }
+    .intern-company { font-size: 0.82rem; color: var(--accent); margin-bottom: 0.5rem; }
+    .intern-desc { font-size: 0.82rem; color: var(--muted); line-height: 1.65; margin-bottom: 0.75rem; }
+    .intern-skills { display: flex; flex-wrap: wrap; gap: 0.3rem; }
+    .intern-date {
+      font-family: var(--mono); font-size: 0.7rem;
+      color: var(--muted); white-space: nowrap;
+      text-align: right;
+    }
+
+    /* ─── BLOGS ──────────────────────────────────────────── */
+    #r-blogs { background: var(--bg2); }
+    .blogs-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.25rem;
+    }
+    .blog-card { }
+    .blog-cat {
+      font-family: var(--mono); font-size: 0.65rem;
+      color: var(--accent); letter-spacing: 1px;
+      text-transform: uppercase; margin-bottom: 0.4rem;
+    }
+    .blog-title { font-size: 0.95rem; font-weight: 600; margin-bottom: 0.4rem; line-height: 1.4; }
+    .blog-desc { font-size: 0.8rem; color: var(--muted); line-height: 1.65; margin-bottom: 0.85rem; }
+    .blog-read {
+      font-size: 0.75rem; color: var(--accent);
+      display: flex; align-items: center; gap: 0.35rem;
+      transition: gap 0.2s;
+    }
+    .blog-card:hover .blog-read { gap: 0.55rem; }
+
+    /* ─── SKILLS SNAPSHOT ────────────────────────────────── */
+    #r-skills { }
+    .skills-snap { display: flex; flex-direction: column; gap: 0.75rem; max-width: 600px; }
+    .skill-row { display: flex; align-items: center; gap: 1rem; }
+    .skill-name { font-size: 0.82rem; font-weight: 500; min-width: 160px; }
+    .skill-bar { flex: 1; height: 5px; background: var(--glass2); border-radius: 3px; overflow: hidden; }
+    .skill-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--accent2), var(--accent));
+      border-radius: 3px; width: 0;
+      transition: width 1.2s cubic-bezier(0.4,0,0.2,1);
+    }
+    .skill-pct { font-family: var(--mono); font-size: 0.72rem; color: var(--accent); min-width: 36px; text-align: right; }
+
+    /* ─── EMPTY STATE ────────────────────────────────────── */
+    .empty-state {
+      padding: 2.5rem;
+      text-align: center;
+      background: var(--glass);
+      border: 1px dashed var(--border);
+      border-radius: var(--r2);
+      color: var(--dim); font-size: 0.85rem;
+    }
+    .empty-state i { display: block; font-size: 2rem; color: var(--accent); opacity: 0.25; margin-bottom: 0.75rem; }
+
+    /* ─── FOOTER ─────────────────────────────────────────── */
+    footer {
+      padding: 2rem 0;
+      background: var(--bg);
+      border-top: 1px solid var(--border);
+    }
+    .footer-inner {
+      display: flex; flex-wrap: wrap;
+      align-items: center; justify-content: space-between; gap: 1rem;
+    }
+    .footer-brand { font-family: var(--mono); font-size: 0.82rem; color: var(--accent); }
+    .footer-copy { font-size: 0.75rem; color: var(--dim); }
+    .footer-socials { display: flex; gap: 0.5rem; }
+    .footer-socials a {
+      width: 34px; height: 34px;
+      display: flex; align-items: center; justify-content: center;
+      background: var(--glass); border: 1px solid var(--border);
+      border-radius: 8px; color: var(--muted); font-size: 0.8rem;
+      transition: color 0.2s, border-color 0.2s;
+    }
+    .footer-socials a:hover { color: var(--accent); border-color: rgba(0,212,255,0.3); }
+
+    /* ─── PRINT STYLES ───────────────────────────────────── */
+    @media print {
+      .topbar, footer { display: none; }
+      main { padding-top: 0; }
+      .card, .cert-card, .intern-card { break-inside: avoid; }
+    }
+
+    /* ─── RESPONSIVE ─────────────────────────────────────── */
+    @media (max-width: 768px) {
+      .r-hero-inner { grid-template-columns: 1fr; text-align: center; }
+      .r-actions { align-items: center; }
+      .r-contacts { justify-content: center; }
+      .stat-pill { padding: 0.6rem 1.2rem; }
+      .intern-card { grid-template-columns: 1fr; }
+      .intern-date { text-align: left; }
+      .footer-inner { flex-direction: column; text-align: center; }
+    }
+
+    /* ─── FADE IN ────────────────────────────────────────── */
+    .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.55s ease, transform 0.55s ease; }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+    /* ── LIGHT MODE ── */
+    html.light {
+      --bg:      #f8fafc;
+      --bg2:     #f1f5f9;
+      --bg3:     #e2e8f0;
+      --glass:   rgba(0,0,0,0.02);
+      --glass2:  rgba(0,0,0,0.05);
+      --border:  rgba(0,0,0,0.08);
+      --border2: rgba(0,0,0,0.14);
+      --text:    #0f172a;
+      --text2:   #1e293b;
+      --muted:   #475569;
+      --dim:     #94a3b8;
+    }
+    html.light body    { background: var(--bg); color: var(--text); }
+    html.light .page-header { background: var(--bg2) !important; border-color: var(--border) !important; }
+    html.light .card,
+    html.light .project-card,
+    html.light .cert-card,
+    html.light .intern-card,
+    html.light .cs-card,
+    html.light .blog-card   { background: #fff !important; }
+    html.light .modal        { background: var(--bg2) !important; }
+    html.light .form-input,
+    html.light .form-textarea,
+    html.light .form-select  { background: #fff !important; color: #0f172a !important; }
+    html.light footer        { background: var(--bg2) !important; }
+    html.light .upload-zone  { background: rgba(59,130,246,0.03) !important; }
+    html.light .admin-box    { background: var(--bg2) !important; }
+    html.light .admin-pin-input { background: #fff !important; color: #0f172a !important; }
+    html.light .timeline-card,
+    html.light .service-item,
+    html.light .counter-card,
+    html.light .preview-card,
+    html.light .cert-prev-card,
+    html.light .intern-prev-card { background: #fff !important; }
+    html.light .filter-btn   { background: #fff !important; }
+    html.light .search-box   { background: #fff !important; }
+
+
+    /* ── LIGHT MODE NAV FIX ── */
+    html.light nav {
+      background: rgba(255,255,255,0.97) !important;
+      box-shadow: 0 1px 12px rgba(0,0,0,0.08) !important;
+      border-bottom: 1px solid rgba(0,0,0,0.08) !important;
+    }
+    html.light .nav-links a       { color: #475569; }
+    html.light .nav-links a:hover { color: #0f172a; background: rgba(0,0,0,0.05); }
+    html.light .nav-links a.active { color: #3b82f6; }
+    html.light .nav-logo          { color: #0f172a; }
+    html.light .hamburger span    { background: #0f172a; }
+    html.light .mobile-menu {
+      background: rgba(255,255,255,0.98) !important;
+      border-bottom: 1px solid rgba(0,0,0,0.08) !important;
+    }
+    html.light .mobile-menu a     { color: #475569; }
+    html.light .mobile-menu a:hover { color: #0f172a; background: rgba(0,0,0,0.05); }
+    html.light .theme-btn { color: #f59e0b !important; border-color: rgba(245,158,11,0.3) !important; }
+  </style>
+  <script>if(localStorage.getItem('theme')==='light')document.documentElement.classList.add('light');</script>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════ TOP BAR ═══ -->
+<div class="topbar">
+  <div class="topbar-left">
+    <div class="topbar-logo">&lt;<span>MSK</span>/&gt;</div>
+    <div class="recruiter-badge">RECRUITER VIEW</div>
+  </div>
+  <a href="index.html" class="btn-back">
+    <i class="fa-solid fa-arrow-left"></i> Full Portfolio
+  </a>
+</div>
+
+<main>
+
+<!-- ═══════════════════════════════════════════ HERO ══════ -->
+<section id="r-hero">
+  <div class="r-hero-glow"></div>
+  <div class="container">
+    <div class="r-hero-inner">
+      <div class="r-avatar">
+        <div class="r-avatar-inner">
+          <img src="assets/images/kabeer_Sahib_blacksuitblackwatch_ee052fba-138a-40e4-a0b2-fe7d768c12e2.jpg" alt="">
+        </div>
+      </div>
+      <div>
+        <h1 class="r-name">Muhammad Shahbaz Khan</h1>
+        <p class="r-title"> Data Analyst &nbsp;|&nbsp; Business Analytics Enthusiast</p>
+        <div class="r-contacts">
+          <a class="r-contact-item" href="mailto:muhammadshahbazkhan021@email.com"><i class="fa-solid fa-envelope"></i> E-mail</a>
+          <a class="r-contact-item" href="tel:+923280892922"><i class="fa-solid fa-phone"></i> Phone</a>
+          <a class="r-contact-item" href="https://linkedin.com/in/muhammad-shahbaz-khan-analyst" target="_blank"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
+          <a class="r-contact-item" href="https://github.com/muhammadshahbazkhan021-create" target="_blank"><i class="fa-brands fa-github"></i> GitHub</a>
+        </div>
+      </div>
+      <div class="r-actions">
+        <a href="assets/resume.pdf" download class="btn-dl">
+          <i class="fa-solid fa-download"></i> Download Resume
+        </a>
+        <button class="btn-outline-sm" onclick="window.print()">
+          <i class="fa-solid fa-print"></i> Print / Save PDF
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════ QUICK STATS ═══ -->
+<div id="r-stats">
+  <div class="container">
+    <div class="stats-row" id="statsRow">
+      <!-- Rendered by JS -->
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════ SKILLS ════ -->
+<section id="r-skills">
+  <div class="container">
+    <div class="sec-head fade-in">
+      <p class="sec-eye">Technical Toolkit</p>
+      <h2 class="sec-title">Key <span>Skills</span></h2>
+      <div class="sec-div"></div>
+    </div>
+    <div class="skills-snap fade-in" id="skillsSnap">
+      <!-- Rendered by JS -->
+    </div>
+  </div>
+</section>
+
+<!-- ═════════════════════════════════════════ PROJECTS ════ -->
+<section id="r-projects">
+  <div class="container">
+    <div class="sec-head fade-in">
+      <p class="sec-eye">Portfolio Highlights</p>
+      <h2 class="sec-title">Featured <span>Projects</span></h2>
+      <div class="sec-div"></div>
+    </div>
+    <div class="projects-grid fade-in" id="featuredProjects">
+      <!-- Rendered by JS -->
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════ CASE STUDIES ═══ -->
+<section id="r-casestudies">
+  <div class="container">
+    <div class="sec-head fade-in">
+      <p class="sec-eye">Analysis Work</p>
+      <h2 class="sec-title">Featured Case <span>Studies</span></h2>
+      <div class="sec-div"></div>
+    </div>
+    <div class="cs-grid fade-in" id="featuredCaseStudies">
+      <!-- Rendered by JS -->
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════ CERTIFICATIONS ════ -->
+<section id="r-certs">
+  <div class="container">
+    <div class="sec-head fade-in">
+      <p class="sec-eye">Credentials</p>
+      <h2 class="sec-title">Featured <span>Certifications</span></h2>
+      <div class="sec-div"></div>
+    </div>
+    <div class="certs-grid fade-in" id="featuredCerts">
+      <!-- Rendered by JS -->
+    </div>
+  </div>
+</section>
+
+<!-- ═════════════════════════════════════ INTERNSHIPS ═════ -->
+<section id="r-internships">
+  <div class="container">
+    <div class="sec-head fade-in">
+      <p class="sec-eye">Work Experience</p>
+      <h2 class="sec-title">Featured <span>Internships</span></h2>
+      <div class="sec-div"></div>
+    </div>
+    <div class="intern-list fade-in" id="featuredInternships">
+      <!-- Rendered by JS -->
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════ BLOGS ════ -->
+<section id="r-blogs">
+  <div class="container">
+    <div class="sec-head fade-in">
+      <p class="sec-eye">Thought Leadership</p>
+      <h2 class="sec-title">Featured <span>Blogs</span></h2>
+      <div class="sec-div"></div>
+    </div>
+    <div class="blogs-grid fade-in" id="featuredBlogs">
+      <!-- Rendered by JS -->
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════ RESUME CTA ═ -->
+<section style="padding:3rem 0; background:var(--bg2); border-top:1px solid var(--border);">
+  <div class="container" style="text-align:center;">
+    <p class="sec-eye" style="justify-content:center;display:flex">Resume</p>
+    <h2 class="sec-title" style="margin:0.4rem 0 0.75rem">Get the Full <span>Resume</span></h2>
+    <p style="color:var(--muted);font-size:0.88rem;margin-bottom:1.75rem;">Download or print a clean PDF version of my complete resume.</p>
+    <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">
+      <a href="assets/resume.pdf" download class="btn-dl">
+        <i class="fa-solid fa-download"></i> Download Resume (PDF)
+      </a>
+      <a href="index.html#contact-section" class="btn-outline-sm">
+        <i class="fa-solid fa-paper-plane"></i> Contact Me
+      </a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ═════════════════════════════════════════════ FOOTER ══ -->
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-brand">MSK</div>
+      <div class="footer-socials">
+        <a href="https://linkedin.com/in/muhammad-shahbaz-khan-analyst" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
+        <a href="https://github.com/muhammadshahbazkhan021-create" target="_blank"><i class="fa-brands fa-github"></i></a>
+        <a href="mailto:muhammadshahbazkhan021@email.com"><i class="fa-solid fa-envelope"></i></a>
+      </div>
+      <p class="footer-copy">© 2025 Muhammad Shahbaz Khan — Recruiter View</p>
+    </div>
+  </div>
+</footer>
+
+<!-- ══════════════════════════════════════════ SCRIPT ═════ -->
+<script>
+/* ─── SAMPLE DATA (same as index.html, replace with real JSON fetch) ─── */
+const SAMPLE_PROJECTS = [
+  { id:1, title:"Sales Dashboard", description:"Interactive Power BI dashboard analyzing monthly sales KPIs and regional performance trends across multiple business units.", tools:"Power BI, Excel", github:"#", live:"", featured:true },
+  { id:2, title:"Customer Churn Analysis", description:"Python-based analysis to predict customer churn using pandas and matplotlib, reducing churn rate by identifying at-risk segments.", tools:"Python, pandas, matplotlib", github:"#", live:"", featured:true },
+  { id:3, title:"SQL Sales Report", description:"Complex SQL queries generating automated weekly business performance reports with variance analysis and trend detection.", tools:"MySQL, SQL", github:"#", live:"", featured:true },
+];
+
+const SAMPLE_CASESTUDIES = [
+  { id:1, title:"Retail Revenue Optimization", problem:"Client faced a 15% revenue decline with no clear root cause identified in their existing reports.", solution:"Built an end-to-end SQL + Power BI pipeline that surfaced underperforming SKUs and seasonal gaps, leading to targeted promotions.", description:"Full-stack data analysis from raw POS data to executive dashboard.", featured:true },
+  { id:2, title:"HR Attrition Dashboard", problem:"HR team had no visibility into which departments were losing talent or why.", solution:"Designed a Power BI report with attrition predictors, exit interview sentiment mapping, and department drill-downs.", description:"Reduced manual reporting time by 60% and helped HR prioritize retention efforts.", featured:true },
+];
+
+const SAMPLE_CERTS = [
+  { id:1, name:"Google Data Analytics Professional Certificate", platform:"Coursera", date:"2024", link:"#", category:"Analytics", featured:true },
+  { id:2, name:"Python for Everybody Specialization", platform:"Coursera", date:"2024", link:"#", category:"Python", featured:true },
+  { id:3, name:"Databases and SQL for Data Science", platform:"Coursera", date:"2024", link:"#", category:"SQL", featured:true },
+  { id:4, name:"Data Visualization with Python", platform:"Coursera", date:"2024", link:"#", category:"Python", featured:true },
+  { id:5, name:"Tools for Data Science", platform:"Coursera", date:"2024", link:"#", category:"Tools", featured:false },
+  { id:6, name:"Getting Started with Git and GitHub", platform:"Coursera", date:"2024", link:"#", category:"Tools", featured:false },
+];
+
+const SAMPLE_INTERNSHIPS = [
+  // Empty — add real internships later
+];
+
+const SAMPLE_BLOGS = [
+  // Empty — add real blogs later
+];
+
+const KEY_SKILLS = [
+  { name:"Microsoft Excel",    pct:85 },
+  { name:"SQL",                pct:80 },
+  { name:"Power BI",          pct:78 },
+  { name:"Python",             pct:75 },
+  { name:"Data Visualization", pct:78 },
+  { name:"Data Analysis",      pct:82 },
+  { name:"Business Analytics", pct:75 },
+  { name:"Git & GitHub",       pct:70 },
+];
+
+/* ─── HELPERS ─── */
+function load(key, fallback) {
+  try { const d = localStorage.getItem(key); return d ? JSON.parse(d) : fallback; }
+  catch { return fallback; }
+}
+
+/* ══════════════════════════════════════
+   REMOTE DATA — stats & lists read from the
+   same .json files the admin pages write to,
+   so they work for every visitor (not just this browser).
+   Falls back to localStorage, then sample data.
+══════════════════════════════════════ */
+async function fetchRemoteData(key, jsonFile, fallback) {
+  try {
+    const res = await fetch(jsonFile, { cache: 'no-store' });
+    if (res.ok) return await res.json();
+  } catch { /* file:// or missing file — fall through */ }
+  return load(key, fallback);
+}
+let remoteData = { projects: SAMPLE_PROJECTS, certs: SAMPLE_CERTS, internships: SAMPLE_INTERNSHIPS, casestudies: SAMPLE_CASESTUDIES, blogs: SAMPLE_BLOGS };
+async function loadRemoteData() {
+  const [projects, certs, internships, casestudies, blogs] = await Promise.all([
+    fetchRemoteData('projects',    'data/projects.json',        SAMPLE_PROJECTS),
+    fetchRemoteData('certs',       'data/certifications.json',  SAMPLE_CERTS),
+    fetchRemoteData('internships', 'data/internships.json',     SAMPLE_INTERNSHIPS),
+    fetchRemoteData('casestudies', 'data/case-studies.json',    SAMPLE_CASESTUDIES),
+    fetchRemoteData('blogs',       'data/blogs.json',           SAMPLE_BLOGS),
+  ]);
+  remoteData = { projects, certs, internships, casestudies, blogs };
+}
+
+function emptyState(icon, msg) {
+  return `<div class="empty-state"><i class="${icon}"></i>${msg}</div>`;
+}
+
+/* ─── STATS ─── */
+function renderStats() {
+  const projects    = remoteData.projects.length;
+  const certs       = remoteData.certs.length;
+  const internships = remoteData.internships.length;
+  const casestudies = remoteData.casestudies.length;
+  const blogs       = remoteData.blogs.length;
+
+  const items = [
+    { num: projects,    lbl: "Projects" },
+    { num: certs,       lbl: "Certifications" },
+    { num: internships, lbl: "Internships" },
+    { num: casestudies, lbl: "Case Studies" },
+    { num: blogs,       lbl: "Blogs" },
+  ];
+
+  document.getElementById('statsRow').innerHTML = items.map(i => `
+    <div class="stat-pill">
+      <div class="stat-num" data-target="${i.num}">0</div>
+      <div class="stat-lbl">${i.lbl}</div>
+    </div>
+  `).join('');
+
+  /* Animate */
+  document.querySelectorAll('.stat-num').forEach(el => {
+    const t = +el.dataset.target;
+    if (!t) { el.textContent = '0'; return; }
+    let c = 0; const step = Math.ceil(t / 30);
+    const iv = setInterval(() => { c = Math.min(c+step, t); el.textContent = c; if(c>=t) clearInterval(iv); }, 40);
+  });
+}
+
+/* ─── SKILLS SNAPSHOT ─── */
+function renderSkills() {
+  document.getElementById('skillsSnap').innerHTML = KEY_SKILLS.map(s => `
+    <div class="skill-row">
+      <span class="skill-name">${s.name}</span>
+      <div class="skill-bar"><div class="skill-fill" data-pct="${s.pct}"></div></div>
+      <span class="skill-pct">${s.pct}%</span>
+    </div>
+  `).join('');
+}
+
+function animateBars() {
+  document.querySelectorAll('.skill-fill').forEach(el => { el.style.width = el.dataset.pct + '%'; });
+}
+
+/* ─── FEATURED PROJECTS ─── */
+function renderProjects() {
+  const all = remoteData.projects;
+  const featured = all.filter(p => p.featured).slice(0, 3);
+  const el = document.getElementById('featuredProjects');
+
+  if (!featured.length) {
+    el.innerHTML = emptyState('fa-solid fa-folder-open', 'No featured projects yet. Mark projects as featured from the Projects page.');
+    return;
+  }
+
+  el.innerHTML = featured.map(p => `
+    <div class="card">
+      <div class="proj-label">PROJECT</div>
+      <div class="proj-title">${p.title}</div>
+      <div class="proj-desc">${p.description}</div>
+      <div class="proj-tools">
+        ${(p.tools||'').split(',').map(t => `<span class="tag">${t.trim()}</span>`).join('')}
+      </div>
+      <div class="proj-links">
+        ${p.github ? `<a class="proj-link" href="${p.github}" target="_blank"><i class="fa-brands fa-github"></i> GitHub</a>` : ''}
+        ${p.live   ? `<a class="proj-link" href="${p.live}"   target="_blank"><i class="fa-solid fa-arrow-up-right-from-square"></i> Live</a>` : ''}
+      </div>
+    </div>
+  `).join('');
+}
+
+/* ─── FEATURED CASE STUDIES ─── */
+function renderCaseStudies() {
+  const all = remoteData.casestudies;
+  const featured = all.filter(c => c.featured).slice(0, 3);
+  const el = document.getElementById('featuredCaseStudies');
+
+  if (!featured.length) {
+    el.innerHTML = emptyState('fa-solid fa-magnifying-glass-chart', 'No featured case studies yet.');
+    return;
+  }
+
+  el.innerHTML = featured.map(c => `
+    <div class="card">
+      <div class="cs-img"><i class="fa-solid fa-chart-line"></i></div>
+      <div style="font-family:var(--mono);font-size:0.65rem;color:var(--accent);margin-bottom:0.5rem;letter-spacing:1px">CASE STUDY</div>
+      <div class="proj-title">${c.title}</div>
+      <div class="cs-problem"><strong>Problem</strong>${c.problem}</div>
+      <div class="cs-solution"><strong>Solution</strong>${c.solution}</div>
+    </div>
+  `).join('');
+}
+
+/* ─── FEATURED CERTIFICATIONS ─── */
+function renderCerts() {
+  const all = remoteData.certs;
+  const featured = all.filter(c => c.featured).slice(0, 6);
+  const el = document.getElementById('featuredCerts');
+
+  if (!featured.length) {
+    el.innerHTML = emptyState('fa-solid fa-certificate', 'No featured certifications yet.');
+    return;
+  }
+
+  el.innerHTML = featured.map(c => `
+    <div class="cert-card">
+      <div class="cert-icon"><i class="fa-solid fa-certificate"></i></div>
+      <div>
+        <div class="cert-name">${c.name}</div>
+        <div class="cert-meta">${c.platform} &middot; ${c.date}</div>
+        ${c.link && c.link !== '#'
+          ? `<a class="cert-verify" href="${c.link}" target="_blank"><i class="fa-solid fa-arrow-up-right-from-square"></i> Verify Certificate</a>`
+          : ''}
+      </div>
+    </div>
+  `).join('');
+}
+
+/* ─── FEATURED INTERNSHIPS ─── */
+function renderInternships() {
+  const all = remoteData.internships;
+  const featured = all.filter(i => i.featured).slice(0, 3);
+  const el = document.getElementById('featuredInternships');
+
+  if (!featured.length) {
+    el.innerHTML = emptyState('fa-solid fa-briefcase', 'No internships added yet. Add them from the Internships section.');
+    return;
+  }
+
+  el.innerHTML = featured.map(i => `
+    <div class="intern-card">
+      <div>
+        <div class="intern-role">${i.role}</div>
+        <div class="intern-company">${i.company}</div>
+        <div class="intern-desc">${i.description}</div>
+        <div class="intern-skills">
+          ${(i.skills||'').split(',').map(s => `<span class="tag tag-purple">${s.trim()}</span>`).join('')}
+        </div>
+      </div>
+      <div class="intern-date">${i.start} — ${i.end}</div>
+    </div>
+  `).join('');
+}
+
+/* ─── FEATURED BLOGS ─── */
+function renderBlogs() {
+  const all = remoteData.blogs;
+  const featured = all.filter(b => b.featured).slice(0, 3);
+  const el = document.getElementById('featuredBlogs');
+
+  if (!featured.length) {
+    el.innerHTML = emptyState('fa-solid fa-newspaper', 'No blog posts yet. Add them from the Blogs section.');
+    return;
+  }
+
+  el.innerHTML = featured.map(b => `
+    <div class="card blog-card">
+      <div class="blog-cat">${b.category || 'Blog'}</div>
+      <div class="blog-title">${b.title}</div>
+      <div class="blog-desc">${b.description}</div>
+      ${b.link ? `<a class="blog-read" href="${b.link}" target="_blank"><i class="fa-solid fa-arrow-right"></i> Read Article</a>` : ''}
+    </div>
+  `).join('');
+}
+
+/* ─── INTERSECTION OBSERVER ─── */
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      if (entry.target.closest('#r-skills')) animateBars();
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.1 });
+
+/* ─── INIT ─── */
+document.addEventListener('DOMContentLoaded', async () => {
+  loadTheme();
+  await loadRemoteData();
+  renderStats();
+  renderSkills();
+  renderProjects();
+  renderCaseStudies();
+  renderCerts();
+  renderInternships();
+  renderBlogs();
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+});
+
+/* ── THEME TOGGLE ── */
+function toggleTheme() {
+  const isLight = document.documentElement.classList.toggle('light');
+  localStorage.setItem('theme', isLight ? 'light' : 'dark');
+  var i = document.getElementById('themeIcon');
+  if(i) i.className = isLight ? 'fa-solid fa-sun' : 'fa-solid fa-moon';
+}
+function loadTheme() {
+  if(localStorage.getItem('theme') === 'light') {
+    document.documentElement.classList.add('light');
+    var i = document.getElementById('themeIcon');
+    if(i) i.className = 'fa-solid fa-sun';
+  }
+}
+
+document.addEventListener("DOMContentLoaded", function(){loadTheme();});
+</script>
+</body>
+</html>

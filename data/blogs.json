@@ -1,0 +1,47 @@
+[
+  {
+    "id": "b1",
+    "title": "How I Cleaned Messy Sales Data with Python",
+    "category": "Python",
+    "date": "2024-05-10",
+    "readTime": 6,
+    "description": "A step-by-step walkthrough of cleaning a real-world messy sales dataset using pandas — handling nulls, duplicates, outliers, and formatting issues.",
+    "problem": "Received a 50,000-row sales CSV with inconsistent date formats, missing customer IDs, duplicate entries, and mixed-case column names.",
+    "solution": "Used pandas to build a systematic cleaning pipeline: standardize columns, drop duplicates, impute missing values, fix data types, and validate final output.",
+    "how": "Started with df.info() and df.describe() for a quick audit. Used .fillna(), .drop_duplicates(), pd.to_datetime(), and .str.lower() to fix each issue layer by layer. Exported a clean version with version control notes.",
+    "tags": "Python, pandas, data cleaning, EDA",
+    "link": "",
+    "image": "assets/projects/blog-python-cleaning.png",
+    "featured": true
+  },
+  {
+    "id": "b2",
+    "title": "Writing Better SQL Queries for Business Reports",
+    "category": "SQL",
+    "date": "2024-07-22",
+    "readTime": 8,
+    "description": "Practical tips and patterns I use to write readable, efficient SQL queries that non-technical stakeholders can actually understand.",
+    "problem": "Business analysts were getting confused by complex nested subqueries and inconsistent naming conventions in SQL reports.",
+    "solution": "Adopted CTEs (Common Table Expressions) instead of subqueries, added meaningful aliases, and used consistent formatting across all queries.",
+    "how": "Replaced all nested subqueries with WITH clauses for readability. Added comments to each CTE. Used CASE WHEN for business-friendly labels. Tested performance with EXPLAIN.",
+    "tags": "SQL, CTEs, reporting, best practices",
+    "link": "",
+    "image": "assets/projects/blog-sql-queries.png",
+    "featured": true
+  },
+  {
+    "id": "b3",
+    "title": "Building My First Power BI Dashboard",
+    "category": "Power BI",
+    "date": "2024-09-15",
+    "readTime": 10,
+    "description": "My experience building a sales KPI dashboard from scratch in Power BI — from data model to final publish — and the mistakes I made along the way.",
+    "problem": "Had clean data in Excel but no way to share dynamic insights with stakeholders without emailing updated files manually.",
+    "solution": "Connected Excel to Power BI, built a star schema data model, created DAX measures for KPIs, and published to Power BI Service for live sharing.",
+    "how": "Used Power Query to transform and load data. Created a Date table for time intelligence. Wrote DAX for YoY growth, running totals, and dynamic titles. Used bookmarks for interactive report navigation.",
+    "tags": "Power BI, DAX, dashboard, data model",
+    "link": "",
+    "image": "assets/projects/blog-powerbi.png",
+    "featured": false
+  }
+]

@@ -1,0 +1,112 @@
+[
+  {
+    "id": "c1",
+    "name": "Google Data Analytics Professional Certificate",
+    "platform": "Coursera",
+    "category": "Data Analytics",
+    "date": "2024-03",
+    "expiry": "",
+    "link": "https://www.coursera.org/account/accomplishments/specialization/certificate/M6TCPO2MGTV4",
+    "credId": "M6TCPO2MGTV4",
+    "featured": true
+  },
+  {
+    "id": "c2",
+    "name": "Python for Everybody Specialization",
+    "platform": "Coursera",
+    "category": "Data Analytics",
+    "date": "2024-04",
+    "expiry": "",
+    "link": "https://www.coursera.org/account/accomplishments/specialization/certificate/T7DUDWLO2N2F",
+    "credId": "T7DUDWLO2N2F",
+    "featured": true
+  },
+  {
+    "id": "c3",
+    "name": "Data Science Fundamentals with Python and SQL Specialization",
+    "platform": "Coursera / IBM",
+    "category": "SQL",
+    "date": "2024-05",
+    "expiry": "",
+    "link": "https://www.coursera.org/account/accomplishments/specialization/certificate/WQM14JGALM0K",
+    "credId": "WQM14JGALM0K",
+    "featured": true
+  },
+  {
+    "id": "c4",
+    "name": "Data Analysis with Python",
+    "platform": "Coursera / IBM",
+    "category": "Data Analytics",
+    "date": "2024-06",
+    "expiry": "",
+    "link": "https://www.coursera.org/account/accomplishments/specialization/certificate/N000HV7FLHXV",
+    "credId": "N000HV7FLHXV",
+    "featured": true
+  },
+  {
+    "id": "c5",
+    "name": "Data Visualization with Python",
+    "platform": "Coursera / IBM",
+    "category": "Data Analytics",
+    "date": "2024-07",
+    "expiry": "",
+    "link": "https://www.coursera.org/account/accomplishments/specialization/certificate/N0618LMVOBEW",
+    "credId": "N0618LMVOBEW",
+    "featured": false
+  },
+  {
+    "id": "c6",
+    "name": "Databases for Data Scientists Specialization",
+    "platform": "Coursera / IBM",
+    "category": "SQL",
+    "date": "2024-08",
+    "expiry": "",
+    "link": "https://www.coursera.org/account/accomplishments/specialization/certificate/ZERYYSHBJNL2",
+    "credId": "ZERYYSHBJNL2",
+    "featured": false
+  },
+  {
+    "id": "c7",
+    "name": "Git and GitHub Complete Master Class Specialization",
+    "platform": "Coursera / IBM",
+    "category": "Other",
+    "date": "2024-09",
+    "expiry": "",
+    "link": "https://www.coursera.org/account/accomplishments/specialization/certificate/6U5GYN06YUY4",
+    "credId": "6U5GYN06YUY4",
+    "featured": false
+  },
+  {
+    "id": "c8",
+    "name": "Introduction to Data Science Specialization",
+    "platform": "Coursera / IBM",
+    "category": "Data Science",
+    "date": "2024-09",
+    "expiry": "",
+    "link": "https://www.coursera.org/account/accomplishments/specialization/certificate/00XUOCBTL0KW",
+    "credId": "00XUOCBTL0KW",
+    "featured": false
+  },
+  {
+    "id": "c9",
+    "name": "Applied Data Science Specialization",
+    "platform": "Coursera / IBM",
+    "category": "Data Science",
+    "date": "2024-09",
+    "expiry": "",
+    "link": "https://www.coursera.org/account/accomplishments/specialization/certificate/MNGV55P1X9CM",
+    "credId": "MNGV55P1X9CM",
+    "featured": false
+  },
+  {
+    "id": "10",
+    "name": "Google IT Automation with Python Specialization",
+    "platform": "Coursera / IBM",
+    "category": "Other",
+    "date": "2024-09",
+    "expiry": "",
+    "link": "https://www.coursera.org/account/accomplishments/specialization/certificate/QE11AP5EILOZ",
+    "credId": "QE11AP5EILOZ",
+    "featured": false
+  }
+]

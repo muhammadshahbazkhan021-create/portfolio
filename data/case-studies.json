@@ -1,0 +1,47 @@
+[
+  {
+    "id": "cs1",
+    "title": "Retail Revenue Optimization",
+    "category": "Business",
+    "date": "2024-04",
+    "summary": "Identified a 15% revenue decline and surfaced root causes using SQL and Power BI, enabling data-driven promotional decisions.",
+    "problem": "The client faced a consistent 15% revenue decline over 3 months with no clear root cause identified from existing spreadsheet reports.",
+    "solution": "Built an end-to-end SQL pipeline to clean and aggregate POS data, then created a Power BI dashboard exposing underperforming SKUs, seasonal demand gaps, and regional discrepancies.",
+    "outcome": "Enabled targeted promotions that improved revenue by 12% in the following quarter. Reduced reporting time from 3 days to 4 hours.",
+    "tools": "SQL, Power BI, Excel",
+    "github": "",
+    "link": "",
+    "image": "assets/dashboards/retail-revenue.png",
+    "featured": true
+  },
+  {
+    "id": "cs2",
+    "title": "HR Attrition Dashboard",
+    "category": "Analytics",
+    "date": "2024-07",
+    "summary": "Designed a Power BI dashboard giving HR teams full visibility into employee attrition patterns and department-level risk.",
+    "problem": "HR team had no visibility into which departments were losing talent, why employees were leaving, or which roles were most at risk.",
+    "solution": "Cleaned and modeled employee exit survey data using Python (pandas). Built a multi-page Power BI report with attrition predictors, department drill-downs, and sentiment scoring from exit interviews.",
+    "outcome": "Reduced manual HR reporting time by 60%. HR team used insights to restructure onboarding in 2 high-attrition departments.",
+    "tools": "Python, pandas, Power BI",
+    "github": "",
+    "link": "",
+    "image": "assets/dashboards/hr-attrition.png",
+    "featured": true
+  },
+  {
+    "id": "cs3",
+    "title": "E-Commerce Customer Segmentation",
+    "category": "Python",
+    "date": "2024-10",
+    "summary": "Applied RFM analysis and clustering to segment 50,000+ customers for targeted marketing campaigns.",
+    "problem": "Marketing team was running identical campaigns across all customers, resulting in low conversion rates and high unsubscribe rates.",
+    "solution": "Used Python to run RFM (Recency, Frequency, Monetary) scoring on transaction history, then applied K-Means clustering to segment customers into 5 distinct behavioral groups.",
+    "outcome": "Segmented campaigns achieved 3x higher click-through rate. High-value segment identified, contributing 40% of total revenue.",
+    "tools": "Python, pandas, scikit-learn, matplotlib",
+    "github": "",
+    "link": "",
+    "image": "assets/dashboards/customer-segmentation.png",
+    "featured": true
+  }
+]
