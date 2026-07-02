@@ -920,13 +920,14 @@ async function loadRemoteData() {
 /* ── HELPERS ── */
 function fmtDate(d) {
   if (!d) return '';
-  const [y,m] = d.split('-');
+  const parts = d.split('-');
+  const y = parts[0], m = parts[1], day = parts[2];
   const months=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
-  return `${months[+m-1]} ${y}`;
+  return day ? `${+day} ${months[+m-1]} ${y}` : `${months[+m-1]} ${y}`;
 }
 function duration(start, end) {
   if (!start) return '';
-  const s=new Date(start+'-01'), e=end?new Date(end+'-01'):new Date();
+  const s=new Date(start), e=end?new Date(end):new Date();
   const mo=(e.getFullYear()-s.getFullYear())*12+(e.getMonth()-s.getMonth());
   if(mo<12) return `${mo} month${mo!==1?'s':''}`;
   const y=Math.floor(mo/12),r=mo%12;
