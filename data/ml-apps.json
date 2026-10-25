@@ -1,0 +1,73 @@
+[
+  {
+  "id": "ml1",
+  "title": "Customer Sentiment Analysis",
+  "category": "NLP / Classification",
+  "description": "Streamlit app that analyzes customer reviews to predict sentiment, complaint registration, and issue resolution using TF-IDF/NLP and a 6-algorithm ML comparison (Logistic Regression, KNN, Decision Tree, Random Forest, Gradient Boosting, XGBoost).",
+  "tools": "Python, scikit-learn, pandas, numpy, NLTK/TF-IDF, Plotly",
+  "github": "https://github.com/muhammadshahbazkhan021-create/customer-sentiment-analysis-ml",
+  "live": "https://customer-sentiment-analysis-ml-rfo4xwapurpkqz5hajqrk8.streamlit.app/",
+  "featured": true
+},
+ {
+  "id": "ml2",
+  "title": "Dynamic Pricing: Ride Cost Prediction",
+  "category": "Regression",
+  "description": "Streamlit app that estimates ride fares using regression modeling, with ride duration and vehicle type as the key cost drivers.",
+  "tools": "Python, scikit-learn, pandas, numpy, Plotly",
+  "github": "https://github.com/muhammadshahbazkhan021-create/dynamic-pricing-ride-cost-prediction",
+  "live": "https://dynamic-pricing-ride-cost-prediction-hxd4qv3gm2zcvojnpbifg6.streamlit.app/",
+  "featured": true
+}, 
+{
+  "id": "ml3",
+  "title": "HR Employee Attrition Prediction",
+  "category": "Classification",
+  "description": "Streamlit app predicting employee attrition risk using a 6-algorithm ML comparison, with interactive Plotly dataset insights and ROC curve analysis.",
+  "tools": "Python, scikit-learn, pandas, Plotly",
+  "github": "https://github.com/muhammadshahbazkhan021-create/hr-employee-attrition-prediction",
+  "live": "https://hr-employee-attrition-predictiongit-bgfwzjqej6bx6xg6dxplqm.streamlit.app/",
+  "featured": false
+},
+{
+  "id": "ml4",
+  "title": "Loan Approval Prediction",
+  "category": "Classification",
+  "description": "Streamlit app predicting loan approval outcomes using a 6-algorithm ML comparison (best model: Random Forest, ROC-AUC ~0.99), with credit score as the strongest predictor.",
+  "tools": "Python, scikit-learn, pandas, Plotly",
+  "github": "https://github.com/muhammadshahbazkhan021-create/loan-approval-prediction-ml",
+  "live": "https://loan-approval-prediction-ml-hhl6jwbzf4pnaqgapdu8xp.streamlit.app/",
+  "featured": false
+},
+{
+  "id": "ml5",
+  "title": "Telco Customer Churn Prediction",
+  "category": "Classification",
+  "description": "Streamlit app predicting customer churn using a 6-algorithm ML comparison (deployed model: Random Forest, ROC-AUC ~0.84), with tenure and contract type as the strongest churn signals.",
+  "tools": "Python, scikit-learn, pandas, Plotly",
+  "github": "https://github.com/muhammadshahbazkhan021-create/telco-customer-churn-prediction",
+  "live": "https://telco-customer-churn-prediction-7khjpnbm7komhhkrz4ecbk.streamlit.app/",
+  "featured": false
+},
+{
+"id": "ml6",
+"title": "Housing Price Prediction",
+"category": "Regression",
+"description": "An end-to-end machine learning regression project that predicts house prices based on property features. The project includes data cleaning, exploratory data analysis, feature engineering, model comparison, evaluation, and an interactive Streamlit deployment.",
+"tools": "Python, Pandas, NumPy, Scikit-learn, Matplotlib, Seaborn, Plotly, Streamlit",
+"github": "https://github.com/muhammadshahbazkhan021-create/housing-price-prediction-streamlit",
+"live": "https://housing-price-prediction-appgit-hikwu79nqh8x5pdzztcfwx.streamlit.app/",
+"featured": false
+},
+{
+  "id": "ml5",
+  "title": "Customer Churn Intelligence Platform",
+  "category": "Classification",
+  "description": "Streamlit app predicting customer churn using a 6-algorithm ML comparison (deployed model: Random Forest, ROC-AUC ~0.84), with tenure and contract type as the strongest churn signals.",
+  "tools": "Python, scikit-learn, pandas, Plotly",
+  "github": "https://github.com/muhammadshahbazkhan021-create/customer-churn-intelligence-platform",
+  "live": "https://customer-churn-intelligence-platform-hmfxnyapngfb4oghadt4bz.streamlit.app/",
+  "featured": true
+}
+
+]

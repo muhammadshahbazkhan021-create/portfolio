@@ -1,0 +1,987 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Certifications — Muhammad Shahbaz Khan</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <style>
+    :root {
+      --bg:       #0a0f1e;
+      --bg2:      #0f1629;
+      --bg3:      #151d35;
+      --glass:    rgba(255,255,255,0.03);
+      --glass2:   rgba(255,255,255,0.07);
+      --border:   rgba(255,255,255,0.07);
+      --border2:  rgba(255,255,255,0.12);
+      --accent:   #3b82f6;
+      --accent-h: #2563eb;
+      --accent2:  #8b5cf6;
+      --accent3:  #10b981;
+      --warn:     #f59e0b;
+      --text:     #f1f5f9;
+      --text2:    #cbd5e1;
+      --muted:    #64748b;
+      --dim:      #334155;
+      --danger:   #f87171;
+      --font:     'Inter', sans-serif;
+      --mono:     'JetBrains Mono', monospace;
+      --r:        10px;
+      --r2:       16px;
+      --r3:       24px;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--font); background: var(--bg); color: var(--text); overflow-x: hidden; }
+    a { color: inherit; text-decoration: none; }
+    ::-webkit-scrollbar { width: 4px; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
+    ::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 2px; }
+
+    /* ── NAV ── */
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 999; display: flex; align-items: center; justify-content: space-between; padding: 0 2rem; height: 64px; background: rgba(10,15,30,0.95); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); }
+    .nav-logo { display: flex; align-items: center; gap: 0.6rem; font-weight: 700; font-size: 1rem; color: var(--text); white-space: nowrap; }
+    .nav-logo-box { width: 34px; height: 34px; background: var(--accent); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-family: var(--mono); font-size: 0.75rem; font-weight: 700; color: #fff; flex-shrink: 0; }
+    .nav-links { display: flex; align-items: center; gap: 0.2rem; }
+    .nav-links a { padding: 0.4rem 0.7rem; font-size: 0.8rem; font-weight: 500; color: var(--muted); border-radius: 6px; transition: color 0.2s, background 0.2s; white-space: nowrap; }
+    .nav-links a:hover  { color: var(--text); background: var(--glass2); }
+    .nav-links a.active { color: var(--accent); }
+    .nav-right { display: flex; align-items: center; gap: 0.5rem; }
+    .btn-recruiter { padding: 0.42rem 1rem; background: var(--accent); color: #fff !important; border-radius: 7px; font-size: 0.8rem; font-weight: 600; transition: background 0.2s; white-space: nowrap; }
+    .btn-recruiter:hover { background: var(--accent-h, #2563eb); }
+    .theme-btn { width: 36px; height: 36px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; background: var(--glass); border: 1px solid var(--border); border-radius: 8px; cursor: pointer; color: var(--muted); font-size: 0.85rem; transition: color 0.2s, border-color 0.2s, background 0.2s; }
+    .theme-btn:hover { color: var(--accent); border-color: var(--accent); }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; background: none; border: none; }
+    .hamburger span { display: block; width: 22px; height: 2px; background: var(--text); border-radius: 2px; }
+    .mobile-menu { display: none; position: fixed; top: 64px; left: 0; right: 0; z-index: 998; background: rgba(10,15,30,0.98); backdrop-filter: blur(20px); padding: 0.75rem 1.25rem 1.25rem; border-bottom: 1px solid var(--border); flex-direction: column; gap: 0.15rem; }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a { padding: 0.6rem 0.75rem; font-size: 0.88rem; font-weight: 500; color: var(--muted); border-radius: 6px; transition: color 0.2s, background 0.2s; }
+    .mobile-menu a:hover { color: var(--text); background: var(--glass2); }
+
+    /* ── LAYOUT ── */
+    main { padding-top: 64px; }
+    .container { max-width: 1140px; margin: 0 auto; padding: 0 1.5rem; }
+
+    /* ── PAGE HEADER ── */
+    .page-header { padding: 3.5rem 0 2.5rem; background: var(--bg2); border-bottom: 1px solid var(--border); position: relative; overflow: hidden; }
+    .page-header::before { content: ''; position: absolute; top: -40%; right: -5%; width: 400px; height: 400px; background: radial-gradient(circle, rgba(124,58,237,0.08) 0%, transparent 70%); pointer-events: none; }
+    .page-header-inner { position: relative; z-index: 1; display: flex; align-items: flex-end; justify-content: space-between; gap: 1.5rem; flex-wrap: wrap; }
+    .eyebrow { font-family: var(--mono); font-size: 0.7rem; color: var(--accent); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 0.4rem; }
+    .page-title { font-size: clamp(1.8rem, 3.5vw, 2.5rem); font-weight: 700; letter-spacing: -0.5px; }
+    .page-title span { color: var(--accent); }
+    .page-sub { color: var(--muted); font-size: 0.9rem; margin-top: 0.4rem; }
+    .divider { width: 36px; height: 3px; background: linear-gradient(90deg, var(--accent), var(--accent2)); border-radius: 2px; margin: 0.75rem 0; }
+    .count-badge { display: inline-flex; align-items: center; justify-content: center; min-width: 22px; height: 22px; padding: 0 6px; background: rgba(59,130,246,0.12); border: 1px solid rgba(59,130,246,0.2); border-radius: 50px; font-family: var(--mono); font-size: 0.7rem; color: var(--accent); margin-left: 0.4rem; }
+
+    /* ── BUTTONS ── */
+    .btn-primary { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.65rem 1.4rem; background: var(--accent); color: #fff; font-family: var(--font); font-size: 0.85rem; font-weight: 700; border: none; border-radius: 9px; cursor: pointer; transition: opacity 0.2s, transform 0.2s; }
+    .btn-primary:hover { opacity: 0.88; transform: translateY(-1px); }
+    .btn-outline { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.6rem 1.2rem; background: transparent; color: var(--text); font-family: var(--font); font-size: 0.82rem; font-weight: 600; border: 1px solid var(--border); border-radius: 9px; cursor: pointer; transition: border-color 0.2s, background 0.2s; }
+    .btn-outline:hover { border-color: var(--accent); background: rgba(59,130,246,0.06); }
+    .btn-danger { display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.4rem 0.85rem; background: rgba(248,113,113,0.1); color: var(--danger); font-family: var(--font); font-size: 0.75rem; font-weight: 600; border: 1px solid rgba(248,113,113,0.2); border-radius: 7px; cursor: pointer; transition: background 0.2s, border-color 0.2s; }
+    .btn-danger:hover { background: rgba(248,113,113,0.18); border-color: rgba(248,113,113,0.4); }
+    .btn-edit { display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.4rem 0.85rem; background: rgba(59,130,246,0.08); color: var(--accent); font-family: var(--font); font-size: 0.75rem; font-weight: 600; border: 1px solid rgba(59,130,246,0.15); border-radius: 7px; cursor: pointer; transition: background 0.2s; }
+    .btn-edit:hover { background: rgba(59,130,246,0.15); }
+
+    /* ── ADMIN-ONLY (hidden from visitors until PIN unlock) ── */
+    .admin-only { display: none !important; }
+    body.is-admin .admin-only { display: inline-flex !important; }
+    body.is-admin div.admin-only { display: flex !important; }
+
+    /* ── TOOLBAR ── */
+    .toolbar { padding: 1.5rem 0; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; }
+    .filter-row { display: flex; gap: 0.4rem; flex-wrap: wrap; }
+    .filter-btn { padding: 0.35rem 0.9rem; background: var(--glass); border: 1px solid var(--border); border-radius: 50px; font-family: var(--font); font-size: 0.78rem; color: var(--muted); cursor: pointer; transition: color 0.2s, border-color 0.2s, background 0.2s; }
+    .filter-btn:hover, .filter-btn.active { color: var(--accent); border-color: rgba(59,130,246,0.3); background: rgba(59,130,246,0.07); }
+    .search-box { display: flex; align-items: center; gap: 0.5rem; padding: 0.4rem 0.9rem; background: var(--glass); border: 1px solid var(--border); border-radius: 9px; transition: border-color 0.2s; }
+    .search-box:focus-within { border-color: rgba(59,130,246,0.3); }
+    .search-box i { color: var(--dim); font-size: 0.8rem; }
+    .search-box input { background: transparent; border: none; outline: none; color: var(--text); font-family: var(--font); font-size: 0.82rem; width: 180px; }
+    .search-box input::placeholder { color: var(--dim); }
+
+    /* ── CERT GRID ── */
+    #certs-section { padding: 0 0 5rem; }
+    .certs-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.1rem; }
+
+    /* ── CERT CARD ── */
+    .cert-card { background: var(--glass); border: 1px solid var(--border); border-radius: var(--r2); padding: 1.4rem; display: flex; flex-direction: column; gap: 0; transition: border-color 0.25s, transform 0.2s, background 0.2s; position: relative; }
+    .cert-card:hover { border-color: rgba(59,130,246,0.22); background: var(--glass2); transform: translateY(-3px); }
+    .cert-top { display: flex; align-items: flex-start; gap: 1rem; margin-bottom: 1rem; }
+    .cert-icon-wrap { width: 44px; height: 44px; flex-shrink: 0; border-radius: 11px; display: flex; align-items: center; justify-content: center; font-size: 1.1rem; }
+    .cert-icon-dataanalytics { background: rgba(59,130,246,0.1); border: 1px solid rgba(59,130,246,0.2); color: var(--accent); }
+    .cert-icon-powerbi       { background: rgba(124,58,237,0.12); border: 1px solid rgba(124,58,237,0.2); color: #a78bfa; }
+    .cert-icon-sql           { background: rgba(16,185,129,0.08); border: 1px solid rgba(16,185,129,0.15); color: var(--accent3); }
+    .cert-icon-datascience   { background: rgba(251,191,36,0.1); border: 1px solid rgba(251,191,36,0.2); color: #fbbf24; }
+    .cert-icon-other         { background: rgba(255,255,255,0.05); border: 1px solid var(--border); color: var(--muted); }
+    .cert-name { font-size: 0.92rem; font-weight: 600; line-height: 1.4; margin-bottom: 0.25rem; }
+    .cert-meta { font-size: 0.75rem; color: var(--muted); display: flex; align-items: center; flex-wrap: wrap; gap: 0.4rem; }
+    .cert-meta i { font-size: 0.65rem; color: var(--accent); }
+    .cert-badges { display: flex; flex-wrap: wrap; gap: 0.35rem; margin-bottom: 0.9rem; }
+    .cat-badge { padding: 0.18rem 0.6rem; border-radius: 4px; font-size: 0.68rem; font-family: var(--mono); }
+    .cat-dataanalytics { background: rgba(59,130,246,0.08); border: 1px solid rgba(59,130,246,0.15); color: var(--accent); }
+    .cat-powerbi       { background: rgba(124,58,237,0.1); border: 1px solid rgba(124,58,237,0.2); color: #a78bfa; }
+    .cat-sql           { background: rgba(16,185,129,0.07); border: 1px solid rgba(16,185,129,0.15); color: var(--accent3); }
+    .cat-datascience   { background: rgba(251,191,36,0.08); border: 1px solid rgba(251,191,36,0.15); color: #fbbf24; }
+    .cat-other         { background: var(--glass2); border: 1px solid var(--border); color: var(--muted); }
+    .featured-badge { display: inline-flex; align-items: center; gap: 0.3rem; padding: 0.18rem 0.55rem; background: rgba(16,185,129,0.1); border: 1px solid rgba(16,185,129,0.2); border-radius: 4px; font-size: 0.65rem; color: var(--accent3); font-family: var(--mono); }
+    .expiry-badge { padding: 0.18rem 0.55rem; background: rgba(251,191,36,0.08); border: 1px solid rgba(251,191,36,0.15); border-radius: 4px; font-size: 0.68rem; color: #fbbf24; font-family: var(--mono); }
+    .cert-id { font-family: var(--mono); font-size: 0.68rem; color: var(--dim); margin-bottom: 0.6rem; }
+    .cert-verify { display: inline-flex; align-items: center; gap: 0.4rem; font-size: 0.75rem; color: var(--accent); margin-bottom: 0.85rem; transition: opacity 0.2s; }
+    .cert-verify:hover { opacity: 0.7; }
+    .cert-nolink { font-size: 0.72rem; color: var(--dim); margin-bottom: 0.85rem; font-style: italic; }
+    .cert-actions { gap: 0.5rem; padding-top: 0.85rem; border-top: 1px solid var(--border); margin-top: auto; }
+
+    /* ── STATS ROW ── */
+    .stats-strip { display: flex; flex-wrap: wrap; gap: 0; background: var(--bg2); border-bottom: 1px solid var(--border); padding: 0; }
+    .stat-cell { flex: 1; min-width: 120px; padding: 1rem 1.5rem; text-align: center; border-right: 1px solid var(--border); }
+    .stat-cell:last-child { border-right: none; }
+    .stat-num { font-family: var(--mono); font-size: 1.4rem; font-weight: 700; color: var(--accent); }
+    .stat-lbl { font-size: 0.7rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.5px; margin-top: 0.2rem; }
+
+    /* ── EMPTY STATE ── */
+    .empty-state { grid-column: 1 / -1; padding: 4rem 2rem; text-align: center; background: var(--glass); border: 1px dashed var(--border); border-radius: var(--r2); color: var(--dim); }
+    .empty-state i { display: block; font-size: 2.5rem; color: var(--accent); opacity: 0.2; margin-bottom: 0.75rem; }
+    .empty-state p { font-size: 0.88rem; margin-bottom: 1.25rem; }
+
+    /* ── MODAL ── */
+    .modal-overlay { display: none; position: fixed; inset: 0; z-index: 1000; background: rgba(0,0,0,0.75); backdrop-filter: blur(6px); align-items: center; justify-content: center; padding: 1rem; }
+    .modal-overlay.open { display: flex; }
+    .modal { background: var(--bg2); border: 1px solid var(--border); border-radius: var(--r2); width: 100%; max-width: 540px; max-height: 90vh; overflow-y: auto; padding: 2rem; animation: slideUp 0.25s ease; }
+    @keyframes slideUp { from { opacity:0; transform:translateY(20px); } to { opacity:1; transform:translateY(0); } }
+    .modal-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.5rem; }
+    .modal-title { font-size: 1.1rem; font-weight: 600; }
+    .modal-close { width: 32px; height: 32px; background: var(--glass); border: 1px solid var(--border); border-radius: 8px; cursor: pointer; color: var(--muted); font-size: 0.85rem; display: flex; align-items: center; justify-content: center; transition: color 0.2s, border-color 0.2s; }
+    .modal-close:hover { color: var(--text); border-color: rgba(255,255,255,0.15); }
+    .form-group { margin-bottom: 1.1rem; }
+    .form-label { display: block; font-family: var(--mono); font-size: 0.7rem; color: var(--muted); letter-spacing: 1px; text-transform: uppercase; margin-bottom: 0.4rem; }
+    .form-input, .form-textarea, .form-select { width: 100%; background: var(--bg); border: 1px solid var(--border); border-radius: 9px; padding: 0.65rem 0.9rem; color: var(--text); font-family: var(--font); font-size: 0.87rem; outline: none; transition: border-color 0.2s; }
+    .form-input:focus, .form-textarea:focus, .form-select:focus { border-color: rgba(59,130,246,0.4); }
+    .form-select option { background: var(--bg2); }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .form-check { display: flex; align-items: center; gap: 0.6rem; padding: 0.7rem 0.9rem; background: var(--glass); border: 1px solid var(--border); border-radius: 9px; cursor: pointer; transition: border-color 0.2s; }
+    .form-check:hover { border-color: rgba(59,130,246,0.25); }
+    .form-check input { accent-color: var(--accent); width: 16px; height: 16px; cursor: pointer; }
+    .form-check label { font-size: 0.85rem; cursor: pointer; flex: 1; }
+    .modal-actions { display: flex; gap: 0.75rem; margin-top: 1.5rem; justify-content: flex-end; }
+    #formError { display:none; margin-top:0.75rem; padding:0.6rem 0.9rem; background:rgba(248,113,113,0.1); border:1px solid rgba(248,113,113,0.2); border-radius:8px; font-size:0.82rem; color:var(--danger); }
+
+    /* ── TOAST ── */
+    .toast { position: fixed; bottom: 1.5rem; right: 1.5rem; z-index: 2000; padding: 0.75rem 1.25rem; background: var(--bg2); border: 1px solid var(--border); border-radius: 10px; font-size: 0.83rem; display: flex; align-items: center; gap: 0.6rem; box-shadow: 0 8px 32px rgba(0,0,0,0.4); animation: toastIn 0.3s ease; max-width: 340px; }
+    @keyframes toastIn { from { opacity:0; transform:translateY(12px); } to { opacity:1; transform:translateY(0); } }
+    .toast.success { border-color: rgba(16,185,129,0.25); }
+    .toast.success i { color: var(--accent3); }
+    .toast.warn { border-color: rgba(245,158,11,0.35); }
+    .toast.warn i { color: var(--warn); }
+    .toast.error { border-color: rgba(248,113,113,0.25); }
+    .toast.error i { color: var(--danger); }
+
+    /* ── FOOTER ── */
+    footer { padding: 2rem 0; background: var(--bg2); border-top: 1px solid var(--border); }
+    .footer-inner { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1rem; }
+    .footer-brand { font-family: var(--mono); font-size: 0.82rem; color: var(--accent); }
+    .footer-copy { font-size: 0.75rem; color: var(--dim); }
+    .footer-links { display: flex; gap: 0.5rem; }
+    .footer-links a, .footer-links button { width: 34px; height: 34px; display: flex; align-items: center; justify-content: center; background: var(--glass); border: 1px solid var(--border); border-radius: 8px; color: var(--muted); font-size: 0.8rem; cursor: pointer; transition: color 0.2s, border-color 0.2s; }
+    .footer-links a:hover, .footer-links button:hover { color: var(--accent); border-color: rgba(59,130,246,0.3); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      .page-header-inner { flex-direction: column; align-items: flex-start; }
+      .toolbar { flex-direction: column; align-items: flex-start; }
+      .form-row { grid-template-columns: 1fr; }
+      .footer-inner { flex-direction: column; text-align: center; }
+      .stat-cell { min-width: 100px; }
+    }
+    .fade-in { opacity: 0; transform: translateY(16px); transition: opacity 0.5s ease, transform 0.5s ease; }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+    /* ── ADMIN LOCK SYSTEM ── */
+    .admin-lock-overlay { display: none; position: fixed; inset: 0; z-index: 2000; background: rgba(0,0,0,0.85); backdrop-filter: blur(8px); align-items: center; justify-content: center; }
+    .admin-lock-overlay.open { display: flex; }
+    .admin-box { background: var(--bg2); border: 1px solid var(--border); border-radius: var(--r2); padding: 2rem; width: 100%; max-width: 380px; animation: slideUp 0.25s ease; }
+    .admin-box-title { font-size: 1.05rem; font-weight: 700; margin-bottom: 0.3rem; display: flex; align-items: center; gap: 0.6rem; }
+    .admin-box-title i { color: var(--accent); }
+    .admin-box-sub { font-size: 0.82rem; color: var(--muted); margin-bottom: 1.25rem; }
+    .admin-pin-input { width: 100%; background: var(--bg); border: 1px solid var(--border); border-radius: 9px; padding: 0.75rem 1rem; color: var(--text); font-family: var(--mono); font-size: 1.1rem; letter-spacing: 4px; outline: none; text-align: center; transition: border-color 0.2s; }
+    .admin-pin-input:focus { border-color: rgba(59,130,246,0.4); }
+    .admin-pin-input.error { border-color: rgba(248,113,113,0.5); animation: shake 0.3s ease; }
+    @keyframes shake { 0%,100%{transform:translateX(0)} 25%{transform:translateX(-8px)} 75%{transform:translateX(8px)} }
+    .admin-btn-row { display: flex; gap: 0.6rem; margin-top: 1rem; }
+    .admin-unlock-btn { flex: 1; padding: 0.7rem; background: var(--accent); color: #fff; font-family: var(--font); font-size: 0.88rem; font-weight: 700; border: none; border-radius: 9px; cursor: pointer; transition: opacity 0.2s; }
+    .admin-unlock-btn:hover { opacity: 0.88; }
+    .admin-cancel-btn { padding: 0.7rem 1.1rem; background: transparent; color: var(--muted); font-family: var(--font); font-size: 0.88rem; font-weight: 600; border: 1px solid var(--border); border-radius: 9px; cursor: pointer; transition: border-color 0.2s; }
+    .admin-cancel-btn:hover { border-color: rgba(255,255,255,0.2); }
+    .admin-error-msg { font-size: 0.78rem; color: var(--danger,#f87171); margin-top: 0.5rem; text-align: center; min-height: 1rem; }
+
+    .admin-bar { position: fixed; bottom: 1.5rem; left: 1.5rem; z-index: 1500; background: var(--bg2); border: 1px solid rgba(16,185,129,0.3); border-radius: 10px; padding: 0.6rem 1rem; display: none; align-items: center; gap: 0.75rem; font-size: 0.78rem; color: var(--accent3); box-shadow: 0 4px 20px rgba(0,0,0,0.4); }
+    .admin-bar.visible { display: flex; }
+    .admin-bar i { font-size: 0.8rem; }
+    .admin-connect-btn { padding: 0.25rem 0.65rem; background: rgba(59,130,246,0.15); border: 1px solid rgba(59,130,246,0.3); border-radius: 6px; color: var(--accent); font-size: 0.72rem; font-weight: 600; cursor: pointer; font-family: var(--font); transition: background 0.2s; }
+    .admin-connect-btn:hover { background: rgba(59,130,246,0.25); }
+    .admin-logout-btn { padding: 0.25rem 0.7rem; background: rgba(248,113,113,0.1); border: 1px solid rgba(248,113,113,0.2); border-radius: 6px; color: var(--danger,#f87171); font-size: 0.72rem; font-weight: 600; cursor: pointer; font-family: var(--font); transition: background 0.2s; }
+    .admin-logout-btn:hover { background: rgba(248,113,113,0.2); }
+
+    /* ── LIGHT MODE ── */
+    html.light {
+      --bg:      #f8fafc;
+      --bg2:     #f1f5f9;
+      --bg3:     #e2e8f0;
+      --glass:   rgba(0,0,0,0.02);
+      --glass2:  rgba(0,0,0,0.05);
+      --border:  rgba(0,0,0,0.08);
+      --border2: rgba(0,0,0,0.14);
+      --text:    #0f172a;
+      --text2:   #1e293b;
+      --muted:   #475569;
+      --dim:     #94a3b8;
+    }
+    html.light body    { background: var(--bg); color: var(--text); }
+    html.light .page-header { background: var(--bg2) !important; border-color: var(--border) !important; }
+    html.light .cert-card    { background: #fff !important; }
+    html.light .modal        { background: var(--bg2) !important; }
+    html.light .form-input,
+    html.light .form-textarea,
+    html.light .form-select  { background: #fff !important; color: #0f172a !important; }
+    html.light footer        { background: var(--bg2) !important; }
+    html.light .admin-box    { background: var(--bg2) !important; }
+    html.light .admin-pin-input { background: #fff !important; color: #0f172a !important; }
+    html.light .filter-btn   { background: #fff !important; }
+    html.light .search-box   { background: #fff !important; }
+    html.light nav { background: rgba(255,255,255,0.97) !important; box-shadow: 0 1px 12px rgba(0,0,0,0.08) !important; border-bottom: 1px solid rgba(0,0,0,0.08) !important; }
+    html.light .nav-links a       { color: #475569; }
+    html.light .nav-links a:hover { color: #0f172a; background: rgba(0,0,0,0.05); }
+    html.light .nav-links a.active { color: #3b82f6; }
+    html.light .nav-logo          { color: #0f172a; }
+    html.light .hamburger span    { background: #0f172a; }
+    html.light .mobile-menu { background: rgba(255,255,255,0.98) !important; border-bottom: 1px solid rgba(0,0,0,0.08) !important; }
+    html.light .mobile-menu a     { color: #475569; }
+    html.light .mobile-menu a:hover { color: #0f172a; background: rgba(0,0,0,0.05); }
+    html.light .theme-btn { color: #f59e0b !important; border-color: rgba(245,158,11,0.3) !important; }
+  </style>
+
+  <script>if(localStorage.getItem('theme')==='light')document.documentElement.classList.add('light');</script>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo"><div class="nav-logo-box">MSK</div> Muhammad</div>
+  <div class="nav-links">
+    <a href="../index.html">Home</a>
+    <a href="internships.html">Internships</a>
+    <a href="ml-apps.html">ML Apps</a>
+    <a href="projects.html">Projects</a>
+    <a href="certifications.html" class="active">Certifications</a>
+  </div>
+  <div class="nav-right">
+    <a href="../recruiter.html" class="btn-recruiter">🎯 Recruiter View</a>
+    <button class="theme-btn" onclick="toggleTheme()" id="themeBtn" title="Toggle Light/Dark" aria-label="Toggle theme">
+      <i class="fa-solid fa-moon" id="themeIcon"></i>
+    </button>
+    <button class="hamburger" onclick="toggleMenu()" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="../index.html">Home</a>
+  <a href="internships.html">Internships</a>
+  <a href="ml-apps.html">ML Apps</a>
+  <a href="projects.html">Projects</a>
+  <a href="certifications.html" class="active">Certifications</a>
+  <a href="../recruiter.html" class="btn-recruiter" style="text-align:center;margin-top:0.5rem">🎯 Recruiter View</a>
+</div>
+<main>
+
+<!-- PAGE HEADER -->
+<div class="page-header">
+  <div class="container">
+    <div class="page-header-inner">
+      <div>
+        <p class="eyebrow">Credentials</p>
+        <h1 class="page-title">My <span>Certifications</span> <span class="count-badge" id="totalCount">0</span></h1>
+        <div class="divider"></div>
+        <p class="page-sub">Professional certificates from Coursera, Google, IBM, and more.</p>
+      </div>
+      <button class="btn-primary admin-only" onclick="requireAdmin(()=>openModal())">
+        <i class="fa-solid fa-plus"></i> Add Certification
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- STATS STRIP -->
+<div class="stats-strip" id="statsStrip"></div>
+
+<!-- TOOLBAR + GRID -->
+<section id="certs-section">
+  <div class="container">
+    <div class="toolbar">
+      <div class="filter-row" id="filterRow"></div>
+      <div class="search-box">
+        <i class="fa-solid fa-magnifying-glass"></i>
+        <input type="text" id="searchInput" placeholder="Search certifications…" oninput="renderCerts()" aria-label="Search certifications"/>
+      </div>
+    </div>
+
+    <div class="certs-grid fade-in" id="certsGrid"></div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-brand">MSK</div>
+      <div class="footer-links">
+        <a href="https://www.linkedin.com/in/muhammad-shahbaz-khan-analyst/" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+        <a href="https://github.com/muhammadshahbazkhan021-create" target="_blank" rel="noopener" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+        <a href="mailto:muhammadshahbazkhan021@gmail.com" aria-label="Email"><i class="fa-solid fa-envelope"></i></a>
+        <button onclick="requireAdmin(()=>showToast('success','fa-unlock','Admin mode on.'))" aria-label="Admin login" title="Admin"><i class="fa-solid fa-lock"></i></button>
+      </div>
+      <p class="footer-copy">© 2026 Muhammad Shahbaz Khan</p>
+    </div>
+  </div>
+</footer>
+
+<!-- ADD / EDIT MODAL -->
+<div class="modal-overlay" id="modalOverlay" onclick="handleOverlayClick(event)">
+  <div class="modal">
+    <div class="modal-header">
+      <h2 class="modal-title" id="modalTitle">Add Certification</h2>
+      <button class="modal-close" onclick="closeModal()" aria-label="Close"><i class="fa-solid fa-xmark"></i></button>
+    </div>
+
+    <input type="hidden" id="editId"/>
+
+    <div class="form-group">
+      <label class="form-label" for="fName">Certificate Name *</label>
+      <input class="form-input" id="fName" type="text" placeholder="e.g. Google Data Analytics Professional Certificate"/>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group">
+        <label class="form-label" for="fPlatform">Platform *</label>
+        <input class="form-input" id="fPlatform" type="text" placeholder="Coursera, Udemy, IBM…"/>
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="fCategory">Category</label>
+        <select class="form-select" id="fCategory"></select>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group">
+        <label class="form-label" for="fDate">Issue Date</label>
+        <input class="form-input" id="fDate" type="month"/>
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="fExpiry">Expiry Date (optional)</label>
+        <input class="form-input" id="fExpiry" type="month"/>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="form-label" for="fLink">Verification Link</label>
+      <input class="form-input" id="fLink" type="url" placeholder="https://coursera.org/verify/…"/>
+    </div>
+
+    <div class="form-group">
+      <label class="form-label" for="fCredId">Credential ID (optional)</label>
+      <input class="form-input" id="fCredId" type="text" placeholder="e.g. ABC123XYZ"/>
+    </div>
+
+    <div class="form-check">
+      <input type="checkbox" id="fFeatured"/>
+      <label for="fFeatured">Mark as Featured (shows in Recruiter View)</label>
+    </div>
+
+    <div id="formError"></div>
+
+    <div class="modal-actions">
+      <button class="btn-outline" onclick="closeModal()">Cancel</button>
+      <button class="btn-primary" onclick="saveCert()">
+        <i class="fa-solid fa-floppy-disk"></i> Save Certificate
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- DELETE CONFIRM -->
+<div class="modal-overlay" id="deleteOverlay" onclick="handleDeleteOverlay(event)">
+  <div class="modal" style="max-width:400px;">
+    <div class="modal-header">
+      <h2 class="modal-title" style="color:var(--danger)"><i class="fa-solid fa-triangle-exclamation" style="margin-right:0.5rem"></i>Delete Certificate</h2>
+      <button class="modal-close" onclick="closeDelete()" aria-label="Close"><i class="fa-solid fa-xmark"></i></button>
+    </div>
+    <p style="color:var(--muted);font-size:0.88rem;line-height:1.6;margin-bottom:1.5rem;">
+      Are you sure you want to delete <strong id="deleteItemName" style="color:var(--text)"></strong>? This cannot be undone.
+    </p>
+    <div class="modal-actions">
+      <button class="btn-outline" onclick="closeDelete()">Cancel</button>
+      <button class="btn-danger" style="padding:0.6rem 1.2rem;font-size:0.85rem;" onclick="confirmDelete()">
+        <i class="fa-solid fa-trash"></i> Delete
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- ADMIN LOCK MODAL -->
+<div class="admin-lock-overlay" id="adminOverlay">
+  <div class="admin-box">
+    <div class="admin-box-title"><i class="fa-solid fa-shield-halved"></i> Admin Access</div>
+    <div class="admin-box-sub">Enter your PIN to edit content.</div>
+    <input class="admin-pin-input" id="adminPinInput" type="password"
+      placeholder="• • • • " maxlength="20"
+      onkeydown="if(event.key==='Enter') checkAdminPin()"/>
+    <div class="admin-error-msg" id="adminErrorMsg"></div>
+    <div class="admin-btn-row">
+      <button class="admin-cancel-btn" onclick="closeAdminOverlay()">Cancel</button>
+      <button class="admin-unlock-btn" onclick="checkAdminPin()">
+        <i class="fa-solid fa-unlock"></i> Unlock
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- ADMIN STATUS BAR -->
+<div class="admin-bar" id="adminBar">
+  <i class="fa-solid fa-shield-halved"></i>
+  <span>Admin Mode</span>
+  <button class="admin-connect-btn" onclick="connectJsonFile()">
+    <i class="fa-solid fa-link"></i> <span id="jsonFileLabel">Connect JSON File</span>
+  </button>
+  <button class="admin-logout-btn" onclick="adminLogout()">
+    <i class="fa-solid fa-right-from-bracket"></i> Lock
+  </button>
+</div>
+
+<script>
+/* ══════════════════════════════════════
+   STATE — all data comes from certifications.json
+══════════════════════════════════════ */
+let certs = [];
+let activeFilter = 'All';
+let pendingDeleteId = null;
+const KEY = 'certs';
+let jsonFileHandle = null;
+let pendingReconnectHandle = null;
+const BASE_CATEGORIES = ['Data Analytics', 'Power BI', 'SQL', 'Data Science', 'Other'];
+
+/* ── helpers ── */
+function esc(s) { return String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
+function toArray(d) {
+  if (Array.isArray(d)) return d;
+  if (d && typeof d === 'object') { const v = Object.values(d).find(Array.isArray); if (v) return v; }
+  return [];
+}
+function pick(o, ...keys) {
+  for (const k of keys) if (o && o[k] !== undefined && o[k] !== null && o[k] !== '') return o[k];
+  return '';
+}
+function normalizeCerts(arr) {
+  return toArray(arr).map((c, n) => ({ ...c,
+    id: c.id || ('c' + Date.now() + '_' + n),
+    name: pick(c, 'name', 'title', 'certificate'),
+    platform: pick(c, 'platform', 'issuer', 'provider', 'organization'),
+    category: pick(c, 'category', 'type'),
+    date: pick(c, 'date', 'issued', 'issueDate', 'year'),
+    expiry: pick(c, 'expiry', 'expires', 'expiryDate'),
+    link: pick(c, 'link', 'url', 'credential', 'verify'),
+    credId: pick(c, 'credId', 'credentialId', 'credential_id'),
+    featured: !!c.featured
+  }));
+}
+const isUrl = u => /^https?:\/\//i.test(u || '');
+function catKey(cat) {
+  const k = String(cat || '').toLowerCase().replace(/[^a-z]/g, '');
+  return ['dataanalytics', 'powerbi', 'sql', 'datascience'].includes(k) ? k : 'other';
+}
+const ICONS = { dataanalytics: 'fa-chart-bar', powerbi: 'fa-chart-pie', sql: 'fa-database', datascience: 'fa-flask', other: 'fa-certificate' };
+function formatDate(d) {
+  if (!d) return '';
+  d = String(d);
+  if (!/^\d{4}(-\d{1,2}){0,2}$/.test(d)) return d;
+  const parts = d.split('-');
+  const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  return parts[1] ? `${months[+parts[1]-1]} ${parts[0]}` : parts[0];
+}
+function toMonthInput(d) { const m = String(d || '').match(/^(\d{4})-(\d{2})/); return m ? `${m[1]}-${m[2]}` : ''; }
+
+/* ── IndexedDB (remembers the connected file, Chrome/Edge only) ── */
+const IDB_NAME = 'certs-fs', IDB_STORE = 'handles', IDB_KEY = 'jsonFile';
+function idbOpen() {
+  return new Promise((res, rej) => {
+    const r = indexedDB.open(IDB_NAME, 1);
+    r.onupgradeneeded = () => r.result.createObjectStore(IDB_STORE);
+    r.onsuccess = () => res(r.result);
+    r.onerror = () => rej(r.error);
+  });
+}
+async function idbSetHandle(handle) {
+  const db = await idbOpen();
+  return new Promise((res, rej) => {
+    const tx = db.transaction(IDB_STORE, 'readwrite');
+    tx.objectStore(IDB_STORE).put(handle, IDB_KEY);
+    tx.oncomplete = () => res();
+    tx.onerror = () => rej(tx.error);
+  });
+}
+async function idbGetHandle() {
+  const db = await idbOpen();
+  return new Promise((res, rej) => {
+    const tx = db.transaction(IDB_STORE, 'readonly');
+    const rq = tx.objectStore(IDB_STORE).get(IDB_KEY);
+    rq.onsuccess = () => res(rq.result || null);
+    rq.onerror = () => rej(rq.error);
+  });
+}
+
+async function readJsonFile(handle) {
+  const file = await handle.getFile();
+  return normalizeCerts(JSON.parse(await file.text()));
+}
+
+async function connectJsonFile() {
+  if (pendingReconnectHandle) {
+    try {
+      const perm = await pendingReconnectHandle.requestPermission({ mode: 'readwrite' });
+      if (perm === 'granted') {
+        jsonFileHandle = pendingReconnectHandle;
+        pendingReconnectHandle = null;
+        certs = await readJsonFile(jsonFileHandle);
+        renderAll();
+        updateJsonFileLabel();
+        showToast('success', 'fa-link', 'Reconnected to ' + jsonFileHandle.name);
+        return;
+      }
+    } catch {}
+  }
+  if (!window.showOpenFilePicker) {
+    showToast('error', 'fa-triangle-exclamation', 'Use Chrome or Edge to enable direct file editing.');
+    return;
+  }
+  try {
+    const [handle] = await window.showOpenFilePicker({
+      types: [{ description: 'JSON', accept: { 'application/json': ['.json'] } }],
+      excludeAcceptAllOption: false,
+    });
+    jsonFileHandle = handle;
+    pendingReconnectHandle = null;
+    try { await idbSetHandle(handle); } catch {}
+    certs = await readJsonFile(handle);
+    renderAll();
+    updateJsonFileLabel();
+    showToast('success', 'fa-link', 'Connected to ' + handle.name + '. Changes save directly!');
+  } catch (err) {
+    if (err.name !== 'AbortError') showToast('error', 'fa-triangle-exclamation', 'Could not open file.');
+  }
+}
+
+async function tryRestoreJsonHandle() {
+  try {
+    const handle = await idbGetHandle();
+    if (!handle) return false;
+    const perm = await handle.queryPermission({ mode: 'readwrite' });
+    if (perm !== 'granted') { pendingReconnectHandle = handle; updateJsonFileLabel(); return false; }
+    jsonFileHandle = handle;
+    certs = await readJsonFile(handle);
+    updateJsonFileLabel();
+    return true;
+  } catch { return false; }
+}
+
+function updateJsonFileLabel() {
+  const el = document.getElementById('jsonFileLabel');
+  if (!el) return;
+  if (jsonFileHandle) el.textContent = jsonFileHandle.name;
+  else if (pendingReconnectHandle) el.textContent = 'Reconnect ' + pendingReconnectHandle.name;
+  else el.textContent = 'Connect JSON File';
+}
+
+/* ── LOAD: data/certifications.json ── */
+async function loadCerts() {
+  if (isAdminUnlocked() && await tryRestoreJsonHandle()) return certs;
+  for (const path of ['../data/certifications.json', './certifications.json']) {
+    try {
+      const res = await fetch(path, { cache: 'no-store' });
+      if (res.ok) return normalizeCerts(await res.json());
+    } catch {}
+  }
+  console.warn('certifications.json not found in the data/ folder.');
+  return [];
+}
+
+/* ── SAVE ── */
+async function saveCerts(label) {
+  try { localStorage.setItem(KEY, JSON.stringify(certs)); } catch {}
+  if (jsonFileHandle) {
+    try {
+      const perm = await jsonFileHandle.requestPermission({ mode: 'readwrite' });
+      if (perm !== 'granted') throw new Error('permission denied');
+      const writable = await jsonFileHandle.createWritable();
+      await writable.write(JSON.stringify(certs, null, 2));
+      await writable.close();
+      showToast('success', 'fa-floppy-disk', label + ' Saved to ' + jsonFileHandle.name);
+      return;
+    } catch {}
+  }
+  showToast('warn', 'fa-triangle-exclamation', label + ' Saved in this browser only. Use "Connect JSON File" in the admin bar so certifications.json updates, then push it to GitHub.');
+}
+
+/* ── STATS ── */
+function renderStats() {
+  const cats = [...new Set(certs.map(c => c.category).filter(Boolean))];
+  const cells = [
+    { lbl: 'Total', num: certs.length },
+    { lbl: 'Featured', num: certs.filter(x => x.featured).length },
+    ...cats.map(c => ({ lbl: c, num: certs.filter(x => x.category === c).length }))
+  ].filter(x => x.num > 0);
+  document.getElementById('statsStrip').innerHTML = cells.map(x => `
+    <div class="stat-cell"><div class="stat-num">${x.num}</div><div class="stat-lbl">${esc(x.lbl)}</div></div>
+  `).join('');
+}
+
+/* ── FILTERS (built from the categories in the data) ── */
+function renderFilters() {
+  const cats = [...new Set(certs.map(c => c.category).filter(Boolean))];
+  const items = ['All', ...cats, ...(certs.some(c => c.featured) ? ['Featured'] : [])];
+  if (!items.includes(activeFilter)) activeFilter = 'All';
+  document.getElementById('filterRow').innerHTML = items.map(f => `
+    <button class="filter-btn ${f === activeFilter ? 'active' : ''}" data-filter="${esc(f)}">${f === 'Featured' ? '⭐ Featured' : esc(f)}</button>
+  `).join('');
+}
+
+function renderAll() { renderFilters(); renderCerts(); }
+
+/* ── RENDER ── */
+function renderCerts() {
+  const q = (document.getElementById('searchInput').value || '').toLowerCase().trim();
+  const filtered = certs.filter(c => {
+    const matchFilter =
+      activeFilter === 'All' ? true :
+      activeFilter === 'Featured' ? c.featured :
+      c.category === activeFilter;
+    const matchSearch = !q ||
+      (c.name || '').toLowerCase().includes(q) ||
+      (c.platform || '').toLowerCase().includes(q) ||
+      (c.category || '').toLowerCase().includes(q);
+    return matchFilter && matchSearch;
+  });
+
+  document.getElementById('totalCount').textContent = certs.length;
+  renderStats();
+
+  const grid = document.getElementById('certsGrid');
+  if (!filtered.length) {
+    grid.innerHTML = `
+      <div class="empty-state">
+        <i class="fa-solid fa-certificate"></i>
+        <p>${certs.length === 0 ? 'No certifications yet.' : 'No certificates match your search.'}</p>
+        ${certs.length === 0 ? '<button class="btn-primary admin-only" data-action="add"><i class="fa-solid fa-plus"></i> Add First Certificate</button>' : ''}
+      </div>`;
+    return;
+  }
+
+  grid.innerHTML = filtered.map(c => {
+    const k = catKey(c.category);
+    return `
+    <div class="cert-card">
+      <div class="cert-top">
+        <div class="cert-icon-wrap cert-icon-${k}"><i class="fa-solid ${ICONS[k]}"></i></div>
+        <div style="flex:1;min-width:0;">
+          <div class="cert-name">${esc(c.name)}</div>
+          <div class="cert-meta">
+            <span><i class="fa-solid fa-building-columns"></i> ${esc(c.platform)}</span>
+            ${c.date ? `<span>· <i class="fa-regular fa-calendar"></i> ${esc(formatDate(c.date))}</span>` : ''}
+          </div>
+        </div>
+      </div>
+      <div class="cert-badges">
+        ${c.category ? `<span class="cat-badge cat-${k}">${esc(c.category)}</span>` : ''}
+        ${c.featured ? '<span class="featured-badge"><i class="fa-solid fa-star" style="font-size:0.55rem"></i> Featured</span>' : ''}
+        ${c.expiry ? `<span class="expiry-badge">Expires ${esc(formatDate(c.expiry))}</span>` : ''}
+      </div>
+      ${c.credId ? `<div class="cert-id">ID: ${esc(c.credId)}</div>` : ''}
+      ${isUrl(c.link)
+        ? `<a class="cert-verify" href="${esc(c.link)}" target="_blank" rel="noopener"><i class="fa-solid fa-arrow-up-right-from-square"></i> Verify Certificate</a>`
+        : `<div class="cert-nolink">No verification link</div>`}
+      <div class="cert-actions admin-only">
+        <button class="btn-edit" data-action="edit" data-id="${esc(c.id)}"><i class="fa-solid fa-pen"></i> Edit</button>
+        <button class="btn-danger" data-action="delete" data-id="${esc(c.id)}"><i class="fa-solid fa-trash"></i> Delete</button>
+        <button class="btn-outline" style="margin-left:auto;padding:0.38rem 0.75rem;font-size:0.72rem;" data-action="feature" data-id="${esc(c.id)}">
+          ${c.featured ? '<i class="fa-solid fa-star" style="color:var(--accent3)"></i> Unfeature' : '<i class="fa-regular fa-star"></i> Feature'}
+        </button>
+      </div>
+    </div>`;
+  }).join('');
+
+  /* Stagger fade-in, then clear inline styles so the hover lift works */
+  document.querySelectorAll('.cert-card').forEach((el, i) => {
+    el.style.opacity = '0'; el.style.transform = 'translateY(14px)';
+    setTimeout(() => {
+      el.style.transition = 'opacity 0.4s ease, transform 0.4s ease';
+      el.style.opacity = '1'; el.style.transform = 'translateY(0)';
+    }, i * 50);
+    setTimeout(() => { el.style.transition = ''; el.style.opacity = ''; el.style.transform = ''; }, i * 50 + 500);
+  });
+}
+
+/* ── CLICK HANDLERS ── */
+document.getElementById('certsGrid').addEventListener('click', e => {
+  const btn = e.target.closest('[data-action]');
+  if (!btn) return;
+  const id = btn.dataset.id, act = btn.dataset.action;
+  if (act === 'add')     requireAdmin(() => openModal());
+  if (act === 'edit')    requireAdmin(() => openModal(id));
+  if (act === 'delete')  requireAdmin(() => openDelete(id));
+  if (act === 'feature') requireAdmin(() => toggleFeatured(id));
+});
+document.getElementById('filterRow').addEventListener('click', e => {
+  const btn = e.target.closest('[data-filter]');
+  if (!btn) return;
+  activeFilter = btn.dataset.filter;
+  renderFilters();
+  renderCerts();
+});
+
+/* ── MODAL ── */
+function fillCategorySelect(selected) {
+  const cats = [...new Set([...BASE_CATEGORIES, ...certs.map(c => c.category).filter(Boolean), selected].filter(Boolean))];
+  const sel = document.getElementById('fCategory');
+  sel.innerHTML = cats.map(c => `<option value="${esc(c)}">${esc(c)}</option>`).join('');
+  sel.value = selected || 'Data Analytics';
+}
+
+function openModal(id = null) {
+  clearForm();
+  document.getElementById('editId').value = '';
+  document.getElementById('modalTitle').textContent = 'Add Certification';
+
+  if (id) {
+    const c = certs.find(x => x.id === id);
+    if (!c) return;
+    document.getElementById('modalTitle').textContent = 'Edit Certification';
+    document.getElementById('editId').value    = c.id;
+    document.getElementById('fName').value     = c.name || '';
+    document.getElementById('fPlatform').value = c.platform || '';
+    fillCategorySelect(c.category);
+    document.getElementById('fDate').value     = toMonthInput(c.date);
+    document.getElementById('fExpiry').value   = toMonthInput(c.expiry);
+    document.getElementById('fLink').value     = c.link || '';
+    document.getElementById('fCredId').value   = c.credId || '';
+    document.getElementById('fFeatured').checked = !!c.featured;
+  }
+
+  document.getElementById('modalOverlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeModal() {
+  document.getElementById('modalOverlay').classList.remove('open');
+  document.body.style.overflow = '';
+  clearForm();
+}
+function handleOverlayClick(e) { if (e.target === document.getElementById('modalOverlay')) closeModal(); }
+function clearForm() {
+  ['fName','fPlatform','fDate','fExpiry','fLink','fCredId'].forEach(id => document.getElementById(id).value = '');
+  fillCategorySelect('Data Analytics');
+  document.getElementById('fFeatured').checked = false;
+  const err = document.getElementById('formError');
+  err.style.display = 'none'; err.textContent = '';
+}
+
+/* ── SAVE ── */
+async function saveCert() {
+  const name     = document.getElementById('fName').value.trim();
+  const platform = document.getElementById('fPlatform').value.trim();
+  const err      = document.getElementById('formError');
+
+  if (!name || !platform) {
+    err.textContent = '⚠️ Certificate Name and Platform are required.';
+    err.style.display = 'block';
+    return;
+  }
+
+  const editId = document.getElementById('editId').value;
+  const cert = {
+    id:       editId || 'c' + Date.now(),
+    name,
+    platform,
+    category: document.getElementById('fCategory').value,
+    date:     document.getElementById('fDate').value,
+    expiry:   document.getElementById('fExpiry').value,
+    link:     document.getElementById('fLink').value.trim(),
+    credId:   document.getElementById('fCredId').value.trim(),
+    featured: document.getElementById('fFeatured').checked,
+  };
+
+  let label;
+  if (editId) {
+    const idx = certs.findIndex(c => c.id === editId);
+    if (idx !== -1) certs[idx] = cert;
+    label = 'Certificate updated.';
+  } else {
+    certs.unshift(cert);
+    label = 'Certificate added.';
+  }
+
+  closeModal();
+  renderAll();
+  await saveCerts(label);
+}
+
+/* ── TOGGLE FEATURED ── */
+async function toggleFeatured(id) {
+  const c = certs.find(x => x.id === id);
+  if (!c) return;
+  c.featured = !c.featured;
+  renderAll();
+  await saveCerts(c.featured ? 'Marked as Featured.' : 'Removed from Featured.');
+}
+
+/* ── DELETE ── */
+function openDelete(id) {
+  pendingDeleteId = id;
+  const c = certs.find(x => x.id === id);
+  document.getElementById('deleteItemName').textContent = c ? `"${c.name}"` : 'this certificate';
+  document.getElementById('deleteOverlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeDelete() {
+  pendingDeleteId = null;
+  document.getElementById('deleteOverlay').classList.remove('open');
+  document.body.style.overflow = '';
+}
+function handleDeleteOverlay(e) { if (e.target === document.getElementById('deleteOverlay')) closeDelete(); }
+async function confirmDelete() {
+  if (!pendingDeleteId) return;
+  const id = pendingDeleteId;
+  certs = certs.filter(c => c.id !== id);
+  closeDelete();
+  renderAll();
+  await saveCerts('Certificate deleted.');
+}
+
+/* ── TOAST ── */
+let toastTimer;
+function showToast(type, icon, msg) {
+  const ex = document.querySelector('.toast'); if (ex) ex.remove();
+  clearTimeout(toastTimer);
+  const t = document.createElement('div');
+  t.className = `toast ${type}`;
+  t.innerHTML = `<i class="fa-solid ${icon}"></i> <span></span>`;
+  t.querySelector('span').textContent = msg;
+  document.body.appendChild(t);
+  toastTimer = setTimeout(() => t.remove(), type === 'warn' ? 6500 : 3200);
+}
+
+function toggleMenu() { document.getElementById('mobileMenu').classList.toggle('open'); }
+
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+}, { threshold: 0.1 });
+
+document.addEventListener('DOMContentLoaded', async () => {
+  loadTheme();
+  initAdminBar();
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+  certs = await loadCerts();
+  renderAll();
+});
+
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') { closeModal(); closeDelete(); closeAdminOverlay(); }
+});
+
+/* ── THEME TOGGLE ── */
+function toggleTheme() {
+  const isLight = document.documentElement.classList.toggle('light');
+  localStorage.setItem('theme', isLight ? 'light' : 'dark');
+  const i = document.getElementById('themeIcon');
+  if (i) i.className = isLight ? 'fa-solid fa-sun' : 'fa-solid fa-moon';
+}
+function loadTheme() {
+  if (localStorage.getItem('theme') === 'light') {
+    document.documentElement.classList.add('light');
+    const i = document.getElementById('themeIcon');
+    if (i) i.className = 'fa-solid fa-sun';
+  }
+}
+
+/* ══════════════════════════════════════════
+   ADMIN LOCK SYSTEM — PIN: 5325
+   (Convenience lock only: it hides the edit buttons from
+   visitors. The PIN is visible in this file, so it is not real security.)
+══════════════════════════════════════════ */
+const ADMIN_PIN    = '5325';
+const ADMIN_KEY    = 'adminUnlocked';
+const ADMIN_EXPIRY = 30 * 60 * 1000;
+let pendingAdminAction = null;
+
+function isAdminUnlocked() {
+  const d = localStorage.getItem(ADMIN_KEY);
+  if (!d) return false;
+  try {
+    const p = JSON.parse(d);
+    if (!p.unlocked || Date.now() - p.time > ADMIN_EXPIRY) { localStorage.removeItem(ADMIN_KEY); return false; }
+    return true;
+  } catch { return false; }
+}
+
+function setAdminUI(on) {
+  document.body.classList.toggle('is-admin', on);
+  document.getElementById('adminBar').classList.toggle('visible', on);
+}
+
+function requireAdmin(action) {
+  if (isAdminUnlocked()) { setAdminUI(true); action(); return; }
+  pendingAdminAction = action;
+  document.getElementById('adminOverlay').classList.add('open');
+  document.getElementById('adminPinInput').value = '';
+  document.getElementById('adminErrorMsg').textContent = '';
+  document.body.style.overflow = 'hidden';
+  setTimeout(() => document.getElementById('adminPinInput').focus(), 100);
+}
+
+function checkAdminPin() {
+  const input = document.getElementById('adminPinInput').value.trim();
+  const errEl = document.getElementById('adminErrorMsg');
+  const pinEl = document.getElementById('adminPinInput');
+  if (input === ADMIN_PIN) {
+    localStorage.setItem(ADMIN_KEY, JSON.stringify({ unlocked: true, time: Date.now() }));
+    const action = pendingAdminAction;   /* keep it before the overlay closes */
+    closeAdminOverlay();
+    setAdminUI(true);
+    if (action) action();
+  } else {
+    errEl.textContent = '❌ Wrong PIN. Try again.';
+    pinEl.classList.add('error');
+    pinEl.value = '';
+    setTimeout(() => { pinEl.classList.remove('error'); }, 400);
+  }
+}
+
+function closeAdminOverlay() {
+  document.getElementById('adminOverlay').classList.remove('open');
+  document.body.style.overflow = '';
+  pendingAdminAction = null;
+}
+
+function adminLogout() {
+  localStorage.removeItem(ADMIN_KEY);
+  setAdminUI(false);
+  showToast('success', 'fa-lock', 'Admin locked.');
+}
+
+function initAdminBar() { setAdminUI(isAdminUnlocked()); }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,1108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ML Apps — Muhammad Shahbaz Khan</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <style>
+    :root {
+      --bg:       #0a0f1e;
+      --bg2:      #0f1629;
+      --bg3:      #151d35;
+      --glass:    rgba(255,255,255,0.03);
+      --glass2:   rgba(255,255,255,0.07);
+      --border:   rgba(255,255,255,0.07);
+      --border2:  rgba(255,255,255,0.12);
+      --accent:   #3b82f6;
+      --accent-h: #2563eb;
+      --accent2:  #8b5cf6;
+      --accent3:  #10b981;
+      --warn:     #f59e0b;
+      --text:     #f1f5f9;
+      --text2:    #cbd5e1;
+      --muted:    #64748b;
+      --dim:      #334155;
+      --danger:   #f87171;
+      --font:     'Inter', sans-serif;
+      --mono:     'JetBrains Mono', monospace;
+      --r:        10px;
+      --r2:       16px;
+      --r3:       24px;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--font); background: var(--bg); color: var(--text); overflow-x: hidden; }
+    a { color: inherit; text-decoration: none; }
+    ::-webkit-scrollbar { width: 4px; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
+    ::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 2px; }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 999;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 2rem; height: 64px;
+      background: rgba(10,15,30,0.95);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-logo {
+      display: flex; align-items: center; gap: 0.6rem;
+      font-weight: 700; font-size: 1rem; color: var(--text); white-space: nowrap;
+    }
+    .nav-logo-box {
+      width: 34px; height: 34px; background: var(--accent); border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--mono); font-size: 0.75rem; font-weight: 700;
+      color: #fff; flex-shrink: 0;
+    }
+    .nav-links { display: flex; align-items: center; gap: 0.2rem; }
+    .nav-links a {
+      padding: 0.4rem 0.7rem; font-size: 0.8rem; font-weight: 500;
+      color: var(--muted); border-radius: 6px;
+      transition: color 0.2s, background 0.2s; white-space: nowrap;
+    }
+    .nav-links a:hover  { color: var(--text); background: var(--glass2); }
+    .nav-links a.active { color: var(--accent); }
+    .nav-right { display: flex; align-items: center; gap: 0.5rem; }
+    .btn-recruiter {
+      padding: 0.42rem 1rem;
+      background: var(--accent); color: #fff !important;
+      border-radius: 7px; font-size: 0.8rem; font-weight: 600;
+      transition: background 0.2s; white-space: nowrap;
+    }
+    .btn-recruiter:hover { background: var(--accent-h, #2563eb); }
+    .theme-btn {
+      width: 36px; height: 36px; flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center;
+      background: var(--glass); border: 1px solid var(--border);
+      border-radius: 8px; cursor: pointer; color: var(--muted); font-size: 0.85rem;
+      transition: color 0.2s, border-color 0.2s, background 0.2s;
+    }
+    .theme-btn:hover { color: var(--accent); border-color: var(--accent); }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; background: none; border: none; }
+    .hamburger span { display: block; width: 22px; height: 2px; background: var(--text); border-radius: 2px; }
+    .mobile-menu {
+      display: none; position: fixed; top: 64px; left: 0; right: 0; z-index: 998;
+      background: rgba(10,15,30,0.98); backdrop-filter: blur(20px);
+      padding: 0.75rem 1.25rem 1.25rem; border-bottom: 1px solid var(--border);
+      flex-direction: column; gap: 0.15rem;
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a {
+      padding: 0.6rem 0.75rem; font-size: 0.88rem; font-weight: 500;
+      color: var(--muted); border-radius: 6px; transition: color 0.2s, background 0.2s;
+    }
+    .mobile-menu a:hover { color: var(--text); background: var(--glass2); }
+
+    /* ── LAYOUT ── */
+    main { padding-top: 64px; }
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 1.5rem; }
+
+    /* ── PAGE HEADER ── */
+    .page-header {
+      padding: 3.5rem 0 2.5rem; background: var(--bg2);
+      border-bottom: 1px solid var(--border); position: relative; overflow: hidden;
+    }
+    .page-header::before {
+      content: ''; position: absolute; top: -40%; right: -5%;
+      width: 400px; height: 400px;
+      background: radial-gradient(circle, rgba(59,130,246,0.07) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .page-header-inner { position: relative; z-index: 1; display: flex; align-items: flex-end; justify-content: space-between; gap: 1.5rem; flex-wrap: wrap; }
+    .eyebrow { font-family: var(--mono); font-size: 0.7rem; color: var(--accent); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 0.4rem; }
+    .page-title { font-size: clamp(1.8rem, 3.5vw, 2.5rem); font-weight: 700; letter-spacing: -0.5px; }
+    .page-title span { color: var(--accent); }
+    .page-sub { color: var(--muted); font-size: 0.9rem; margin-top: 0.4rem; }
+    .divider { width: 36px; height: 3px; background: linear-gradient(90deg, var(--accent), var(--accent2)); border-radius: 2px; margin: 0.75rem 0; }
+    .count-badge { display: inline-flex; align-items: center; justify-content: center; min-width: 22px; height: 22px; padding: 0 6px; background: rgba(59,130,246,0.12); border: 1px solid rgba(59,130,246,0.2); border-radius: 50px; font-family: var(--mono); font-size: 0.7rem; color: var(--accent); margin-left: 0.4rem; }
+
+    /* ── BUTTONS ── */
+    .btn-primary { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.65rem 1.4rem; background: var(--accent); color: #fff; font-family: var(--font); font-size: 0.85rem; font-weight: 700; border: none; border-radius: 9px; cursor: pointer; transition: opacity 0.2s, transform 0.2s; }
+    .btn-primary:hover { opacity: 0.88; transform: translateY(-1px); }
+    .btn-outline { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.6rem 1.2rem; background: transparent; color: var(--text); font-family: var(--font); font-size: 0.82rem; font-weight: 600; border: 1px solid var(--border); border-radius: 9px; cursor: pointer; transition: border-color 0.2s, background 0.2s; }
+    .btn-outline:hover { border-color: var(--accent); background: rgba(59,130,246,0.06); }
+    .btn-danger { display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.4rem 0.85rem; background: rgba(248,113,113,0.1); color: var(--danger); font-family: var(--font); font-size: 0.75rem; font-weight: 600; border: 1px solid rgba(248,113,113,0.2); border-radius: 7px; cursor: pointer; transition: background 0.2s; }
+    .btn-danger:hover { background: rgba(248,113,113,0.18); }
+    .btn-edit { display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.4rem 0.85rem; background: rgba(59,130,246,0.08); color: var(--accent); font-family: var(--font); font-size: 0.75rem; font-weight: 600; border: 1px solid rgba(59,130,246,0.15); border-radius: 7px; cursor: pointer; transition: background 0.2s; }
+    .btn-edit:hover { background: rgba(59,130,246,0.15); }
+
+    /* ── ADMIN-ONLY (hidden from visitors until PIN unlock) ── */
+    .admin-only { display: none !important; }
+    body.is-admin .admin-only { display: inline-flex !important; }
+    body.is-admin div.admin-only { display: flex !important; }
+
+    /* ── TOOLBAR ── */
+    .toolbar { padding: 1.5rem 0; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; }
+    .filter-row { display: flex; gap: 0.4rem; flex-wrap: wrap; }
+    .filter-btn { padding: 0.35rem 0.9rem; background: var(--glass); border: 1px solid var(--border); border-radius: 50px; font-family: var(--font); font-size: 0.78rem; color: var(--muted); cursor: pointer; transition: color 0.2s, border-color 0.2s, background 0.2s; }
+    .filter-btn:hover, .filter-btn.active { color: var(--accent); border-color: rgba(59,130,246,0.3); background: rgba(59,130,246,0.07); }
+    .search-box { display: flex; align-items: center; gap: 0.5rem; padding: 0.4rem 0.9rem; background: var(--glass); border: 1px solid var(--border); border-radius: 9px; transition: border-color 0.2s; }
+    .search-box:focus-within { border-color: rgba(59,130,246,0.3); }
+    .search-box i { color: var(--dim); font-size: 0.8rem; }
+    .search-box input { background: transparent; border: none; outline: none; color: var(--text); font-family: var(--font); font-size: 0.82rem; width: 180px; }
+    .search-box input::placeholder { color: var(--dim); }
+
+    /* ── VIEW TOGGLE ── */
+    .view-toggle { display: flex; gap: 0.3rem; }
+    .view-btn { width: 34px; height: 34px; display: flex; align-items: center; justify-content: center; background: var(--glass); border: 1px solid var(--border); border-radius: 8px; cursor: pointer; color: var(--muted); font-size: 0.82rem; transition: color 0.2s, border-color 0.2s, background 0.2s; }
+    .view-btn.active, .view-btn:hover { color: var(--accent); border-color: rgba(59,130,246,0.3); background: rgba(59,130,246,0.07); }
+
+    /* ── BLOG GRID ── */
+    #blogs-section { padding: 0 0 5rem; }
+    .blogs-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 1.4rem; }
+    .blogs-grid.list-view { grid-template-columns: 1fr; }
+
+    /* ── BLOG CARD ── */
+    .blog-card {
+      background: var(--glass); border: 1px solid var(--border);
+      border-radius: var(--r2); overflow: hidden;
+      display: flex; flex-direction: column;
+      transition: border-color 0.25s, transform 0.2s, background 0.2s;
+    }
+    .blog-card:hover { border-color: rgba(59,130,246,0.22); background: var(--glass2); transform: translateY(-3px); }
+
+    .blogs-grid.list-view .blog-card { flex-direction: row; }
+    .blogs-grid.list-view .blog-card-top { width: 200px; flex-shrink: 0; }
+    .blogs-grid.list-view .blog-body { flex: 1; }
+
+    .blog-card-top {
+      height: 110px; position: relative;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 2rem; opacity: 0.55;
+    }
+    .blog-top-python        { background: linear-gradient(135deg, rgba(124,58,237,0.18), rgba(59,130,246,0.08)); color: #a78bfa; }
+    .blog-top-dataanalytics { background: linear-gradient(135deg, rgba(59,130,246,0.14), rgba(124,58,237,0.08)); color: var(--accent); }
+    .blog-top-datascience   { background: linear-gradient(135deg, rgba(16,185,129,0.1), rgba(124,58,237,0.06)); color: var(--accent3); }
+    .blog-top-powerbi       { background: linear-gradient(135deg, rgba(245,158,11,0.12), rgba(248,113,113,0.06)); color: #fbbf24; }
+    .blog-top-other         { background: linear-gradient(135deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02)); color: var(--muted); }
+
+    .blog-num {
+      position: absolute; bottom: 0.6rem; left: 0.8rem;
+      font-family: var(--mono); font-size: 0.62rem; color: var(--accent);
+      background: rgba(59,130,246,0.1); border: 1px solid rgba(59,130,246,0.18);
+      padding: 0.15rem 0.5rem; border-radius: 4px; letter-spacing: 1px;
+    }
+    .blog-featured-pin {
+      position: absolute; top: 0.6rem; right: 0.75rem;
+      background: rgba(16,185,129,0.1); border: 1px solid rgba(16,185,129,0.25);
+      border-radius: 4px; padding: 0.15rem 0.5rem;
+      font-size: 0.62rem; font-family: var(--mono); color: var(--accent3);
+    }
+
+    .blog-body { padding: 1.35rem; flex: 1; display: flex; flex-direction: column; }
+    .blog-meta-row { display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.5rem; flex-wrap: wrap; gap: 0.4rem; }
+    .blog-category { font-family: var(--mono); font-size: 0.65rem; color: var(--accent); letter-spacing: 1.5px; text-transform: uppercase; }
+    .blog-title { font-size: 0.98rem; font-weight: 700; line-height: 1.4; margin-bottom: 0.5rem; }
+    .blog-desc { font-size: 0.82rem; color: var(--muted); line-height: 1.7; margin-bottom: 1rem; flex: 1; }
+
+    .blog-tags { display: flex; flex-wrap: wrap; gap: 0.3rem; margin-bottom: 0.9rem; }
+    .blog-tag { padding: 0.18rem 0.55rem; background: rgba(124,58,237,0.1); border: 1px solid rgba(124,58,237,0.2); border-radius: 4px; font-size: 0.68rem; color: #a78bfa; }
+
+    .blog-footer-row { display: flex; align-items: center; justify-content: space-between; padding-top: 0.85rem; border-top: 1px solid var(--border); gap: 0.5rem; flex-wrap: wrap; }
+    .blog-read-link { display: inline-flex; align-items: center; gap: 0.4rem; font-size: 0.75rem; color: var(--accent); transition: gap 0.2s; }
+    .blog-card:hover .blog-read-link { gap: 0.6rem; }
+    .blog-actions { gap: 0.4rem; }
+
+    /* ── EMPTY STATE ── */
+    .empty-state { grid-column: 1/-1; padding: 4rem 2rem; text-align: center; background: var(--glass); border: 1px dashed var(--border); border-radius: var(--r2); color: var(--dim); }
+    .empty-state i { display: block; font-size: 2.5rem; color: var(--accent); opacity: 0.2; margin-bottom: 0.75rem; }
+    .empty-state p { font-size: 0.88rem; margin-bottom: 1.25rem; }
+
+    /* ── MODAL ── */
+    .modal-overlay { display: none; position: fixed; inset: 0; z-index: 1000; background: rgba(0,0,0,0.78); backdrop-filter: blur(6px); align-items: center; justify-content: center; padding: 1rem; }
+    .modal-overlay.open { display: flex; }
+    .modal { background: var(--bg2); border: 1px solid var(--border); border-radius: var(--r2); width: 100%; max-width: 640px; max-height: 90vh; overflow-y: auto; padding: 2rem; animation: slideUp 0.25s ease; }
+    @keyframes slideUp { from { opacity:0; transform:translateY(20px); } to { opacity:1; transform:translateY(0); } }
+    .modal-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.5rem; }
+    .modal-title { font-size: 1.1rem; font-weight: 600; }
+    .modal-close { width: 32px; height: 32px; background: var(--glass); border: 1px solid var(--border); border-radius: 8px; cursor: pointer; color: var(--muted); font-size: 0.85rem; display: flex; align-items: center; justify-content: center; transition: color 0.2s; }
+    .modal-close:hover { color: var(--text); }
+    .form-group { margin-bottom: 1.1rem; }
+    .form-label { display: block; font-family: var(--mono); font-size: 0.7rem; color: var(--muted); letter-spacing: 1px; text-transform: uppercase; margin-bottom: 0.4rem; }
+    .form-input, .form-textarea, .form-select { width: 100%; background: var(--bg); border: 1px solid var(--border); border-radius: 9px; padding: 0.65rem 0.9rem; color: var(--text); font-family: var(--font); font-size: 0.87rem; outline: none; transition: border-color 0.2s; }
+    .form-input:focus, .form-textarea:focus, .form-select:focus { border-color: rgba(59,130,246,0.4); }
+    .form-textarea { resize: vertical; min-height: 85px; }
+    .form-select option { background: var(--bg2); }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .form-check { display: flex; align-items: center; gap: 0.6rem; padding: 0.7rem 0.9rem; background: var(--glass); border: 1px solid var(--border); border-radius: 9px; cursor: pointer; transition: border-color 0.2s; }
+    .form-check:hover { border-color: rgba(59,130,246,0.25); }
+    .form-check input { accent-color: var(--accent); width: 16px; height: 16px; cursor: pointer; }
+    .form-check label { font-size: 0.85rem; cursor: pointer; flex: 1; }
+    .modal-actions { display: flex; gap: 0.75rem; margin-top: 1.5rem; justify-content: flex-end; }
+    #formError { display:none; margin-top:0.75rem; padding:0.6rem 0.9rem; background:rgba(248,113,113,0.1); border:1px solid rgba(248,113,113,0.2); border-radius:8px; font-size:0.82rem; color:var(--danger); }
+
+    /* ── TOAST ── */
+    .toast { position: fixed; bottom: 1.5rem; right: 1.5rem; z-index: 2000; padding: 0.75rem 1.25rem; background: var(--bg2); border: 1px solid var(--border); border-radius: 10px; font-size: 0.83rem; display: flex; align-items: center; gap: 0.6rem; box-shadow: 0 8px 32px rgba(0,0,0,0.4); animation: toastIn 0.3s ease; max-width: 340px; }
+    @keyframes toastIn { from { opacity:0; transform:translateY(12px); } to { opacity:1; transform:translateY(0); } }
+    .toast.success { border-color: rgba(16,185,129,0.25); }
+    .toast.success i { color: var(--accent3); }
+    .toast.warn { border-color: rgba(245,158,11,0.35); }
+    .toast.warn i { color: var(--warn); }
+    .toast.error { border-color: rgba(248,113,113,0.25); }
+    .toast.error i { color: var(--danger); }
+
+    /* ── FOOTER ── */
+    footer { padding: 2rem 0; background: var(--bg2); border-top: 1px solid var(--border); }
+    .footer-inner { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1rem; }
+    .footer-brand { font-family: var(--mono); font-size: 0.82rem; color: var(--accent); }
+    .footer-copy { font-size: 0.75rem; color: var(--dim); }
+    .footer-links { display: flex; gap: 0.5rem; }
+    .footer-links a, .footer-links button { width: 34px; height: 34px; display: flex; align-items: center; justify-content: center; background: var(--glass); border: 1px solid var(--border); border-radius: 8px; color: var(--muted); font-size: 0.8rem; cursor: pointer; transition: color 0.2s, border-color 0.2s; }
+    .footer-links a:hover, .footer-links button:hover { color: var(--accent); border-color: rgba(59,130,246,0.3); }
+
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      .page-header-inner { flex-direction: column; align-items: flex-start; }
+      .toolbar { flex-direction: column; align-items: flex-start; }
+      .form-row { grid-template-columns: 1fr; }
+      .blogs-grid.list-view .blog-card { flex-direction: column; }
+      .blogs-grid.list-view .blog-card-top { width: 100%; }
+      .footer-inner { flex-direction: column; text-align: center; }
+    }
+    .fade-in { opacity: 0; transform: translateY(16px); transition: opacity 0.5s ease, transform 0.5s ease; }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+    /* ── ADMIN LOCK SYSTEM ── */
+    .admin-lock-overlay {
+      display: none; position: fixed; inset: 0; z-index: 2000;
+      background: rgba(0,0,0,0.85); backdrop-filter: blur(8px);
+      align-items: center; justify-content: center;
+    }
+    .admin-lock-overlay.open { display: flex; }
+    .admin-box {
+      background: var(--bg2); border: 1px solid var(--border);
+      border-radius: var(--r2); padding: 2rem; width: 100%; max-width: 380px;
+      animation: slideUp 0.25s ease;
+    }
+    .admin-box-title {
+      font-size: 1.05rem; font-weight: 700; margin-bottom: 0.3rem;
+      display: flex; align-items: center; gap: 0.6rem;
+    }
+    .admin-box-title i { color: var(--accent); }
+    .admin-box-sub { font-size: 0.82rem; color: var(--muted); margin-bottom: 1.25rem; }
+    .admin-pin-input {
+      width: 100%; background: var(--bg); border: 1px solid var(--border);
+      border-radius: 9px; padding: 0.75rem 1rem;
+      color: var(--text); font-family: var(--mono); font-size: 1.1rem;
+      letter-spacing: 4px; outline: none; text-align: center;
+      transition: border-color 0.2s;
+    }
+    .admin-pin-input:focus { border-color: rgba(59,130,246,0.4); }
+    .admin-pin-input.error { border-color: rgba(248,113,113,0.5); animation: shake 0.3s ease; }
+    @keyframes shake { 0%,100%{transform:translateX(0)} 25%{transform:translateX(-8px)} 75%{transform:translateX(8px)} }
+    .admin-btn-row { display: flex; gap: 0.6rem; margin-top: 1rem; }
+    .admin-unlock-btn {
+      flex: 1; padding: 0.7rem; background: var(--accent); color: #fff;
+      font-family: var(--font); font-size: 0.88rem; font-weight: 700;
+      border: none; border-radius: 9px; cursor: pointer; transition: opacity 0.2s;
+    }
+    .admin-unlock-btn:hover { opacity: 0.88; }
+    .admin-cancel-btn {
+      padding: 0.7rem 1.1rem; background: transparent; color: var(--muted);
+      font-family: var(--font); font-size: 0.88rem; font-weight: 600;
+      border: 1px solid var(--border); border-radius: 9px; cursor: pointer;
+      transition: border-color 0.2s;
+    }
+    .admin-cancel-btn:hover { border-color: rgba(255,255,255,0.2); }
+    .admin-error-msg { font-size: 0.78rem; color: var(--danger,#f87171); margin-top: 0.5rem; text-align: center; min-height: 1rem; }
+
+    .admin-bar {
+      position: fixed; bottom: 1.5rem; left: 1.5rem; z-index: 1500;
+      background: var(--bg2); border: 1px solid rgba(16,185,129,0.3);
+      border-radius: 10px; padding: 0.6rem 1rem;
+      display: none; align-items: center; gap: 0.75rem;
+      font-size: 0.78rem; color: var(--accent3);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+    }
+    .admin-bar.visible { display: flex; }
+    .admin-bar i { font-size: 0.8rem; }
+    .admin-connect-btn {
+      padding: 0.25rem 0.65rem; background: rgba(59,130,246,0.15);
+      border: 1px solid rgba(59,130,246,0.3); border-radius: 6px;
+      color: var(--accent); font-size: 0.72rem; font-weight: 600;
+      cursor: pointer; font-family: var(--font); transition: background 0.2s;
+    }
+    .admin-connect-btn:hover { background: rgba(59,130,246,0.25); }
+    .admin-logout-btn {
+      padding: 0.25rem 0.7rem; background: rgba(248,113,113,0.1);
+      border: 1px solid rgba(248,113,113,0.2); border-radius: 6px;
+      color: var(--danger,#f87171); font-size: 0.72rem; font-weight: 600;
+      cursor: pointer; font-family: var(--font); transition: background 0.2s;
+    }
+    .admin-logout-btn:hover { background: rgba(248,113,113,0.2); }
+
+    /* ── LIGHT MODE ── */
+    html.light {
+      --bg:       #f8fafc;
+      --bg2:      #f1f5f9;
+      --bg3:      #e2e8f0;
+      --glass:    rgba(0,0,0,0.02);
+      --glass2:   rgba(0,0,0,0.05);
+      --border:   rgba(0,0,0,0.08);
+      --border2:  rgba(0,0,0,0.14);
+      --text:     #0f172a;
+      --text2:    #1e293b;
+      --muted:    #475569;
+      --dim:      #94a3b8;
+    }
+    html.light body    { background: var(--bg); color: var(--text); }
+    html.light .page-header { background: var(--bg2) !important; border-color: var(--border) !important; }
+    html.light .blog-card   { background: #fff !important; }
+    html.light .modal       { background: var(--bg2) !important; }
+    html.light .form-input,
+    html.light .form-textarea,
+    html.light .form-select  { background: #fff !important; color: #0f172a !important; }
+    html.light footer        { background: var(--bg2) !important; }
+    html.light .admin-box    { background: var(--bg2) !important; }
+    html.light .admin-pin-input { background: #fff !important; color: #0f172a !important; }
+    html.light .filter-btn   { background: #fff !important; }
+    html.light .search-box   { background: #fff !important; }
+    html.light nav {
+      background: rgba(255,255,255,0.97) !important;
+      box-shadow: 0 1px 12px rgba(0,0,0,0.08) !important;
+      border-bottom: 1px solid rgba(0,0,0,0.08) !important;
+    }
+    html.light .nav-links a       { color: #475569; }
+    html.light .nav-links a:hover { color: #0f172a; background: rgba(0,0,0,0.05); }
+    html.light .nav-links a.active { color: #3b82f6; }
+    html.light .nav-logo          { color: #0f172a; }
+    html.light .hamburger span    { background: #0f172a; }
+    html.light .mobile-menu {
+      background: rgba(255,255,255,0.98) !important;
+      border-bottom: 1px solid rgba(0,0,0,0.08) !important;
+    }
+    html.light .mobile-menu a     { color: #475569; }
+    html.light .mobile-menu a:hover { color: #0f172a; background: rgba(0,0,0,0.05); }
+    html.light .theme-btn { color: #f59e0b !important; border-color: rgba(245,158,11,0.3) !important; }
+  </style>
+
+  <script>if(localStorage.getItem('theme')==='light')document.documentElement.classList.add('light');</script>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo"><div class="nav-logo-box">MSK</div> Muhammad</div>
+  <div class="nav-links">
+    <a href="../index.html">Home</a>
+    <a href="internships.html">Internships</a>
+    <a href="ml-apps.html" class="active">ML Apps</a>
+    <a href="projects.html">Projects</a>
+    <a href="certifications.html">Certifications</a>
+  </div>
+  <div class="nav-right">
+    <a href="../recruiter.html" class="btn-recruiter">🎯 Recruiter View</a>
+    <button class="theme-btn" onclick="toggleTheme()" id="themeBtn" title="Toggle Light/Dark" aria-label="Toggle theme">
+      <i class="fa-solid fa-moon" id="themeIcon"></i>
+    </button>
+    <button class="hamburger" onclick="toggleMenu()" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="../index.html">Home</a>
+  <a href="internships.html">Internships</a>
+  <a href="ml-apps.html" class="active">ML Apps</a>
+  <a href="projects.html">Projects</a>
+  <a href="certifications.html">Certifications</a>
+  <a href="../recruiter.html" class="btn-recruiter" style="text-align:center;margin-top:0.5rem">🎯 Recruiter View</a>
+</div>
+
+<main>
+
+<!-- PAGE HEADER -->
+<div class="page-header">
+  <div class="container">
+    <div class="page-header-inner">
+      <div>
+        <p class="eyebrow">Streamlit Projects</p>
+        <h1 class="page-title">My <span>ML Apps</span> <span class="count-badge" id="totalCount">0</span></h1>
+        <div class="divider"></div>
+        <p class="page-sub">Interactive Streamlit apps built with Python and Machine Learning.</p>
+      </div>
+      <button class="btn-primary admin-only" onclick="requireAdmin(()=>openModal())">
+        <i class="fa-solid fa-plus"></i> Add ML App
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- TOOLBAR + GRID -->
+<section id="blogs-section">
+  <div class="container">
+    <div class="toolbar">
+      <div class="filter-row" id="filterRow"></div>
+      <div style="display:flex;gap:0.75rem;align-items:center;flex-wrap:wrap;">
+        <div class="search-box">
+          <i class="fa-solid fa-magnifying-glass"></i>
+          <input type="text" id="searchInput" placeholder="Search ML apps…" oninput="renderBlogs()" aria-label="Search ML apps"/>
+        </div>
+        <div class="view-toggle">
+          <button class="view-btn active" id="gridViewBtn" onclick="setView('grid')" title="Grid View" aria-label="Grid view"><i class="fa-solid fa-grip"></i></button>
+          <button class="view-btn" id="listViewBtn" onclick="setView('list')" title="List View" aria-label="List view"><i class="fa-solid fa-list"></i></button>
+        </div>
+      </div>
+    </div>
+
+    <div class="blogs-grid fade-in" id="blogsGrid"></div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-brand">&lt;MSK /&gt;</div>
+      <div class="footer-links">
+        <a href="https://www.linkedin.com/in/muhammad-shahbaz-khan-analyst/" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+        <a href="https://github.com/muhammadshahbazkhan021-create" target="_blank" rel="noopener" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+        <a href="mailto:muhammadshahbazkhan021@gmail.com" aria-label="Email"><i class="fa-solid fa-envelope"></i></a>
+        <button onclick="requireAdmin(()=>showToast('success','fa-unlock','Admin mode on.'))" aria-label="Admin login" title="Admin"><i class="fa-solid fa-lock"></i></button>
+      </div>
+      <p class="footer-copy">© 2026 Muhammad Shahbaz Khan</p>
+    </div>
+  </div>
+</footer>
+
+<!-- ADD / EDIT MODAL -->
+<div class="modal-overlay" id="modalOverlay" onclick="handleOverlayClick(event)">
+  <div class="modal">
+    <div class="modal-header">
+      <h2 class="modal-title" id="modalTitle">Add ML App</h2>
+      <button class="modal-close" onclick="closeModal()" aria-label="Close"><i class="fa-solid fa-xmark"></i></button>
+    </div>
+    <input type="hidden" id="editId"/>
+
+    <div class="form-row">
+      <div class="form-group">
+        <label class="form-label" for="fTitle">App Title *</label>
+        <input class="form-input" id="fTitle" type="text" placeholder="e.g. Customer Churn Predictor"/>
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="fCategory">Category</label>
+        <select class="form-select" id="fCategory"></select>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="form-label" for="fDesc">Description *</label>
+      <textarea class="form-textarea" id="fDesc" placeholder="Brief overview of the ML app…" style="min-height:75px;"></textarea>
+    </div>
+
+    <div class="form-group">
+      <label class="form-label" for="fTools">Tools Used</label>
+      <input class="form-input" id="fTools" type="text" placeholder="Python, scikit-learn, pandas, Plotly"/>
+    </div>
+
+    <div class="form-group">
+      <label class="form-label" for="fLink">Live App Link</label>
+      <input class="form-input" id="fLink" type="url" placeholder="https://yourapp.streamlit.app/"/>
+    </div>
+
+    <div class="form-group">
+      <label class="form-label" for="fGithub">GitHub Link</label>
+      <input class="form-input" id="fGithub" type="url" placeholder="https://github.com/yourusername/repo"/>
+    </div>
+
+    <div class="form-check">
+      <input type="checkbox" id="fFeatured"/>
+      <label for="fFeatured">Mark as Featured (shows in Recruiter View)</label>
+    </div>
+
+    <div id="formError"></div>
+
+    <div class="modal-actions">
+      <button class="btn-outline" onclick="closeModal()">Cancel</button>
+      <button class="btn-primary" onclick="saveBlog()">
+        <i class="fa-solid fa-floppy-disk"></i> Save ML App
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- DELETE CONFIRM -->
+<div class="modal-overlay" id="deleteOverlay" onclick="handleDeleteOverlay(event)">
+  <div class="modal" style="max-width:400px;">
+    <div class="modal-header">
+      <h2 class="modal-title" style="color:var(--danger)"><i class="fa-solid fa-triangle-exclamation" style="margin-right:0.5rem"></i>Delete ML App</h2>
+      <button class="modal-close" onclick="closeDelete()" aria-label="Close"><i class="fa-solid fa-xmark"></i></button>
+    </div>
+    <p style="color:var(--muted);font-size:0.88rem;line-height:1.6;margin-bottom:1.5rem;">
+      Are you sure you want to delete <strong id="deleteItemName" style="color:var(--text)"></strong>? This cannot be undone.
+    </p>
+    <div class="modal-actions">
+      <button class="btn-outline" onclick="closeDelete()">Cancel</button>
+      <button class="btn-danger" style="padding:0.6rem 1.2rem;font-size:0.85rem;" onclick="confirmDelete()">
+        <i class="fa-solid fa-trash"></i> Delete
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- ADMIN LOCK MODAL -->
+<div class="admin-lock-overlay" id="adminOverlay">
+  <div class="admin-box">
+    <div class="admin-box-title"><i class="fa-solid fa-shield-halved"></i> Admin Access</div>
+    <div class="admin-box-sub">Enter your PIN to edit content.</div>
+    <input class="admin-pin-input" id="adminPinInput" type="password"
+      placeholder="• • • • " maxlength="20"
+      onkeydown="if(event.key==='Enter') checkAdminPin()"/>
+    <div class="admin-error-msg" id="adminErrorMsg"></div>
+    <div class="admin-btn-row">
+      <button class="admin-cancel-btn" onclick="closeAdminOverlay()">Cancel</button>
+      <button class="admin-unlock-btn" onclick="checkAdminPin()">
+        <i class="fa-solid fa-unlock"></i> Unlock
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- ADMIN STATUS BAR -->
+<div class="admin-bar" id="adminBar">
+  <i class="fa-solid fa-shield-halved"></i>
+  <span>Admin Mode</span>
+  <button class="admin-connect-btn" onclick="connectJsonFile()">
+    <i class="fa-solid fa-link"></i> <span id="jsonFileLabel">Connect JSON File</span>
+  </button>
+  <button class="admin-logout-btn" onclick="adminLogout()">
+    <i class="fa-solid fa-right-from-bracket"></i> Lock
+  </button>
+</div>
+
+<script>
+/* ══════════════════════════════════════
+   STATE — all data comes from ml-apps.json
+══════════════════════════════════════ */
+let blogs = [];
+let activeFilter = 'All';
+let currentView = 'grid';
+let pendingDeleteId = null;
+let jsonFileHandle = null;
+let pendingReconnectHandle = null;
+const KEY = 'ml-apps';
+const BASE_CATEGORIES = ['Classification', 'Regression', 'NLP / Classification', 'Machine Learning', 'Other'];
+
+/* ── helpers ── */
+function esc(s) { return String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
+function toArray(d) {
+  if (Array.isArray(d)) return d;
+  if (d && typeof d === 'object') { const v = Object.values(d).find(Array.isArray); if (v) return v; }
+  return [];
+}
+function pick(o, ...keys) {
+  for (const k of keys) if (o && o[k] !== undefined && o[k] !== null && o[k] !== '') return o[k];
+  return '';
+}
+function listStr(v) { return Array.isArray(v) ? v.join(', ') : String(v || ''); }
+function normalizeApps(arr) {
+  return toArray(arr).map((b, i) => ({ ...b,
+    id: b.id || ('ml' + Date.now() + '_' + i),
+    title: pick(b, 'title', 'name'),
+    category: pick(b, 'category', 'type'),
+    description: pick(b, 'description', 'desc', 'summary'),
+    tools: listStr(pick(b, 'tools', 'tech', 'technologies', 'stack')),
+    github: pick(b, 'github', 'githubUrl', 'github_url', 'repo'),
+    live: pick(b, 'live', 'liveUrl', 'demo', 'demoUrl', 'app', 'url'),
+    featured: !!b.featured
+  }));
+}
+
+/* ── INDEXED-DB TO REMEMBER JSON FILE ── */
+const IDB_NAME = 'mlapps-fs', IDB_STORE = 'handles', IDB_KEY = 'jsonFile';
+function idbOpen() {
+  return new Promise((res, rej) => {
+    const r = indexedDB.open(IDB_NAME, 1);
+    r.onupgradeneeded = () => r.result.createObjectStore(IDB_STORE);
+    r.onsuccess = () => res(r.result);
+    r.onerror = () => rej(r.error);
+  });
+}
+async function idbSetHandle(handle) {
+  const db = await idbOpen();
+  return new Promise((res, rej) => {
+    const tx = db.transaction(IDB_STORE, 'readwrite');
+    tx.objectStore(IDB_STORE).put(handle, IDB_KEY);
+    tx.oncomplete = () => res();
+    tx.onerror = () => rej(tx.error);
+  });
+}
+async function idbGetHandle() {
+  const db = await idbOpen();
+  return new Promise((res, rej) => {
+    const tx = db.transaction(IDB_STORE, 'readonly');
+    const rq = tx.objectStore(IDB_STORE).get(IDB_KEY);
+    rq.onsuccess = () => res(rq.result || null);
+    rq.onerror = () => rej(rq.error);
+  });
+}
+
+/* ── DIRECT FILE ACCESS (CHROME / EDGE, admin only) ── */
+async function readJsonFile(handle) {
+  const file = await handle.getFile();
+  return normalizeApps(JSON.parse(await file.text()));
+}
+
+async function connectJsonFile() {
+  if (pendingReconnectHandle) {
+    try {
+      const perm = await pendingReconnectHandle.requestPermission({ mode: 'readwrite' });
+      if (perm === 'granted') {
+        jsonFileHandle = pendingReconnectHandle;
+        pendingReconnectHandle = null;
+        blogs = await readJsonFile(jsonFileHandle);
+        renderAll();
+        updateJsonFileLabel();
+        showToast('success', 'fa-link', 'Reconnected to ' + jsonFileHandle.name);
+        return;
+      }
+    } catch {}
+  }
+  if (!window.showOpenFilePicker) {
+    showToast('error', 'fa-triangle-exclamation', 'Use Chrome or Edge to enable direct file editing.');
+    return;
+  }
+  try {
+    const [handle] = await window.showOpenFilePicker({
+      types: [{ description: 'JSON', accept: { 'application/json': ['.json'] } }],
+      excludeAcceptAllOption: false,
+    });
+    jsonFileHandle = handle;
+    pendingReconnectHandle = null;
+    try { await idbSetHandle(handle); } catch {}
+    blogs = await readJsonFile(handle);
+    renderAll();
+    updateJsonFileLabel();
+    showToast('success', 'fa-link', 'Connected to ' + handle.name + '. Changes save directly!');
+  } catch (err) {
+    if (err.name !== 'AbortError') showToast('error', 'fa-triangle-exclamation', 'Could not open file.');
+  }
+}
+
+async function tryRestoreJsonHandle() {
+  try {
+    const handle = await idbGetHandle();
+    if (!handle) return false;
+    const perm = await handle.queryPermission({ mode: 'readwrite' });
+    if (perm !== 'granted') { pendingReconnectHandle = handle; updateJsonFileLabel(); return false; }
+    jsonFileHandle = handle;
+    blogs = await readJsonFile(handle);
+    updateJsonFileLabel();
+    return true;
+  } catch { return false; }
+}
+
+function updateJsonFileLabel() {
+  const el = document.getElementById('jsonFileLabel');
+  if (!el) return;
+  if (jsonFileHandle) el.textContent = jsonFileHandle.name;
+  else if (pendingReconnectHandle) el.textContent = 'Reconnect ' + pendingReconnectHandle.name;
+  else el.textContent = 'Connect JSON File';
+}
+
+/* ── LOAD DATA: data/ml-apps.json ── */
+async function loadBlogs() {
+  if (isAdminUnlocked() && await tryRestoreJsonHandle()) return blogs;
+  for (const path of ['../data/ml-apps.json', './ml-apps.json']) {
+    try {
+      const res = await fetch(path, { cache: 'no-store' });
+      if (res.ok) return normalizeApps(await res.json());
+    } catch {}
+  }
+  console.warn('ml-apps.json not found in the data/ folder.');
+  return [];
+}
+
+/* ── SAVE ── */
+async function saveBlogs(label) {
+  try { localStorage.setItem(KEY, JSON.stringify(blogs)); } catch {}
+  if (jsonFileHandle) {
+    try {
+      const perm = await jsonFileHandle.requestPermission({ mode: 'readwrite' });
+      if (perm !== 'granted') throw new Error('Permission denied');
+      const writable = await jsonFileHandle.createWritable();
+      await writable.write(JSON.stringify(blogs, null, 2));
+      await writable.close();
+      showToast('success', 'fa-floppy-disk', label + ' Saved to ' + jsonFileHandle.name);
+      return;
+    } catch {}
+  }
+  showToast('warn', 'fa-triangle-exclamation', label + ' Saved in this browser only. Use "Connect JSON File" in the admin bar so ml-apps.json updates, then push it to GitHub.');
+}
+
+/* ── HELPERS ── */
+function topClass(cat) {
+  const map = {
+    'Classification': 'blog-top-python',
+    'Regression': 'blog-top-powerbi',
+    'NLP / Classification': 'blog-top-dataanalytics',
+    'Machine Learning': 'blog-top-datascience'
+  };
+  return map[cat] || 'blog-top-other';
+}
+
+function setView(v) {
+  currentView = v;
+  document.getElementById('blogsGrid').classList.toggle('list-view', v === 'list');
+  document.getElementById('gridViewBtn').classList.toggle('active', v === 'grid');
+  document.getElementById('listViewBtn').classList.toggle('active', v === 'list');
+}
+
+/* ── FILTERS (built from the categories in the data) ── */
+function renderFilters() {
+  const cats = [...new Set(blogs.map(b => b.category).filter(Boolean))];
+  const items = ['All', ...cats, ...(blogs.some(b => b.featured) ? ['Featured'] : [])];
+  if (!items.includes(activeFilter)) activeFilter = 'All';
+  document.getElementById('filterRow').innerHTML = items.map(f => `
+    <button class="filter-btn ${f === activeFilter ? 'active' : ''}" data-filter="${esc(f)}">${f === 'Featured' ? '⭐ Featured' : esc(f)}</button>
+  `).join('');
+}
+
+function renderAll() { renderFilters(); renderBlogs(); }
+
+/* ── RENDER ── */
+function renderBlogs() {
+  const q = (document.getElementById('searchInput').value || '').toLowerCase().trim();
+  const filtered = blogs.filter(b => {
+    const matchFilter =
+      activeFilter === 'All' ? true :
+      activeFilter === 'Featured' ? b.featured :
+      b.category === activeFilter;
+    const matchSearch = !q ||
+      (b.title || '').toLowerCase().includes(q) ||
+      (b.description || '').toLowerCase().includes(q) ||
+      (b.tools || '').toLowerCase().includes(q) ||
+      (b.category || '').toLowerCase().includes(q);
+    return matchFilter && matchSearch;
+  });
+
+  document.getElementById('totalCount').textContent = blogs.length;
+
+  const grid = document.getElementById('blogsGrid');
+  if (!filtered.length) {
+    grid.innerHTML = `
+      <div class="empty-state">
+        <i class="fa-solid fa-robot"></i>
+        <p>${blogs.length === 0 ? 'No ML Apps yet.' : 'No ML Apps match your search.'}</p>
+        ${blogs.length === 0 ? '<button class="btn-primary admin-only" data-action="add"><i class="fa-solid fa-plus"></i> Add First ML App</button>' : ''}
+      </div>`;
+    return;
+  }
+
+  grid.innerHTML = filtered.map(b => `
+    <div class="blog-card">
+      <div class="blog-card-top ${topClass(b.category)}">
+        <i class="fa-solid fa-robot"></i>
+        <span class="blog-num">APP #${String(blogs.indexOf(b) + 1).padStart(2,'0')}</span>
+        ${b.featured ? '<span class="blog-featured-pin">⭐ Featured</span>' : ''}
+      </div>
+
+      <div class="blog-body">
+        <div class="blog-meta-row">
+          <span class="blog-category">${esc(b.category || 'ML App')}</span>
+        </div>
+
+        <div class="blog-title">${esc(b.title)}</div>
+        <div class="blog-desc">${esc(b.description)}</div>
+
+        ${b.tools ? `
+          <div class="blog-tags">
+            ${b.tools.split(',').filter(t => t.trim()).map(t => `<span class="blog-tag">${esc(t.trim())}</span>`).join('')}
+          </div>
+        ` : ''}
+
+        <div class="blog-footer-row">
+          <div style="display:flex;gap:0.6rem;flex-wrap:wrap;">
+            ${b.live ? `<a class="blog-read-link" href="${esc(b.live)}" target="_blank" rel="noopener"><i class="fa-solid fa-rocket"></i> Live App</a>` : ''}
+            ${b.github ? `<a class="blog-read-link" href="${esc(b.github)}" target="_blank" rel="noopener" style="color:var(--muted)"><i class="fa-brands fa-github"></i> GitHub</a>` : ''}
+          </div>
+          <div class="blog-actions admin-only">
+            <button class="btn-edit" data-action="edit" data-id="${esc(b.id)}" title="Edit App" aria-label="Edit"><i class="fa-solid fa-pen"></i></button>
+            <button class="btn-danger" data-action="delete" data-id="${esc(b.id)}" title="Delete App" aria-label="Delete"><i class="fa-solid fa-trash"></i></button>
+            <button class="btn-outline" style="padding:0.38rem 0.65rem;font-size:0.7rem;" data-action="feature" data-id="${esc(b.id)}" title="Toggle Featured" aria-label="Toggle featured">
+              ${b.featured ? '<i class="fa-solid fa-star" style="color:var(--accent3)"></i>' : '<i class="fa-regular fa-star"></i>'}
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  `).join('');
+
+  document.querySelectorAll('.blog-card').forEach((el, i) => {
+    el.style.opacity = '0'; el.style.transform = 'translateY(14px)';
+    setTimeout(() => {
+      el.style.transition = 'opacity 0.4s ease, transform 0.4s ease, border-color 0.25s, background 0.2s';
+      el.style.opacity = '1'; el.style.transform = 'translateY(0)';
+    }, i * 50);
+  });
+}
+
+/* ── CLICK HANDLERS (no inline ids) ── */
+document.getElementById('blogsGrid').addEventListener('click', e => {
+  const btn = e.target.closest('[data-action]');
+  if (!btn) return;
+  const id = btn.dataset.id, act = btn.dataset.action;
+  if (act === 'add')     requireAdmin(() => openModal());
+  if (act === 'edit')    requireAdmin(() => openModal(id));
+  if (act === 'delete')  requireAdmin(() => openDelete(id));
+  if (act === 'feature') requireAdmin(() => toggleFeatured(id));
+});
+document.getElementById('filterRow').addEventListener('click', e => {
+  const btn = e.target.closest('[data-filter]');
+  if (!btn) return;
+  activeFilter = btn.dataset.filter;
+  renderFilters();
+  renderBlogs();
+});
+
+/* ── MODAL ── */
+function fillCategorySelect(selected) {
+  const cats = [...new Set([...BASE_CATEGORIES, ...blogs.map(b => b.category).filter(Boolean), selected].filter(Boolean))];
+  const sel = document.getElementById('fCategory');
+  sel.innerHTML = cats.map(c => `<option value="${esc(c)}">${esc(c)}</option>`).join('');
+  sel.value = selected || 'Classification';
+}
+
+function openModal(id = null) {
+  clearForm();
+  document.getElementById('editId').value = '';
+  document.getElementById('modalTitle').textContent = 'Add ML App';
+
+  if (id) {
+    const b = blogs.find(x => x.id === id);
+    if (!b) return;
+    document.getElementById('modalTitle').textContent = 'Edit ML App';
+    document.getElementById('editId').value      = b.id;
+    document.getElementById('fTitle').value      = b.title || '';
+    fillCategorySelect(b.category);
+    document.getElementById('fDesc').value       = b.description || '';
+    document.getElementById('fTools').value      = b.tools || '';
+    document.getElementById('fLink').value       = b.live || '';
+    document.getElementById('fGithub').value     = b.github || '';
+    document.getElementById('fFeatured').checked = !!b.featured;
+  }
+
+  document.getElementById('modalOverlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeModal() {
+  document.getElementById('modalOverlay').classList.remove('open');
+  document.body.style.overflow = '';
+  clearForm();
+}
+
+function handleOverlayClick(e) { if (e.target === document.getElementById('modalOverlay')) closeModal(); }
+
+function clearForm() {
+  ['fTitle','fDesc','fTools','fLink','fGithub'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.value = '';
+  });
+  fillCategorySelect('Classification');
+  document.getElementById('fFeatured').checked = false;
+  const err = document.getElementById('formError');
+  if (err) { err.style.display = 'none'; err.textContent = ''; }
+}
+
+/* ── SAVE ── */
+async function saveBlog() {
+  const title = document.getElementById('fTitle').value.trim();
+  const desc  = document.getElementById('fDesc').value.trim();
+  const err   = document.getElementById('formError');
+
+  if (!title || !desc) {
+    err.textContent = '⚠️ Title and Description are required.';
+    err.style.display = 'block';
+    return;
+  }
+
+  const editId = document.getElementById('editId').value;
+  const blogData = {
+    id:          editId || 'ml' + Date.now(),
+    title:       title,
+    description: desc,
+    category:    document.getElementById('fCategory').value,
+    tools:       document.getElementById('fTools').value.trim(),
+    live:        document.getElementById('fLink').value.trim(),
+    github:      document.getElementById('fGithub').value.trim(),
+    featured:    document.getElementById('fFeatured').checked,
+  };
+
+  let label;
+  if (editId) {
+    const idx = blogs.findIndex(b => b.id === editId);
+    if (idx !== -1) blogs[idx] = blogData;
+    label = 'ML App updated.';
+  } else {
+    blogs.unshift(blogData);
+    label = 'ML App added.';
+  }
+
+  closeModal();
+  renderAll();
+  await saveBlogs(label);
+}
+
+/* ── TOGGLE FEATURED ── */
+async function toggleFeatured(id) {
+  const b = blogs.find(x => x.id === id);
+  if (!b) return;
+  b.featured = !b.featured;
+  renderAll();
+  await saveBlogs(b.featured ? 'Marked as Featured.' : 'Removed from Featured.');
+}
+
+/* ── DELETE ── */
+function openDelete(id) {
+  pendingDeleteId = id;
+  const b = blogs.find(x => x.id === id);
+  document.getElementById('deleteItemName').textContent = b ? `"${b.title}"` : 'this ML App';
+  document.getElementById('deleteOverlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeDelete() {
+  pendingDeleteId = null;
+  document.getElementById('deleteOverlay').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+function handleDeleteOverlay(e) { if (e.target === document.getElementById('deleteOverlay')) closeDelete(); }
+
+async function confirmDelete() {
+  if (!pendingDeleteId) return;
+  const id = pendingDeleteId;
+  blogs = blogs.filter(b => b.id !== id);
+  closeDelete();
+  renderAll();
+  await saveBlogs('ML App deleted.');
+}
+
+/* ── TOAST ── */
+let toastTimer;
+function showToast(type, icon, msg) {
+  const ex = document.querySelector('.toast'); if (ex) ex.remove();
+  clearTimeout(toastTimer);
+  const t = document.createElement('div');
+  t.className = `toast ${type}`;
+  t.innerHTML = `<i class="fa-solid ${icon}"></i> <span></span>`;
+  t.querySelector('span').textContent = msg;
+  document.body.appendChild(t);
+  toastTimer = setTimeout(() => t.remove(), type === 'warn' ? 6500 : 3200);
+}
+
+function toggleMenu() { document.getElementById('mobileMenu').classList.toggle('open'); }
+
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+}, { threshold: 0.1 });
+
+document.addEventListener('DOMContentLoaded', async () => {
+  loadTheme();
+  initAdminBar();
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+  blogs = await loadBlogs();
+  renderAll();
+});
+
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') { closeModal(); closeDelete(); closeAdminOverlay(); }
+});
+
+/* ── THEME TOGGLE ── */
+function toggleTheme() {
+  const isLight = document.documentElement.classList.toggle('light');
+  localStorage.setItem('theme', isLight ? 'light' : 'dark');
+  const i = document.getElementById('themeIcon');
+  if(i) i.className = isLight ? 'fa-solid fa-sun' : 'fa-solid fa-moon';
+}
+function loadTheme() {
+  if(localStorage.getItem('theme') === 'light') {
+    document.documentElement.classList.add('light');
+    const i = document.getElementById('themeIcon');
+    if(i) i.className = 'fa-solid fa-sun';
+  }
+}
+
+/* ══════════════════════════════════════════
+   ADMIN LOCK SYSTEM — PIN: 5325
+   (This is a convenience lock, not real security:
+   it only hides the edit buttons from visitors.)
+══════════════════════════════════════════ */
+const ADMIN_PIN    = '5325';
+const ADMIN_KEY    = 'adminUnlocked';
+const ADMIN_EXPIRY = 30 * 60 * 1000;
+let pendingAdminAction = null;
+
+function isAdminUnlocked() {
+  const d = localStorage.getItem(ADMIN_KEY);
+  if (!d) return false;
+  try {
+    const p = JSON.parse(d);
+    if (!p.unlocked || Date.now() - p.time > ADMIN_EXPIRY) {
+      localStorage.removeItem(ADMIN_KEY); return false;
+    }
+    return true;
+  } catch { return false; }
+}
+
+function setAdminUI(on) {
+  document.body.classList.toggle('is-admin', on);
+  document.getElementById('adminBar').classList.toggle('visible', on);
+}
+
+function requireAdmin(action) {
+  if (isAdminUnlocked()) { setAdminUI(true); action(); return; }
+  pendingAdminAction = action;
+  document.getElementById('adminOverlay').classList.add('open');
+  document.getElementById('adminPinInput').value = '';
+  document.getElementById('adminErrorMsg').textContent = '';
+  document.body.style.overflow = 'hidden';
+  setTimeout(() => document.getElementById('adminPinInput').focus(), 100);
+}
+
+function checkAdminPin() {
+  const input = document.getElementById('adminPinInput').value.trim();
+  const errEl = document.getElementById('adminErrorMsg');
+  const pinEl = document.getElementById('adminPinInput');
+  if (input === ADMIN_PIN) {
+    localStorage.setItem(ADMIN_KEY, JSON.stringify({ unlocked: true, time: Date.now() }));
+    const action = pendingAdminAction;   /* keep it before the overlay closes */
+    closeAdminOverlay();
+    setAdminUI(true);
+    if (action) action();
+  } else {
+    errEl.textContent = '❌ Wrong PIN. Try again.';
+    pinEl.classList.add('error');
+    pinEl.value = '';
+    setTimeout(() => { pinEl.classList.remove('error'); }, 400);
+  }
+}
+
+function closeAdminOverlay() {
+  document.getElementById('adminOverlay').classList.remove('open');
+  document.body.style.overflow = '';
+  pendingAdminAction = null;
+}
+
+function adminLogout() {
+  localStorage.removeItem(ADMIN_KEY);
+  setAdminUI(false);
+  showToast('success', 'fa-lock', 'Admin locked.');
+}
+
+function initAdminBar() { setAdminUI(isAdminUnlocked()); }
+</script>
+
+</body>
+</html>

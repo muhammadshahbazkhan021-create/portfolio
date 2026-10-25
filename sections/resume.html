@@ -1,0 +1,881 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Resume — Muhammad Shahbaz Khan</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <style>
+        :root {
+      --bg:       #0a0f1e;
+      --bg2:      #0f1629;
+      --bg3:      #151d35;
+      --glass:    rgba(255,255,255,0.03);
+      --glass2:   rgba(255,255,255,0.07);
+      --border:   rgba(255,255,255,0.07);
+      --border2:  rgba(255,255,255,0.12);
+      --accent:   #3b82f6;
+      --accent-h: #2563eb;
+      --accent2:  #8b5cf6;
+      --accent3:  #10b981;
+      --warn:     #f59e0b;
+      --text:     #f1f5f9;
+      --text2:    #cbd5e1;
+      --muted:    #64748b;
+      --dim:      #334155;
+      --danger:   #f87171;
+      --font:     'Space Grotesk', sans-serif;
+      --mono:     'JetBrains Mono', monospace;
+      --r:        10px;
+      --r2:       16px;
+      --r3:       24px;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--font); background: var(--bg); color: var(--text); overflow-x: hidden; }
+    a { color: inherit; text-decoration: none; }
+    ::-webkit-scrollbar { width: 4px; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
+    ::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 2px; }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 999;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 2rem; height: 64px;
+      background: rgba(10,15,30,0.95);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-logo {
+      display: flex; align-items: center; gap: 0.6rem;
+      font-weight: 700; font-size: 1rem; color: var(--text); white-space: nowrap;
+    }
+    .nav-logo-box {
+      width: 34px; height: 34px; background: var(--accent); border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--mono); font-size: 0.75rem; font-weight: 700;
+      color: #fff; flex-shrink: 0;
+    }
+    .nav-links { display: flex; align-items: center; gap: 0.2rem; }
+    .nav-links a {
+      padding: 0.4rem 0.7rem; font-size: 0.8rem; font-weight: 500;
+      color: var(--muted); border-radius: 6px;
+      transition: color 0.2s, background 0.2s; white-space: nowrap;
+    }
+    .nav-links a:hover  { color: var(--text); background: var(--glass2); }
+    .nav-links a.active { color: var(--accent); }
+    .nav-right { display: flex; align-items: center; gap: 0.5rem; }
+    .btn-recruiter {
+      padding: 0.42rem 1rem;
+      background: var(--accent); color: #fff !important;
+      border-radius: 7px; font-size: 0.8rem; font-weight: 600;
+      transition: background 0.2s; white-space: nowrap;
+    }
+    .btn-recruiter:hover { background: var(--accent-h, #2563eb); }
+    .theme-btn {
+      width: 36px; height: 36px; flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center;
+      background: var(--glass); border: 1px solid var(--border);
+      border-radius: 8px; cursor: pointer; color: var(--muted); font-size: 0.85rem;
+      transition: color 0.2s, border-color 0.2s, background 0.2s;
+    }
+    .theme-btn:hover { color: var(--accent); border-color: var(--accent); }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; }
+    .hamburger span { display: block; width: 22px; height: 2px; background: var(--text); border-radius: 2px; }
+    .mobile-menu {
+      display: none; position: fixed; top: 64px; left: 0; right: 0; z-index: 998;
+      background: rgba(10,15,30,0.98); backdrop-filter: blur(20px);
+      padding: 0.75rem 1.25rem 1.25rem; border-bottom: 1px solid var(--border);
+      flex-direction: column; gap: 0.15rem;
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a {
+      padding: 0.6rem 0.75rem; font-size: 0.88rem; font-weight: 500;
+      color: var(--muted); border-radius: 6px; transition: color 0.2s, background 0.2s;
+    }
+    .mobile-menu a:hover { color: var(--text); background: var(--glass2); }
+
+    /* ── LAYOUT ── */
+    main { padding-top: 64px; }
+    .container { max-width: 900px; margin: 0 auto; padding: 0 1.5rem; }
+
+    /* ── PAGE HEADER ── */
+    .page-header {
+      padding: 3rem 0 2rem; background: var(--bg2);
+      border-bottom: 1px solid var(--border);
+      position: relative; overflow: hidden;
+    }
+    .page-header::before {
+      content: ''; position: absolute; top: -40%; right: -5%;
+      width: 400px; height: 400px;
+      background: radial-gradient(circle, rgba(0,212,255,0.07) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .page-header-inner {
+      position: relative; z-index: 1;
+      display: flex; align-items: flex-end; justify-content: space-between; gap: 1.5rem; flex-wrap: wrap;
+    }
+    .eyebrow { font-family: var(--mono); font-size: 0.7rem; color: var(--accent); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 0.4rem; }
+    .page-title { font-size: clamp(1.8rem, 3.5vw, 2.5rem); font-weight: 700; letter-spacing: -0.5px; }
+    .page-title span { color: var(--accent); }
+    .page-sub { color: var(--muted); font-size: 0.88rem; margin-top: 0.35rem; }
+    .divider { width: 36px; height: 3px; background: linear-gradient(90deg, var(--accent), var(--accent2)); border-radius: 2px; margin: 0.7rem 0; }
+
+    /* ── BUTTONS ── */
+    .btn-primary { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.7rem 1.5rem; background: var(--accent); color: var(--bg); font-family: var(--font); font-size: 0.88rem; font-weight: 700; border: none; border-radius: 9px; cursor: pointer; transition: opacity 0.2s, transform 0.2s; white-space: nowrap; }
+    .btn-primary:hover { opacity: 0.88; transform: translateY(-1px); }
+    .btn-outline { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.65rem 1.3rem; background: transparent; color: var(--text); font-family: var(--font); font-size: 0.85rem; font-weight: 600; border: 1px solid var(--border); border-radius: 9px; cursor: pointer; transition: border-color 0.2s, background 0.2s; white-space: nowrap; }
+    .btn-outline:hover { border-color: var(--accent); background: rgba(0,212,255,0.06); }
+    .btn-danger-sm { display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.4rem 0.9rem; background: rgba(248,113,113,0.1); color: var(--danger); font-family: var(--font); font-size: 0.75rem; font-weight: 600; border: 1px solid rgba(248,113,113,0.2); border-radius: 7px; cursor: pointer; transition: background 0.2s; }
+    .btn-danger-sm:hover { background: rgba(248,113,113,0.18); }
+
+    /* ── RESUME PAGE ── */
+    .resume-page { padding: 2.5rem 0 5rem; }
+
+    /* ── UPLOAD ZONE ── */
+    .upload-zone {
+      border: 2px dashed var(--border); border-radius: var(--r2);
+      padding: 4rem 2rem; text-align: center;
+      background: var(--glass); cursor: pointer;
+      transition: border-color 0.25s, background 0.25s;
+      position: relative;
+    }
+    .upload-zone:hover, .upload-zone.drag-over {
+      border-color: rgba(0,212,255,0.4);
+      background: rgba(0,212,255,0.04);
+    }
+    .upload-zone input[type="file"] { position: absolute; inset: 0; opacity: 0; cursor: pointer; width: 100%; height: 100%; }
+    .upload-icon { font-size: 3rem; color: var(--accent); opacity: 0.45; margin-bottom: 1.1rem; }
+    .upload-title { font-size: 1.05rem; font-weight: 600; margin-bottom: 0.4rem; }
+    .upload-sub { font-size: 0.83rem; color: var(--muted); }
+    .upload-formats { margin-top: 0.85rem; display: flex; gap: 0.4rem; justify-content: center; flex-wrap: wrap; }
+    .format-tag { padding: 0.2rem 0.6rem; background: rgba(0,212,255,0.07); border: 1px solid rgba(0,212,255,0.15); border-radius: 4px; font-size: 0.68rem; color: var(--accent); font-family: var(--mono); }
+    .upload-progress { display: none; margin-top: 1.25rem; }
+    .upload-progress.show { display: block; }
+    .progress-bar-wrap { height: 4px; background: var(--glass2); border-radius: 2px; overflow: hidden; }
+    .progress-bar-fill { height: 100%; background: linear-gradient(90deg, var(--accent2), var(--accent)); border-radius: 2px; width: 0; transition: width 0.4s ease; }
+    .progress-label { font-family: var(--mono); font-size: 0.7rem; color: var(--muted); margin-top: 0.4rem; }
+
+    /* ── RESUME CARD ── */
+    .resume-card { background: var(--glass); border: 1px solid var(--border); border-radius: var(--r2); overflow: hidden; display: none; }
+    .resume-card.visible { display: block; }
+
+    /* Card header */
+    .resume-card-header {
+      padding: 1.4rem 1.75rem;
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 1rem;
+      background: var(--bg2); border-bottom: 1px solid var(--border);
+    }
+    .resume-file-info { display: flex; align-items: center; gap: 1rem; }
+    .resume-file-icon { width: 46px; height: 46px; flex-shrink: 0; background: rgba(0,212,255,0.1); border: 1px solid rgba(0,212,255,0.2); border-radius: var(--r); display: flex; align-items: center; justify-content: center; font-size: 1.2rem; color: var(--accent); }
+    .resume-filename { font-weight: 600; font-size: 0.93rem; margin-bottom: 0.2rem; }
+    .resume-filemeta { font-family: var(--mono); font-size: 0.68rem; color: var(--muted); }
+    .resume-actions { display: flex; gap: 0.55rem; flex-wrap: wrap; }
+
+    /* Preview toolbar */
+    .preview-toolbar { padding: 0.65rem 1.25rem; display: flex; align-items: center; justify-content: space-between; background: var(--bg2); border-bottom: 1px solid var(--border); }
+    .preview-toolbar-label { font-family: var(--mono); font-size: 0.68rem; color: var(--muted); letter-spacing: 1px; text-transform: uppercase; }
+    .preview-btns { display: flex; gap: 0.4rem; }
+    .zoom-btn { width: 28px; height: 28px; display: flex; align-items: center; justify-content: center; background: var(--glass); border: 1px solid var(--border); border-radius: 6px; cursor: pointer; color: var(--muted); font-size: 0.75rem; transition: color 0.2s, border-color 0.2s; }
+    .zoom-btn:hover { color: var(--accent); border-color: rgba(0,212,255,0.3); }
+
+    /* Preview iframe */
+    .preview-container { background: #1a1a2e; min-height: 600px; }
+    #resumePreview { width: 100%; height: 750px; border: none; display: block; background: white; }
+    .no-preview { min-height: 400px; display: flex; flex-direction: column; align-items: center; justify-content: center; color: var(--dim); text-align: center; gap: 0.75rem; padding: 2rem; }
+    .no-preview i { font-size: 3rem; color: var(--accent); opacity: 0.2; }
+    .no-preview p { font-size: 0.88rem; }
+
+    /* ── TOAST ── */
+    .toast { position: fixed; bottom: 1.5rem; right: 1.5rem; z-index: 2000; padding: 0.75rem 1.25rem; background: var(--bg2); border: 1px solid var(--border); border-radius: 10px; font-size: 0.83rem; display: flex; align-items: center; gap: 0.6rem; box-shadow: 0 8px 32px rgba(0,0,0,0.4); animation: toastIn 0.3s ease; max-width: 320px; }
+    @keyframes toastIn { from { opacity:0; transform:translateY(12px); } to { opacity:1; transform:translateY(0); } }
+    .toast.success { border-color: rgba(6,255,165,0.25); }
+    .toast.success i { color: var(--accent3); }
+    .toast.error { border-color: rgba(248,113,113,0.25); }
+    .toast.error i { color: var(--danger); }
+
+    /* ── FOOTER ── */
+    footer { padding: 2rem 0; background: var(--bg2); border-top: 1px solid var(--border); }
+    .footer-inner { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1rem; }
+    .footer-brand { font-family: var(--mono); font-size: 0.82rem; color: var(--accent); }
+    .footer-copy { font-size: 0.75rem; color: var(--dim); }
+    .footer-links { display: flex; gap: 0.5rem; }
+    .footer-links a { width: 34px; height: 34px; display: flex; align-items: center; justify-content: center; background: var(--glass); border: 1px solid var(--border); border-radius: 8px; color: var(--muted); font-size: 0.8rem; transition: color 0.2s, border-color 0.2s; }
+    .footer-links a:hover { color: var(--accent); border-color: rgba(0,212,255,0.3); }
+
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      .page-header-inner { flex-direction: column; align-items: flex-start; }
+      .resume-card-header { flex-direction: column; align-items: flex-start; }
+      #resumePreview { height: 450px; }
+      .footer-inner { flex-direction: column; text-align: center; }
+    }
+    .fade-in { opacity: 0; transform: translateY(16px); transition: opacity 0.5s ease, transform 0.5s ease; }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+
+    /* ── ADMIN LOCK SYSTEM ── */
+    .admin-lock-overlay {
+      display: none; position: fixed; inset: 0; z-index: 2000;
+      background: rgba(0,0,0,0.85); backdrop-filter: blur(8px);
+      align-items: center; justify-content: center;
+    }
+    .admin-lock-overlay.open { display: flex; }
+    .admin-box {
+      background: var(--bg2); border: 1px solid var(--border);
+      border-radius: var(--r2); padding: 2rem; width: 100%; max-width: 380px;
+      animation: slideUp 0.25s ease;
+    }
+    @keyframes slideUp { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:translateY(0)} }
+    .admin-box-title {
+      font-size: 1.05rem; font-weight: 700; margin-bottom: 0.3rem;
+      display: flex; align-items: center; gap: 0.6rem;
+    }
+    .admin-box-title i { color: var(--accent); }
+    .admin-box-sub { font-size: 0.82rem; color: var(--muted); margin-bottom: 1.25rem; }
+    .admin-pin-input {
+      width: 100%; background: var(--bg); border: 1px solid var(--border);
+      border-radius: 9px; padding: 0.75rem 1rem;
+      color: var(--text); font-family: var(--mono); font-size: 1.1rem;
+      letter-spacing: 4px; outline: none; text-align: center;
+      transition: border-color 0.2s;
+    }
+    .admin-pin-input:focus { border-color: rgba(0,212,255,0.4); }
+    .admin-pin-input.error { border-color: rgba(248,113,113,0.5); animation: shake 0.3s ease; }
+    @keyframes shake { 0%,100%{transform:translateX(0)} 25%{transform:translateX(-8px)} 75%{transform:translateX(8px)} }
+    .admin-btn-row { display: flex; gap: 0.6rem; margin-top: 1rem; }
+    .admin-unlock-btn {
+      flex: 1; padding: 0.7rem; background: var(--accent); color: var(--bg);
+      font-family: var(--font); font-size: 0.88rem; font-weight: 700;
+      border: none; border-radius: 9px; cursor: pointer; transition: opacity 0.2s;
+    }
+    .admin-unlock-btn:hover { opacity: 0.88; }
+    .admin-cancel-btn {
+      padding: 0.7rem 1.1rem; background: transparent; color: var(--muted);
+      font-family: var(--font); font-size: 0.88rem; font-weight: 600;
+      border: 1px solid var(--border); border-radius: 9px; cursor: pointer;
+      transition: border-color 0.2s;
+    }
+    .admin-cancel-btn:hover { border-color: rgba(255,255,255,0.2); }
+    .admin-error-msg { font-size: 0.78rem; color: var(--danger,#f87171); margin-top: 0.5rem; text-align: center; min-height: 1rem; }
+
+    /* Admin status bar */
+    .admin-bar {
+      display: none; position: fixed; bottom: 1.5rem; left: 1.5rem; z-index: 1500;
+      background: var(--bg2); border: 1px solid rgba(6,255,165,0.3);
+      border-radius: 10px; padding: 0.6rem 1rem;
+      display: none; align-items: center; gap: 0.75rem;
+      font-size: 0.78rem; color: var(--accent3);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+    }
+    .admin-bar.visible { display: flex; }
+    .admin-bar i { font-size: 0.8rem; }
+    .admin-logout-btn {
+      padding: 0.25rem 0.7rem; background: rgba(248,113,113,0.1);
+      border: 1px solid rgba(248,113,113,0.2); border-radius: 6px;
+      color: var(--danger,#f87171); font-size: 0.72rem; font-weight: 600;
+      cursor: pointer; font-family: var(--font); transition: background 0.2s;
+    }
+    .admin-logout-btn:hover { background: rgba(248,113,113,0.2); }
+
+
+    /* ── LIGHT MODE ── */
+    html.light {
+      --bg:      #f8fafc;
+      --bg2:     #f1f5f9;
+      --bg3:     #e2e8f0;
+      --glass:   rgba(0,0,0,0.02);
+      --glass2:  rgba(0,0,0,0.05);
+      --border:  rgba(0,0,0,0.08);
+      --border2: rgba(0,0,0,0.14);
+      --text:    #0f172a;
+      --text2:   #1e293b;
+      --muted:   #475569;
+      --dim:     #94a3b8;
+    }
+    html.light body    { background: var(--bg); color: var(--text); }
+    html.light .page-header { background: var(--bg2) !important; border-color: var(--border) !important; }
+    html.light .card,
+    html.light .project-card,
+    html.light .cert-card,
+    html.light .intern-card,
+    html.light .cs-card,
+    html.light .blog-card   { background: #fff !important; }
+    html.light .modal        { background: var(--bg2) !important; }
+    html.light .form-input,
+    html.light .form-textarea,
+    html.light .form-select  { background: #fff !important; color: #0f172a !important; }
+    html.light footer        { background: var(--bg2) !important; }
+    html.light .upload-zone  { background: rgba(59,130,246,0.03) !important; }
+    html.light .admin-box    { background: var(--bg2) !important; }
+    html.light .admin-pin-input { background: #fff !important; color: #0f172a !important; }
+    html.light .timeline-card,
+    html.light .service-item,
+    html.light .counter-card,
+    html.light .preview-card,
+    html.light .cert-prev-card,
+    html.light .intern-prev-card { background: #fff !important; }
+    html.light .filter-btn   { background: #fff !important; }
+    html.light .search-box   { background: #fff !important; }
+
+
+    /* ── LIGHT MODE NAV FIX ── */
+    html.light nav {
+      background: rgba(255,255,255,0.97) !important;
+      box-shadow: 0 1px 12px rgba(0,0,0,0.08) !important;
+      border-bottom: 1px solid rgba(0,0,0,0.08) !important;
+    }
+    html.light .nav-links a       { color: #475569; }
+    html.light .nav-links a:hover { color: #0f172a; background: rgba(0,0,0,0.05); }
+    html.light .nav-links a.active { color: #3b82f6; }
+    html.light .nav-logo          { color: #0f172a; }
+    html.light .hamburger span    { background: #0f172a; }
+    html.light .mobile-menu {
+      background: rgba(255,255,255,0.98) !important;
+      border-bottom: 1px solid rgba(0,0,0,0.08) !important;
+    }
+    html.light .mobile-menu a     { color: #475569; }
+    html.light .mobile-menu a:hover { color: #0f172a; background: rgba(0,0,0,0.05); }
+    html.light .theme-btn { color: #f59e0b !important; border-color: rgba(245,158,11,0.3) !important; }
+  </style>
+
+  <script>if(localStorage.getItem('theme')==='light')document.documentElement.classList.add('light');</script>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo"><div class="nav-logo-box">MSK</div> Muhammad</div>
+  <div class="nav-links">
+    <a href="../index.html">Home</a>
+    <a href="internships.html">Internships</a>
+    <a href="case-studies.html">Case Studies</a>
+    <a href="projects.html">Projects</a>
+    <a href="certifications.html">Certifications</a>
+    <a href="blogs.html">Blogs</a>
+  </div>
+  <div class="nav-right">
+    <a href="../recruiter.html" class="btn-recruiter">🎯 Recruiter View</a>
+    <button class="theme-btn" onclick="toggleTheme()" id="themeBtn" title="Toggle Light/Dark">
+      <i class="fa-solid fa-moon" id="themeIcon"></i>
+    </button>
+    <div class="hamburger" onclick="toggleMenu()">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="../index.html">Home</a>
+  <a href="internships.html">Internships</a>
+  <a href="case-studies.html">Case Studies</a>
+  <a href="projects.html">Projects</a>
+  <a href="certifications.html">Certifications</a>
+  <a href="blogs.html">Blogs</a>
+  <a href="../recruiter.html" class="btn-recruiter" style="text-align:center;margin-top:0.5rem">🎯 Recruiter View</a>
+</div>
+<main>
+
+<!-- PAGE HEADER -->
+<div class="page-header">
+  <div class="container">
+    <div class="page-header-inner">
+      <div>
+        <p class="eyebrow">Career Document</p>
+        <h1 class="page-title">My <span>Resume</span></h1>
+        <div class="divider"></div>
+        <p class="page-sub">Upload your resume — preview and download anytime.</p>
+      </div>
+      <div style="display:flex;gap:0.65rem;flex-wrap:wrap;" id="headerActions">
+        <button class="btn-outline" id="headerReplaceBtn" onclick="requireAdmin(()=>triggerReplace())" style="display:none;">
+          <i class="fa-solid fa-arrow-rotate-left"></i> Replace
+        </button>
+        <button class="btn-primary" id="headerDownloadBtn" onclick="downloadResume()" style="display:none;">
+          <i class="fa-solid fa-download"></i> Download Resume
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MAIN -->
+<div class="resume-page">
+  <div class="container">
+
+    <!-- UPLOAD ZONE -->
+    <div class="upload-zone fade-in" id="uploadZone"
+         ondragover="handleDragOver(event)"
+         ondragleave="handleDragLeave(event)"
+         ondrop="handleDrop(event)">
+      <input type="file" id="fileInput" accept=".pdf,.doc,.docx" onchange="handleFile(event)"/>
+      <div class="upload-icon"><i class="fa-solid fa-cloud-arrow-up"></i></div>
+      <div class="upload-title">Drop your resume here</div>
+      <div class="upload-sub">or click anywhere to browse</div>
+      <div class="upload-formats">
+        <span class="format-tag">PDF</span>
+        <span class="format-tag">DOC</span>
+        <span class="format-tag">DOCX</span>
+      </div>
+      <div class="upload-progress" id="uploadProgress">
+        <div class="progress-bar-wrap">
+          <div class="progress-bar-fill" id="progressFill"></div>
+        </div>
+        <div class="progress-label" id="progressLabel">Reading file…</div>
+      </div>
+    </div>
+
+    <!-- RESUME CARD -->
+    <div class="resume-card fade-in" id="resumeCard">
+
+      <!-- File info + actions -->
+      <div class="resume-card-header">
+        <div class="resume-file-info">
+          <div class="resume-file-icon">
+            <i class="fa-solid fa-file-pdf" id="fileTypeIcon"></i>
+          </div>
+          <div>
+            <div class="resume-filename" id="resumeFilename">resume.pdf</div>
+            <div class="resume-filemeta" id="resumeFilemeta">PDF · Uploaded just now</div>
+          </div>
+        </div>
+        <div class="resume-actions">
+          <button class="btn-primary" onclick="downloadResume()">
+            <i class="fa-solid fa-download"></i> Download
+          </button>
+          <button class="btn-outline" onclick="requireAdmin(()=>triggerReplace())">
+            <i class="fa-solid fa-arrow-rotate-left"></i> Replace
+          </button>
+          <button class="btn-danger-sm" onclick="requireAdmin(()=>removeResume())">
+            <i class="fa-solid fa-trash"></i> Remove
+          </button>
+        </div>
+      </div>
+
+      <!-- Preview toolbar -->
+      <div class="preview-toolbar">
+        <span class="preview-toolbar-label">Preview</span>
+        <div class="preview-btns">
+          <button class="zoom-btn" onclick="openFullscreen()" title="Fullscreen"><i class="fa-solid fa-expand"></i></button>
+          <button class="zoom-btn" onclick="printResume()" title="Print"><i class="fa-solid fa-print"></i></button>
+        </div>
+      </div>
+
+      <!-- PDF iframe -->
+      <div class="preview-container">
+        <iframe id="resumePreview" title="Resume Preview"></iframe>
+        <div class="no-preview" id="noPreview" style="display:none;">
+          <i class="fa-solid fa-file-word"></i>
+          <p>Preview not available for Word files.</p>
+          <p style="font-size:0.78rem;color:var(--dim)">Please download to view.</p>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</div>
+
+</main>
+
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-brand">MSK</div>
+      <div class="footer-links">
+        <a href="https://linkedin.com/in/muhammad-shahbaz-khan-analyst" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
+        <a href="https://github.com/muhammadshahbazkhan021-create target="_blank"><i class="fa-brands fa-github"></i></a>
+        <a href="mailto:muhammadshahbazkhan021@email.com"><i class="fa-solid fa-envelope"></i></a>
+      </div>
+      <p class="footer-copy">© 2025 Muhammad Shahbaz Khan</p>
+    </div>
+  </div>
+</footer>
+
+<input type="file" id="replaceInput" accept=".pdf,.doc,.docx" style="display:none;" onchange="handleFile(event)"/>
+
+<script>
+const KEY_RESUME = 'resumeData';
+const KEY_META   = 'resumeMeta';
+const RESUME_PATH = '../assets/resume/resume.pdf'; // relative to section/resume.html
+let resumeFileHandle = null;
+let pendingReconnectHandle = null;
+
+/* ── IndexedDB (persists the file handle across reloads, Chrome/Edge only) ── */
+const IDB_NAME = 'resume-fs', IDB_STORE = 'handles', IDB_KEY = 'resumeFile';
+function idbOpen() {
+  return new Promise((res, rej) => {
+    const r = indexedDB.open(IDB_NAME, 1);
+    r.onupgradeneeded = () => r.result.createObjectStore(IDB_STORE);
+    r.onsuccess = () => res(r.result);
+    r.onerror = () => rej(r.error);
+  });
+}
+async function idbSetHandle(handle) {
+  const db = await idbOpen();
+  return new Promise((res, rej) => {
+    const tx = db.transaction(IDB_STORE, 'readwrite');
+    tx.objectStore(IDB_STORE).put(handle, IDB_KEY);
+    tx.oncomplete = () => res();
+    tx.onerror = () => rej(tx.error);
+  });
+}
+async function idbGetHandle() {
+  const db = await idbOpen();
+  return new Promise((res, rej) => {
+    const tx = db.transaction(IDB_STORE, 'readonly');
+    const rq = tx.objectStore(IDB_STORE).get(IDB_KEY);
+    rq.onsuccess = () => res(rq.result || null);
+    rq.onerror = () => rej(rq.error);
+  });
+}
+
+/* ── CONNECT assets/resume/resume.pdf (admin picks it once, browser remembers it) ── */
+async function connectResumeFile() {
+  if (pendingReconnectHandle) {
+    try {
+      const perm = await pendingReconnectHandle.requestPermission({ mode: 'readwrite' });
+      if (perm === 'granted') {
+        resumeFileHandle = pendingReconnectHandle;
+        pendingReconnectHandle = null;
+        updateResumeFileLabel();
+        showToast('success', 'fa-link', 'Reconnected to ' + resumeFileHandle.name + '.');
+        return;
+      }
+    } catch { /* fall through to full picker below */ }
+  }
+  if (!window.showOpenFilePicker) {
+    showToast('error', 'fa-triangle-exclamation', 'This browser doesn\'t support direct file editing. Use Chrome or Edge.');
+    return;
+  }
+  try {
+    const [handle] = await window.showOpenFilePicker({
+      types: [{ description: 'PDF', accept: { 'application/pdf': ['.pdf'] } }],
+      excludeAcceptAllOption: false,
+    });
+    resumeFileHandle = handle;
+    pendingReconnectHandle = null;
+    await idbSetHandle(handle);
+    updateResumeFileLabel();
+    showToast('success', 'fa-link', 'Connected to ' + handle.name + '. New uploads will sync here.');
+  } catch (err) {
+    if (err.name !== 'AbortError') showToast('error', 'fa-triangle-exclamation', 'Could not connect file.');
+  }
+}
+async function tryRestoreResumeHandle() {
+  try {
+    const handle = await idbGetHandle();
+    if (!handle) return;
+    const perm = await handle.queryPermission({ mode: 'readwrite' });
+    if (perm !== 'granted') { pendingReconnectHandle = handle; updateResumeFileLabel(); return; }
+    resumeFileHandle = handle;
+    updateResumeFileLabel();
+  } catch { /* ignore */ }
+}
+function updateResumeFileLabel() {
+  const el = document.getElementById('resumeFileLabel');
+  if (!el) return;
+  if (resumeFileHandle) el.textContent = resumeFileHandle.name;
+  else if (pendingReconnectHandle) el.textContent = 'Reconnect ' + pendingReconnectHandle.name;
+  else el.textContent = 'Connect Resume File';
+}
+async function saveResumeToFile(file) {
+  if (!resumeFileHandle) return;
+  if (!file.type.includes('pdf') && !file.name.toLowerCase().endsWith('.pdf')) {
+    showToast('error', 'fa-triangle-exclamation', 'Auto-sync only supports PDF files. Saved locally only.');
+    return;
+  }
+  try {
+    const perm = await resumeFileHandle.requestPermission({ mode: 'readwrite' });
+    if (perm !== 'granted') throw new Error('permission denied');
+    const writable = await resumeFileHandle.createWritable();
+    await writable.write(file);
+    await writable.close();
+    showToast('success', 'fa-link', 'Synced to ' + resumeFileHandle.name + '.');
+  } catch (err) {
+    showToast('error', 'fa-triangle-exclamation', 'Could not sync to file — saved locally only.');
+  }
+}
+
+async function loadResume() {
+  // 1) The real resume.pdf served alongside the site (works for every visitor)
+  try {
+    const res = await fetch(RESUME_PATH, { method: 'HEAD', cache: 'no-store' });
+    if (res.ok) {
+      const len = res.headers.get('content-length');
+      showResume(RESUME_PATH, 'resume.pdf', len ? formatSize(+len) : '', 'application/pdf', '');
+      return;
+    }
+  } catch { /* file:// or missing file — fall through */ }
+
+  // 2) localStorage fallback (this browser only — offline/dev use)
+  const data = localStorage.getItem(KEY_RESUME);
+  const meta = localStorage.getItem(KEY_META);
+  if (data && meta) {
+    const m = JSON.parse(meta);
+    showResume(data, m.name, m.size, m.type, m.date);
+  }
+}
+
+function handleFile(e) {
+  const file = e.target.files[0];
+  if (!file) return;
+  if (file.size > 5 * 1024 * 1024) { showToast('error', 'fa-circle-xmark', 'File too large. Max 5MB.'); return; }
+  const allowed = ['application/pdf','application/msword','application/vnd.openxmlformats-officedocument.wordprocessingml.document'];
+  if (!allowed.includes(file.type) && !file.name.match(/\.(pdf|doc|docx)$/i)) {
+    showToast('error', 'fa-circle-xmark', 'Only PDF, DOC, or DOCX allowed.'); return;
+  }
+  const prog = document.getElementById('uploadProgress');
+  const fill = document.getElementById('progressFill');
+  const lbl  = document.getElementById('progressLabel');
+  prog.classList.add('show');
+  let pct = 0;
+  const iv = setInterval(() => { pct = Math.min(pct + Math.random() * 25, 95); fill.style.width = pct + '%'; lbl.textContent = `Reading… ${Math.round(pct)}%`; }, 120);
+  const reader = new FileReader();
+  reader.onload = function(ev) {
+    clearInterval(iv); fill.style.width = '100%'; lbl.textContent = 'Done!';
+    setTimeout(() => prog.classList.remove('show'), 600);
+    const dataUrl = ev.target.result;
+    const meta = { name: file.name, size: formatSize(file.size), type: file.type, date: new Date().toLocaleString('en-US',{month:'short',day:'numeric',year:'numeric',hour:'2-digit',minute:'2-digit'}) };
+    try { localStorage.setItem(KEY_RESUME, dataUrl); localStorage.setItem(KEY_META, JSON.stringify(meta)); }
+    catch { showToast('error','fa-circle-xmark','File too large for browser storage.'); return; }
+    showResume(dataUrl, meta.name, meta.size, meta.type, meta.date);
+    showToast('success','fa-circle-check','Resume uploaded!');
+    saveResumeToFile(file);
+  };
+  reader.onerror = () => { clearInterval(iv); showToast('error','fa-circle-xmark','Failed to read file.'); };
+  reader.readAsDataURL(file);
+}
+
+function showResume(dataUrl, name, size, type, date) {
+  document.getElementById('uploadZone').style.display = 'none';
+  document.getElementById('resumeCard').classList.add('visible');
+  document.getElementById('resumeFilename').textContent = name;
+  document.getElementById('resumeFilemeta').textContent = `${type.includes('pdf') ? 'PDF' : 'Word'} · ${size} · ${date}`;
+  const icon = document.getElementById('fileTypeIcon');
+  icon.className = type.includes('pdf') ? 'fa-solid fa-file-pdf' : 'fa-solid fa-file-word';
+  icon.style.color = type.includes('pdf') ? 'var(--accent)' : '#a78bfa';
+  const iframe = document.getElementById('resumePreview');
+  const noPreview = document.getElementById('noPreview');
+  if (type.includes('pdf') || name.endsWith('.pdf')) {
+    iframe.style.display = 'block'; noPreview.style.display = 'none'; iframe.src = dataUrl;
+  } else {
+    iframe.style.display = 'none'; noPreview.style.display = 'flex';
+  }
+  document.getElementById('headerReplaceBtn').style.display = 'inline-flex';
+  document.getElementById('headerDownloadBtn').style.display = 'inline-flex';
+}
+
+function downloadResume() {
+  const iframe = document.getElementById('resumePreview');
+  if (iframe && iframe.src && iframe.src.includes(RESUME_PATH.replace('../',''))) {
+    const a = document.createElement('a'); a.href = RESUME_PATH; a.download = 'resume.pdf'; a.click();
+    showToast('success','fa-download','Download started!');
+    return;
+  }
+  const data = localStorage.getItem(KEY_RESUME);
+  const meta = localStorage.getItem(KEY_META);
+  if (!data || !meta) { showToast('error','fa-circle-xmark','No resume uploaded yet.'); return; }
+  const { name } = JSON.parse(meta);
+  const a = document.createElement('a'); a.href = data; a.download = name; a.click();
+  showToast('success','fa-download','Download started!');
+}
+
+function triggerReplace() { document.getElementById('replaceInput').click(); }
+
+function removeResume() {
+  if (!confirm('Remove resume?')) return;
+  localStorage.removeItem(KEY_RESUME); localStorage.removeItem(KEY_META);
+  document.getElementById('resumeCard').classList.remove('visible');
+  document.getElementById('uploadZone').style.display = '';
+  document.getElementById('resumePreview').src = '';
+  document.getElementById('headerReplaceBtn').style.display = 'none';
+  document.getElementById('headerDownloadBtn').style.display = 'none';
+  document.getElementById('fileInput').value = '';
+  document.getElementById('replaceInput').value = '';
+  showToast('success','fa-trash','Resume removed.');
+}
+
+function openFullscreen() {
+  const data = localStorage.getItem(KEY_RESUME); if (!data) return;
+  const w = window.open();
+  w.document.write(`<iframe src="${data}" style="width:100%;height:100%;border:none;position:fixed;inset:0;"></iframe>`);
+}
+
+function printResume() {
+  const iframe = document.getElementById('resumePreview');
+  if (iframe.style.display !== 'none' && iframe.src) iframe.contentWindow.print();
+  else window.print();
+}
+
+function handleDragOver(e) { e.preventDefault(); document.getElementById('uploadZone').classList.add('drag-over'); }
+function handleDragLeave()  { document.getElementById('uploadZone').classList.remove('drag-over'); }
+function handleDrop(e) {
+  e.preventDefault(); document.getElementById('uploadZone').classList.remove('drag-over');
+  const file = e.dataTransfer.files[0]; if (!file) return;
+  handleFile({ target: { files: [file] } });
+}
+
+function formatSize(b) {
+  if (b < 1024) return b + ' B';
+  if (b < 1024*1024) return (b/1024).toFixed(1) + ' KB';
+  return (b/(1024*1024)).toFixed(1) + ' MB';
+}
+
+let toastTimer;
+function showToast(type, icon, msg) {
+  const ex = document.querySelector('.toast'); if (ex) ex.remove();
+  clearTimeout(toastTimer);
+  const t = document.createElement('div');
+  t.className = `toast ${type}`;
+  t.innerHTML = `<i class="fa-solid ${icon}"></i> ${msg}`;
+  document.body.appendChild(t);
+  toastTimer = setTimeout(() => t.remove(), 3500);
+}
+
+function toggleMenu() { document.getElementById('mobileMenu').classList.toggle('open'); }
+
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+}, { threshold: 0.1 });
+
+document.addEventListener('DOMContentLoaded', async () => {
+  loadTheme();
+  if(typeof initAdminBar === 'function') initAdminBar();
+  /* ── LOAD SAVED THEME ── */
+
+
+  await tryRestoreResumeHandle();
+  loadResume();
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+});
+</script>
+
+<!-- ADMIN LOCK MODAL -->
+<div class="admin-lock-overlay" id="adminOverlay">
+  <div class="admin-box">
+    <div class="admin-box-title"><i class="fa-solid fa-shield-halved"></i> Admin Access</div>
+    <div class="admin-box-sub">Enter your PIN to edit content.</div>
+    <input class="admin-pin-input" id="adminPinInput" type="password"
+      placeholder="• • • • " maxlength="20"
+      onkeydown="if(event.key==='Enter') checkAdminPin()"/>
+    <div class="admin-error-msg" id="adminErrorMsg"></div>
+    <div class="admin-btn-row">
+      <button class="admin-cancel-btn" onclick="closeAdminOverlay()">Cancel</button>
+      <button class="admin-unlock-btn" onclick="checkAdminPin()">
+        <i class="fa-solid fa-unlock"></i> Unlock
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- ADMIN STATUS BAR -->
+<div class="admin-bar" id="adminBar">
+  <i class="fa-solid fa-shield-halved"></i>
+  <span>Admin Mode Active</span>
+  <button class="admin-logout-btn" onclick="connectResumeFile()" style="margin-right:0.4rem;">
+    <i class="fa-solid fa-link"></i> <span id="resumeFileLabel">Connect Resume File</span>
+  </button>
+  <button class="admin-logout-btn" onclick="adminLogout()">
+    <i class="fa-solid fa-right-from-bracket"></i> Lock
+  </button>
+</div>
+
+
+<script>
+/* ── THEME TOGGLE ── */
+function toggleTheme() {
+  const isLight = document.documentElement.classList.toggle('light');
+  localStorage.setItem('theme', isLight ? 'light' : 'dark');
+  var i = document.getElementById('themeIcon');
+  if(i) i.className = isLight ? 'fa-solid fa-sun' : 'fa-solid fa-moon';
+}
+function loadTheme() {
+  if(localStorage.getItem('theme') === 'light') {
+    document.documentElement.classList.add('light');
+    var i = document.getElementById('themeIcon');
+    if(i) i.className = 'fa-solid fa-sun';
+  }
+}
+
+/* ══════════════════════════════════════════
+   ADMIN LOCK SYSTEM — PIN: 1234
+══════════════════════════════════════════ */
+const ADMIN_PIN    = '5325';
+const ADMIN_KEY    = 'adminUnlocked';
+const ADMIN_EXPIRY = 30 * 60 * 1000;
+let pendingAdminAction = null;
+
+function isAdminUnlocked() {
+  const d = localStorage.getItem(ADMIN_KEY);
+  if (!d) return false;
+  try {
+    const p = JSON.parse(d);
+    if (!p.unlocked || Date.now() - p.time > ADMIN_EXPIRY) {
+      localStorage.removeItem(ADMIN_KEY); return false;
+    }
+    return true;
+  } catch { return false; }
+}
+
+function requireAdmin(action) {
+  if (isAdminUnlocked()) { action(); return; }
+  pendingAdminAction = action;
+  document.getElementById('adminOverlay').classList.add('open');
+  document.getElementById('adminPinInput').value = '';
+  document.getElementById('adminErrorMsg').textContent = '';
+  document.body.style.overflow = 'hidden';
+  setTimeout(() => document.getElementById('adminPinInput').focus(), 100);
+}
+
+function checkAdminPin() {
+  const input = document.getElementById('adminPinInput').value.trim();
+  const errEl = document.getElementById('adminErrorMsg');
+  const pinEl = document.getElementById('adminPinInput');
+  if (input === ADMIN_PIN) {
+    localStorage.setItem(ADMIN_KEY, JSON.stringify({ unlocked: true, time: Date.now() }));
+    closeAdminOverlay();
+    document.getElementById('adminBar').classList.add('visible');
+    if (pendingAdminAction) { pendingAdminAction(); pendingAdminAction = null; }
+  } else {
+    errEl.textContent = '❌ Wrong PIN. Try again.';
+    pinEl.classList.add('error');
+    pinEl.value = '';
+    setTimeout(() => { pinEl.classList.remove('error'); }, 400);
+  }
+}
+
+function closeAdminOverlay() {
+  document.getElementById('adminOverlay').classList.remove('open');
+  document.body.style.overflow = '';
+  pendingAdminAction = null;
+}
+
+function adminLogout() {
+  localStorage.removeItem(ADMIN_KEY);
+  document.getElementById('adminBar').classList.remove('visible');
+  showToast('success', 'fa-lock', 'Admin locked.');
+}
+
+function initAdminBar() {
+  if (isAdminUnlocked()) {
+    document.getElementById('adminBar').classList.add('visible');
+  }
+}
+
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') closeAdminOverlay();
+});
+
+document.addEventListener('DOMContentLoaded', function() {
+  initAdminBar();
+});
+</script>
+
+</body>
+</html>

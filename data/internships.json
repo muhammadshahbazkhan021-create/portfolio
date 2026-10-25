@@ -1,0 +1,72 @@
+[
+  {
+    "id": "i1782886498743",
+    "role": "Power BI",
+    "company": "Code Alpha",
+    "description": "Assisted in developing interactive Power BI dashboards and reports by transforming raw data into meaningful business insights. Worked with data cleaning, data modeling, DAX calculations, Power Query, and data visualization to support data-driven decision-making. Created KPI dashboards, optimized report performance, and presented findings using clear and interactive visuals.",
+    "start": "2026-06-25",
+    "location": "Remote",
+    "status": "Current",
+    "end": "2026-08-25",
+    "skills": "Power BI, Power Query, DAX (Data Analysis Expressions), Data Modeling, Data Cleaning & Transformation, ETL Process, Data Visualization, Dashboard Development, KPI Reporting, Microsoft Excel, SQL, Data Analysis, Business Intelligence, Report Optimization, Interactive Reports.  Power BI Desktop, Microsoft Excel, SQL Server / MySQL, Power Query Editor, DAX.  Power BI, Excel, SQL, Git & GitHub, VS Code.",
+    "certLink": "",
+    "projLinks": "",
+    "featured": false
+  },
+  {
+    "id": "i1",
+    "role": "Machine Learning Engineering Intern",
+    "company": "FlyRankAI",
+    "location": "Remote",
+    "status": "Completed",
+    "start": "2026-07-01",
+    "end": "2026-08-12",
+    "description": "Developed and evaluated machine learning models using Python and Scikit-learn, with a focus on data preprocessing, feature engineering, and model optimization. Applied predictive analytics techniques to solve real-world problems and improve model performance.",
+    "certLink": "",
+    "projLinks": "",
+    "image": "assets/internships/abc-technologies.png",
+    "featured": true
+  },
+  {
+    "id": "i2",
+    "role": "Data Analyst Intern",
+    "company": "Oasis Infobyte.",
+    "description": "Applied data analytics techniques to clean, analyze, and visualize datasets using Python, Excel, and Power BI. Delivered actionable insights through interactive dashboards and reports while strengthening practical problem-solving and analytical skills..",
+    "start": "2026-06-20",
+    "location": "Lahore, Pakistan",
+    "status": "Completed",
+    "end": "2026-07-20",
+    "skills": "Python , Pandas ,NumPy, Matplotlib,Git, GitHub",
+    "certLink": "",
+    "projLinks": "",
+    "featured": true
+  },
+  {
+    "id": "i3",
+    "role": "Data Analyst Intern",
+    "company": "Decodlabs",
+    "description": "Worked on data analytics projects involving data cleaning, exploratory data analysis (EDA), and visualization using Excel, SQL, Python, and Power BI. Analyzed datasets to uncover meaningful insights and created interactive dashboards to support data-driven decision-making...",
+    "start": "2026-06-20",
+    "location": "Lahore, Pakistan",
+    "status": "Completed",
+    "end": "2026-07-20",
+    "skills": "Python, SQL, Power BI, Excel, pandas,Web-Scrapping",
+    "certLink": "",
+    "projLinks": "",
+    "featured": true
+  },
+  {
+    "id": "i4",
+    "role": "Data Analyst Intern",
+    "company": "CodeAlpha.",
+    "description": "Completed real-world data analytics tasks by collecting, cleaning, and analyzing datasets using Python, SQL, and Excel. Developed visual reports and dashboards that effectively communicated trends, patterns, and business insights..",
+    "start": "2025-07-12",
+    "location": "Remote",
+    "status": "Completed",
+    "end": "2026-05-02",
+    "skills": "Python ,Pandas ,NumPy, SQL ,Excel, Power BI, Data Visualization, EDA ,Statistics, Git ,GitHub",
+    "certLink": "",
+    "projLinks": "",
+    "featured": true
+  }
+]
